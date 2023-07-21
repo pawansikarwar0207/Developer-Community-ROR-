@@ -4,24 +4,86 @@
       <h3 class="text-center mb-3">Search Professionals across the world!</h3>
       <%= search_form_for @q, url:root_path, id:'search-result', remote: true do |form| %>
       <div class="input-group mb-3">
-        <%= form.search_field :city_or_country_cont, class: 'form-control', placeholder: 'Search by country or city', area: { label: 'Search by country or city', describedby: 'button-addon2' } %>
+        <%= form.search_field :city_or_country_cont, class: 'form-control', placeholder: 'Search by country or city', area: { label: 'Search by country or city', describedby: 'button-addon2' }, data: { field_name: 'City or Country' } %>
         <%= form.submit 'Search', class:'btn btn-primary', id: 'button-addon2' %>
       </div>
       <% end %>
-      <div id="results"></div>
+      <div class="badge fs-6 text-dark rounded-0 mt-2" id="results">
+        <button type="button" class="btn-close float-end mx-2" id="close-button" aria-label="Close"></button>
+      </div>
+
+      <!-- Start For Search the country using tab -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link" data-country="Jordan" onclick="countryStatus(this)" >Jordan</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-country="Vietnam" onclick="countryStatus(this)" >Vietnam</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-country="Mayotte" onclick="countryStatus(this)" >Mayotte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-country="Swaziland" onclick="countryStatus(this)" >Swaziland</a>
+        </li>
+        <!-- Add more tabs for additional filters if needed -->
+      </ul>
+      <!-- End For Search the country using tab -->
+
+
+      <!-- Search the country by using search form -->
       <script>
-        $(document).ready(function(){
-          $("#button-addon2").click(function(){
-            var x = $("#search-result").serializeArray();
-            $.each(x, function(i, field){
-              $("#results").append(field.value + " ");
+       $(document).ready(function(){
+        $("#close-button").hide();
+        $("#button-addon2").click(function(){
+          var x = $("#search-result").serializeArray();
+          $.each(x, function(i, field){
+            var fieldName = $(`input[name="${field.name}"]`).data('field-name') || field.name;
+            $("#results").append(fieldName + " : " + field.value + " ");
+          });
+          $("#close-button").show();
+          $("#close-button").click(function(){
+            $("#results").empty();
+            $(this).hide();
+            $("#search-result")[0].reset();
+            $.ajax({
+              url: '/',
+              type: "GET",
+              dataType: "script",
             });
           });
         });
-      </script>
-    </div>
+      });
+    </script>
   </div>
-  <div id="users">
-    <%= render 'user' %>
-  </div>
+</div>
+
+<!-- For Search the country using tab -->
+<script>
+  countryStatus = (object) => {
+    var formData = $('#search-result').serializeArray();
+    var searchValue = object.dataset.country;
+
+    var combinedData = [];
+
+    combinedData.push({ name: 'country', value: searchValue });
+
+    $.each(formData, function(i,field){
+      combinedData.push(field);
+    });
+    $.ajax({
+      url: '/',
+      type: "GET",
+      dataType: "script",
+      data: combinedData
+    });
+  };
+</script>
+
+<div id="users">
+  <%= render 'user' %>
+</div>
+</div>
+
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
 </div>
