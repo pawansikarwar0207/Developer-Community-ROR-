@@ -1,20 +1,60 @@
+<!-- search option form for country -->
+<div class="col-lg-2 mb-3">
+  <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
+  <div class="field">
+    <%= form.label :country, class: "form-label" %>
+    <%= form.country_select :country, { prompt: "Select a country" }, onclick:"selectCountry(this)" , class: "form-select", data: { controller: "countries" } %>
+  </div>
+  <% end %>
+</div>
+
+<%= render 'selected_user' %>
+
 <div class="row mt-4 mb-4">
   <% @users.each do |user| %>
   <div class="col-lg-3 mt-3 mb-3">
     <div class="card text-center shadow" style="min-height: 400px;">
       <div class="card-body">
+        <div class="form-check">
+          <input class="form-check-input user-select-check" type="checkbox" id="user_<%= user.id %>" data-user-id="<%= user.id %>">
+          <label class="form-check-label" for="user_<%= user.id %>">
+          </label>
+        </div>
         <%= image_tag "user.png", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
         <div class="user-info">
-          <h5><%= user.name %> </h5>
-          <p class="lead"><%= user.profile_title %></p>
-          <small class="text-primary"><%= user.country %></small><br>
+            <h5><%= user.name %> </h5>
+            <p class="lead"><%= user.profile_title %></p>
+            <small class="text-primary"><%= user.country %></small><br>
           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
 
           <!-- Button trigger modal -->
           <%= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
+          <!-- Button trigger modal -->
+          <%#= link_to "New", new_member_path(user),class: 'btn btn-primary mt-3' %>
         </div>
       </div>
     </div>
   </div>
   <% end %>
 </div>
+
+<!-- search the country by using select option -->
+<script>
+  selectCountry = (object) => {
+    var formData = $("#countryDetail").serializeArray();
+    var searchValue = object.value;
+    var combinedData = [];
+    combinedData.push({ name: 'countrySearch', value: searchValue });
+    $.each(formData, function(i, field){
+      combinedData.push(field);
+    });
+    $.ajax({
+      url: '/',
+      type: "GET",
+      dataType: "script",
+      data: combinedData
+    });
+  };
+</script>
+
+

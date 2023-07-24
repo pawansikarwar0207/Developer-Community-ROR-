@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :trackable
 
+  validate :validate_country
 
   PROFILE_TITLE = [
     'Senior Ruby on Rails Developer',
@@ -28,6 +29,15 @@ class User < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     []
+  end
+
+
+  def validate_country
+    return if country.nil?
+
+    unless ISO3166::Country.all.map { |country| country.alpha2 }.include?(country)
+      errors.add(:country, 'is not valid')
+    end
   end
 
 
