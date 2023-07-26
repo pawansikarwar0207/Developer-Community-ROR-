@@ -31,6 +31,10 @@ def fetch_country_states
   @states = country.states.map { |state| [state.first, state[1].translations[I18n.locale.to_s]] }
 end
 
+def edit_description
+  @user = User.find(params[:id])
+end
+
 
 private
 

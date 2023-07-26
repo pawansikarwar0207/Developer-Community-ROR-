@@ -5,3 +5,12 @@ import * as bootstrap from "bootstrap"
 
 import Rails from '@rails/ujs'
 Rails.start()
+
+// window.bootstrap = bootstrap;
+
+import 'bootstrap';
+import { Application } from "@hotwired/stimulus";
+
+const application = Application.start();
+const context = require.context("../controllers", true, /\.js$/);
+application.load(context);
