@@ -46930,3 +46930,2634 @@ Completed 200 OK in 79ms (Views: 73.0ms | ActiveRecord: 3.8ms | Allocations: 142
 
   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/" for ::1 at 2023-07-25 18:03:34 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 418)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 283.3ms | Allocations: 223146)
+  Rendered home/index.html.erb within layouts/application (Duration: 288.0ms | Allocations: 224751)
+  Rendered shared/_header.html.erb (Duration: 2.4ms | Allocations: 496)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 211)
+  Rendered layout layouts/application.html.erb (Duration: 304.4ms | Allocations: 242558)
+Completed 200 OK in 552ms (Views: 304.5ms | ActiveRecord: 5.7ms | Allocations: 606184)
+
+
+Started GET "/?countrySearch=AI&authenticity_token=[FILTERED]&country=AI&_=1690288415448" for ::1 at 2023-07-25 18:03:37 +0530
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AI", "authenticity_token"=>"[FILTERED]", "country"=>"AI", "_"=>"1690288415448"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AI"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 62.5ms | Allocations: 111966)
+  Rendered home/index.js.erb (Duration: 420.7ms | Allocations: 113516)
+Completed 200 OK in 423ms (Views: 421.4ms | ActiveRecord: 0.3ms | Allocations: 114304)
+
+
+Started GET "/" for ::1 at 2023-07-25 18:03:39 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 50.0ms | Allocations: 117809)
+  Rendered home/index.html.erb within layouts/application (Duration: 51.2ms | Allocations: 118320)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 54.8ms | Allocations: 120580)
+Completed 200 OK in 57ms (Views: 54.3ms | ActiveRecord: 1.2ms | Allocations: 120941)
+
+
+Started GET "/?countrySearch=AF&authenticity_token=[FILTERED]&country=AF&_=1690288419479" for ::1 at 2023-07-25 18:03:42 +0530
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AF", "authenticity_token"=>"[FILTERED]", "country"=>"AF", "_"=>"1690288419479"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AF"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 40.8ms | Allocations: 111184)
+  Rendered home/index.js.erb (Duration: 41.9ms | Allocations: 112663)
+Completed 200 OK in 45ms (Views: 42.4ms | ActiveRecord: 0.4ms | Allocations: 113124)
+
+
+Started GET "/?country=VN&q%5Bcity_or_country_cont%5D=&_=1690288419480" for ::1 at 2023-07-25 18:03:47 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"VN", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690288419480"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "VN"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 52.7ms | Allocations: 111186)
+  Rendered home/index.js.erb (Duration: 54.0ms | Allocations: 112665)
+Completed 200 OK in 58ms (Views: 54.6ms | ActiveRecord: 0.5ms | Allocations: 113164)
+
+
+Started GET "/?country=JO&q%5Bcity_or_country_cont%5D=&_=1690288419481" for ::1 at 2023-07-25 18:03:48 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"JO", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690288419481"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "JO"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 42.5ms | Allocations: 111163)
+  Rendered home/index.js.erb (Duration: 43.6ms | Allocations: 112641)
+Completed 200 OK in 47ms (Views: 44.3ms | ActiveRecord: 0.4ms | Allocations: 113130)
+
+
+Started GET "/?country=Mayotte&q%5Bcity_or_country_cont%5D=&_=1690288419482" for ::1 at 2023-07-25 18:03:49 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"Mayotte", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690288419482"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "Mayotte"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 43.5ms | Allocations: 111599)
+  Rendered home/index.js.erb (Duration: 44.8ms | Allocations: 113154)
+Completed 200 OK in 49ms (Views: 45.7ms | ActiveRecord: 0.4ms | Allocations: 113643)
+
+
+Started GET "/?country=Swaziland&q%5Bcity_or_country_cont%5D=&_=1690288419483" for ::1 at 2023-07-25 18:03:50 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"Swaziland", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690288419483"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "Swaziland"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 57.0ms | Allocations: 111165)
+  Rendered home/index.js.erb (Duration: 58.1ms | Allocations: 112643)
+Completed 200 OK in 62ms (Views: 59.2ms | ActiveRecord: 0.4ms | Allocations: 113132)
+
+
+Started GET "/?country=Mayotte&q%5Bcity_or_country_cont%5D=&_=1690288419484" for ::1 at 2023-07-25 18:03:53 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"Mayotte", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690288419484"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "Mayotte"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 45.2ms | Allocations: 111611)
+  Rendered home/index.js.erb (Duration: 46.5ms | Allocations: 113166)
+Completed 200 OK in 50ms (Views: 47.3ms | ActiveRecord: 0.4ms | Allocations: 113656)
+
+
+Started GET "/?country=VN&q%5Bcity_or_country_cont%5D=&_=1690288419485" for ::1 at 2023-07-25 18:03:55 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"VN", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690288419485"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "VN"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 52.1ms | Allocations: 111180)
+  Rendered home/index.js.erb (Duration: 53.3ms | Allocations: 112658)
+Completed 200 OK in 57ms (Views: 54.2ms | ActiveRecord: 0.4ms | Allocations: 113148)
+
+
+Started GET "/?country=JO&q%5Bcity_or_country_cont%5D=&_=1690288419486" for ::1 at 2023-07-25 18:03:56 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"JO", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690288419486"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "JO"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 43.6ms | Allocations: 111167)
+  Rendered home/index.js.erb (Duration: 44.9ms | Allocations: 112645)
+Completed 200 OK in 49ms (Views: 45.8ms | ActiveRecord: 0.4ms | Allocations: 113134)
+
+
+Started GET "/" for ::1 at 2023-07-25 18:03:57 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 49.0ms | Allocations: 117787)
+  Rendered home/index.html.erb within layouts/application (Duration: 50.8ms | Allocations: 118293)
+  Rendered shared/_header.html.erb (Duration: 0.5ms | Allocations: 148)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 54.6ms | Allocations: 120554)
+Completed 200 OK in 58ms (Views: 54.9ms | ActiveRecord: 0.6ms | Allocations: 120907)
+
+
+Started GET "/?countrySearch=JO&authenticity_token=[FILTERED]&country=JO&_=1690288438082" for ::1 at 2023-07-25 18:04:05 +0530
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"JO", "authenticity_token"=>"[FILTERED]", "country"=>"JO", "_"=>"1690288438082"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "JO"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 38.8ms | Allocations: 111163)
+  Rendered home/index.js.erb (Duration: 40.0ms | Allocations: 112641)
+Completed 200 OK in 43ms (Views: 40.7ms | ActiveRecord: 0.4ms | Allocations: 113093)
+
+
+Started GET "/" for ::1 at 2023-07-25 18:04:07 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 52.1ms | Allocations: 117785)
+  Rendered home/index.html.erb within layouts/application (Duration: 53.0ms | Allocations: 118286)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 148)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 55.9ms | Allocations: 120535)
+Completed 200 OK in 58ms (Views: 55.7ms | ActiveRecord: 0.8ms | Allocations: 120886)
+
+
+Started GET "/?countrySearch=AF&authenticity_token=[FILTERED]&country=AF&_=1690288447510" for ::1 at 2023-07-25 18:07:07 +0530
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AF", "authenticity_token"=>"[FILTERED]", "country"=>"AF", "_"=>"1690288447510"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AF"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 46.0ms | Allocations: 116516)
+  Rendered home/index.js.erb (Duration: 47.0ms | Allocations: 117994)
+Completed 200 OK in 52ms (Views: 45.7ms | ActiveRecord: 3.5ms | Allocations: 120245)
+
+
+Started GET "/?countrySearch=AW&authenticity_token=[FILTERED]&country=AW&_=1690288447511" for ::1 at 2023-07-25 18:07:13 +0530
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AW", "authenticity_token"=>"[FILTERED]", "country"=>"AW", "_"=>"1690288447511"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AW"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 38.3ms | Allocations: 110376)
+  Rendered home/index.js.erb (Duration: 39.5ms | Allocations: 111777)
+Completed 200 OK in 42ms (Views: 40.0ms | ActiveRecord: 0.4ms | Allocations: 112229)
+
+
+Started GET "/?countrySearch=JO&authenticity_token=[FILTERED]&country=JO&_=1690288447512" for ::1 at 2023-07-25 18:07:22 +0530
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"JO", "authenticity_token"=>"[FILTERED]", "country"=>"JO", "_"=>"1690288447512"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "JO"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 36.7ms | Allocations: 111179)
+  Rendered home/index.js.erb (Duration: 37.9ms | Allocations: 112657)
+Completed 200 OK in 39ms (Views: 38.0ms | ActiveRecord: 0.4ms | Allocations: 113109)
+
+
+Started GET "/member/2" for ::1 at 2023-07-25 18:07:25 +0530
+Processing by MembersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:4:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering members/show.html.erb within layouts/application
+  Rendered members/show.html.erb within layouts/application (Duration: 2.6ms | Allocations: 942)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 174)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 19.4ms | Allocations: 17892)
+Completed 200 OK in 28ms (Views: 21.1ms | ActiveRecord: 0.6ms | Allocations: 19670)
+
+
+Started GET "/" for ::1 at 2023-07-25 18:07:40 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 54.0ms | Allocations: 117791)
+  Rendered home/index.html.erb within layouts/application (Duration: 55.9ms | Allocations: 118304)
+  Rendered shared/_header.html.erb (Duration: 0.5ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 62.8ms | Allocations: 120563)
+Completed 200 OK in 65ms (Views: 63.0ms | ActiveRecord: 0.6ms | Allocations: 120914)
+
+
+Started GET "/" for ::1 at 2023-07-25 18:48:26 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 412)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 85.2ms | Allocations: 124303)
+  Rendered home/index.html.erb within layouts/application (Duration: 86.9ms | Allocations: 125348)
+  Rendered shared/_header.html.erb (Duration: 1.1ms | Allocations: 465)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 118.1ms | Allocations: 146119)
+Completed 200 OK in 157ms (Views: 118.2ms | ActiveRecord: 9.1ms | Allocations: 151133)
+
+
+Started GET "/member/1/edit" for ::1 at 2023-07-25 18:48:30 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 42.0ms | Allocations: 112216)
+  Rendered members/edit.js.erb (Duration: 43.8ms | Allocations: 113775)
+Completed 200 OK in 51ms (Views: 45.6ms | ActiveRecord: 0.6ms | Allocations: 115954)
+
+
+Started GET "/" for ::1 at 2023-07-25 18:48:46 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 51.6ms | Allocations: 117799)
+  Rendered home/index.html.erb within layouts/application (Duration: 53.3ms | Allocations: 118309)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 56.5ms | Allocations: 120580)
+Completed 200 OK in 59ms (Views: 56.5ms | ActiveRecord: 0.9ms | Allocations: 120931)
+
+
+Started GET "/" for ::1 at 2023-07-25 18:49:02 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.9ms | Allocations: 409)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 55.7ms | Allocations: 119805)
+  Rendered home/index.html.erb within layouts/application (Duration: 57.8ms | Allocations: 120850)
+  Rendered shared/_header.html.erb (Duration: 1.0ms | Allocations: 456)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 65.2ms | Allocations: 124016)
+Completed 200 OK in 69ms (Views: 66.2ms | ActiveRecord: 0.9ms | Allocations: 125327)
+
+
+Started GET "/members/new.1" for ::1 at 2023-07-25 18:49:04 +0530
+Processing by MembersController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 47.8ms | Allocations: 119823)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 153)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 51.3ms | Allocations: 122242)
+Completed 200 OK in 54ms (Views: 53.1ms | ActiveRecord: 0.0ms | Allocations: 122944)
+
+
+Started GET "/members/new.1" for ::1 at 2023-07-25 18:49:38 +0530
+Processing by MembersController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 45.6ms | Allocations: 119773)
+  Rendered shared/_header.html.erb (Duration: 0.9ms | Allocations: 457)
+  Rendered shared/_footer.html.erb (Duration: 0.7ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 53.0ms | Allocations: 123098)
+Completed 200 OK in 58ms (Views: 57.3ms | ActiveRecord: 0.0ms | Allocations: 123912)
+
+
+Started GET "/members/new.1" for ::1 at 2023-07-25 18:49:39 +0530
+Processing by MembersController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 40.2ms | Allocations: 119056)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 153)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 44.4ms | Allocations: 121461)
+Completed 200 OK in 46ms (Views: 45.1ms | ActiveRecord: 0.0ms | Allocations: 121714)
+
+
+Started GET "/members/new.1" for ::1 at 2023-07-25 18:50:08 +0530
+Processing by MembersController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 41.6ms | Allocations: 118832)
+  Rendered shared/_header.html.erb (Duration: 1.2ms | Allocations: 457)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 48.3ms | Allocations: 122155)
+Completed 200 OK in 51ms (Views: 50.2ms | ActiveRecord: 0.0ms | Allocations: 122967)
+
+
+Started GET "/members/new.1" for ::1 at 2023-07-25 18:50:46 +0530
+Processing by MembersController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 59.6ms | Allocations: 118127)
+  Rendered shared/_header.html.erb (Duration: 0.5ms | Allocations: 153)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 66.4ms | Allocations: 120546)
+Completed 200 OK in 67ms (Views: 66.9ms | ActiveRecord: 0.0ms | Allocations: 120800)
+
+
+Started GET "/members/new.1" for ::1 at 2023-07-25 18:57:53 +0530
+Processing by MembersController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 43.3ms | Allocations: 118115)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 149)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 50.5ms | Allocations: 120522)
+Completed 200 OK in 52ms (Views: 51.2ms | Allocations: 120775)
+
+
+Started GET "/members/new.1" for ::1 at 2023-07-25 18:59:36 +0530
+Processing by MembersController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 42.1ms | Allocations: 118123)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 149)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 45.4ms | Allocations: 120530)
+Completed 200 OK in 46ms (Views: 45.9ms | Allocations: 120783)
+
+
+Started GET "/member/1/edit" for ::1 at 2023-07-25 18:59:41 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 47.7ms | Allocations: 111800)
+  Rendered members/edit.js.erb (Duration: 49.5ms | Allocations: 113359)
+Completed 200 OK in 94ms (Views: 50.6ms | ActiveRecord: 7.9ms | Allocations: 117756)
+
+
+Started GET "/" for ::1 at 2023-07-25 18:59:53 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 410)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 57.8ms | Allocations: 119815)
+  Rendered home/index.html.erb within layouts/application (Duration: 59.4ms | Allocations: 120864)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 151)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 62.7ms | Allocations: 123138)
+Completed 200 OK in 65ms (Views: 63.3ms | ActiveRecord: 0.8ms | Allocations: 124014)
+
+
+Started GET "/users/fetch_country_states?country_code=AX" for ::1 at 2023-07-25 18:59:56 +0530
+Started GET "/?countrySearch=AX&authenticity_token=[FILTERED]&country=AX&_=1690291793342" for ::1 at 2023-07-25 18:59:56 +0530
+  
+ActionController::RoutingError (uninitialized constant UsersController
+Did you mean?  MembersController):
+  
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AX", "authenticity_token"=>"[FILTERED]", "country"=>"AX", "_"=>"1690291793342"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AX"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 30.5ms | Allocations: 112661)
+  Rendered home/index.js.erb (Duration: 32.1ms | Allocations: 114719)
+Completed 200 OK in 34ms (Views: 32.3ms | ActiveRecord: 0.4ms | Allocations: 116048)
+
+
+Started GET "/users/fetch_country_states?country_code=AF" for ::1 at 2023-07-25 18:59:58 +0530
+Started GET "/?countrySearch=AF&authenticity_token=[FILTERED]&country=AF&_=1690291793343" for ::1 at 2023-07-25 18:59:58 +0530
+  
+ActionController::RoutingError (uninitialized constant UsersController
+Did you mean?  MembersController):
+  
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AF", "authenticity_token"=>"[FILTERED]", "country"=>"AF", "_"=>"1690291793343"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AF"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 31.4ms | Allocations: 112486)
+  Rendered home/index.js.erb (Duration: 32.5ms | Allocations: 114039)
+Completed 200 OK in 34ms (Views: 32.5ms | ActiveRecord: 0.5ms | Allocations: 115533)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:00:31 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 53.6ms | Allocations: 118754)
+  Rendered home/index.html.erb within layouts/application (Duration: 55.1ms | Allocations: 119263)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 58.9ms | Allocations: 121534)
+Completed 200 OK in 61ms (Views: 58.6ms | ActiveRecord: 1.0ms | Allocations: 121885)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:00:54 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 63.4ms | Allocations: 124145)
+  Rendered home/index.html.erb within layouts/application (Duration: 64.8ms | Allocations: 124656)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 159)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 81.8ms | Allocations: 141405)
+Completed 200 OK in 89ms (Views: 78.4ms | ActiveRecord: 7.0ms | Allocations: 143683)
+
+
+Started GET "/users/fetch_country_states?country_code=AQ" for ::1 at 2023-07-25 19:00:57 +0530
+Started GET "/?countrySearch=AQ&authenticity_token=[FILTERED]&country=AQ&_=1690291855015" for ::1 at 2023-07-25 19:00:57 +0530
+  
+ActionController::RoutingError (No route matches [GET] "/users/fetch_country_states"):
+  
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AQ", "authenticity_token"=>"[FILTERED]", "country"=>"AQ", "_"=>"1690291855015"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AQ"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 32.2ms | Allocations: 110377)
+  Rendered home/index.js.erb (Duration: 33.2ms | Allocations: 111778)
+Completed 200 OK in 35ms (Views: 33.2ms | ActiveRecord: 0.5ms | Allocations: 112230)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:01:55 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 59.0ms | Allocations: 118745)
+  Rendered home/index.html.erb within layouts/application (Duration: 61.6ms | Allocations: 119246)
+  Rendered shared/_header.html.erb (Duration: 0.9ms | Allocations: 148)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 81.8ms | Allocations: 137119)
+Completed 200 OK in 85ms (Views: 82.2ms | ActiveRecord: 0.6ms | Allocations: 137469)
+
+
+Started GET "/members/fetch_country_states?country_code=AZ" for ::1 at 2023-07-25 19:02:02 +0530
+Started GET "/?countrySearch=AZ&authenticity_token=[FILTERED]&country=AZ&_=1690291915413" for ::1 at 2023-07-25 19:02:02 +0530
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AZ", "authenticity_token"=>"[FILTERED]", "country"=>"AZ", "_"=>"1690291915413"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AZ"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 54.3ms | Allocations: 110467)
+  Rendered home/index.js.erb (Duration: 56.1ms | Allocations: 111875)
+Completed 200 OK in 60ms (Views: 56.6ms | ActiveRecord: 0.6ms | Allocations: 112385)
+
+
+Processing by MembersController#show as */*
+  Parameters: {"country_code"=>"AZ", "id"=>"fetch_country_states"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:4:in `show'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 1372)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=fetch_country_states):
+  
+app/controllers/members_controller.rb:4:in `show'
+Started GET "/" for ::1 at 2023-07-25 19:02:13 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 51.8ms | Allocations: 118743)
+  Rendered home/index.html.erb within layouts/application (Duration: 53.3ms | Allocations: 119249)
+  Rendered shared/_header.html.erb (Duration: 0.5ms | Allocations: 148)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 57.3ms | Allocations: 121510)
+Completed 200 OK in 59ms (Views: 57.3ms | ActiveRecord: 0.6ms | Allocations: 121860)
+
+
+Started GET "/members/new.1" for ::1 at 2023-07-25 19:02:17 +0530
+Processing by MembersController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 40.5ms | Allocations: 118152)
+  Rendered shared/_header.html.erb (Duration: 0.7ms | Allocations: 153)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 46.1ms | Allocations: 120557)
+Completed 200 OK in 48ms (Views: 47.5ms | ActiveRecord: 0.0ms | Allocations: 121162)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:02:21 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 65.1ms | Allocations: 118751)
+  Rendered home/index.html.erb within layouts/application (Duration: 67.5ms | Allocations: 119252)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 148)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 71.2ms | Allocations: 121513)
+Completed 200 OK in 75ms (Views: 71.7ms | ActiveRecord: 0.6ms | Allocations: 121864)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:02:35 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 1.0ms | Allocations: 409)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 93.8ms | Allocations: 118840)
+  Rendered home/index.html.erb within layouts/application (Duration: 99.5ms | Allocations: 119889)
+  Rendered shared/_header.html.erb (Duration: 2.1ms | Allocations: 456)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 210)
+  Rendered layout layouts/application.html.erb (Duration: 108.9ms | Allocations: 123056)
+Completed 200 OK in 119ms (Views: 113.0ms | ActiveRecord: 0.6ms | Allocations: 124368)
+
+
+Started GET "/member/4/edit" for ::1 at 2023-07-25 19:02:42 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 117.9ms | Allocations: 111812)
+  Rendered members/edit.js.erb (Duration: 122.7ms | Allocations: 113366)
+Completed 200 OK in 140ms (Views: 129.3ms | ActiveRecord: 1.6ms | Allocations: 115035)
+
+
+Started PATCH "/member/4" for ::1 at 2023-07-25 19:03:03 +0530
+Processing by MembersController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"Sharilyn", "last_name"=>"Orn", "contact_number"=>"+994 (328) 703-5256", "date_of_birth"=>"1990-07-21", "username"=>"carroll 13", "city"=>"Lake Alice", "country"=>"CH", "pincode"=>"38345", "profile_title"=>"Senior Full Stack Ruby on Rails Developer", "about"=>"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."}, "commit"=>"Submit", "id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:16:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/members_controller.rb:17:in `update'
+  [1m[36mUser Update (1.7ms)[0m  [1m[33mUPDATE "users" SET "country" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["country", "CH"], ["updated_at", "2023-07-25 13:33:03.287242"], ["id", 4]]
+  ↳ app/controllers/members_controller.rb:17:in `update'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/members_controller.rb:17:in `update'
+Redirected to http://localhost:3000/
+Completed 302 Found in 13ms (ActiveRecord: 4.4ms | Allocations: 4378)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:03:03 +0530
+Processing by HomeController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 59.9ms | Allocations: 117815)
+  Rendered home/index.html.erb within layouts/application (Duration: 61.0ms | Allocations: 118373)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 64.1ms | Allocations: 120644)
+Completed 200 OK in 66ms (Views: 63.9ms | ActiveRecord: 0.7ms | Allocations: 121047)
+
+
+Started GET "/members/fetch_country_states?country_code=CH" for ::1 at 2023-07-25 19:03:10 +0530
+Started GET "/?countrySearch=CH&authenticity_token=[FILTERED]&country=CH&_=1690291955880" for ::1 at 2023-07-25 19:03:10 +0530
+Processing by MembersController#show as */*
+  Parameters: {"country_code"=>"CH", "id"=>"fetch_country_states"}
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"CH", "authenticity_token"=>"[FILTERED]", "country"=>"CH", "_"=>"1690291955880"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:4:in `show'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.4ms | Allocations: 2340)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=fetch_country_states):
+  
+app/controllers/members_controller.rb:4:in `show'
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "CH"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 55.6ms | Allocations: 112898)
+  Rendered home/index.js.erb (Duration: 58.6ms | Allocations: 115201)
+Completed 200 OK in 182ms (Views: 57.8ms | ActiveRecord: 14.1ms | Allocations: 221149)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:03:12 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 50.0ms | Allocations: 117813)
+  Rendered home/index.html.erb within layouts/application (Duration: 51.8ms | Allocations: 118322)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 55.0ms | Allocations: 120593)
+Completed 200 OK in 58ms (Views: 55.3ms | ActiveRecord: 0.8ms | Allocations: 120945)
+
+
+Started GET "/members/fetch_country_states?country_code=AI" for ::1 at 2023-07-25 19:04:30 +0530
+Started GET "/?countrySearch=AI&authenticity_token=[FILTERED]&country=AI&_=1690291992797" for ::1 at 2023-07-25 19:04:30 +0530
+Processing by MembersController#fetch_country_states as */*
+Processing by HomeController#index as JS
+  Parameters: {"country_code"=>"AI"}
+  Parameters: {"countrySearch"=>"AI", "authenticity_token"=>"[FILTERED]", "country"=>"AI", "_"=>"1690291992797"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.9ms | Allocations: 340)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 1833)
+
+
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AI"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 31.5ms | Allocations: 110959)
+  Rendered home/index.js.erb (Duration: 32.5ms | Allocations: 112360)
+Completed 200 OK in 40ms (Views: 33.2ms | ActiveRecord: 2.6ms | Allocations: 116494)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:04:32 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 75.0ms | Allocations: 122626)
+  Rendered home/index.html.erb within layouts/application (Duration: 76.2ms | Allocations: 123131)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 159)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 94.9ms | Allocations: 139892)
+Completed 200 OK in 97ms (Views: 92.3ms | ActiveRecord: 3.3ms | Allocations: 140243)
+
+
+Started GET "/member/1/edit" for ::1 at 2023-07-25 19:04:35 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 41.2ms | Allocations: 111090)
+  Rendered members/edit.js.erb (Duration: 42.6ms | Allocations: 112462)
+Completed 200 OK in 50ms (Views: 43.4ms | ActiveRecord: 0.6ms | Allocations: 113882)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:08:04 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 1.0ms | Allocations: 409)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 51.5ms | Allocations: 118855)
+  Rendered home/index.html.erb within layouts/application (Duration: 53.4ms | Allocations: 119909)
+  Rendered shared/_header.html.erb (Duration: 1.0ms | Allocations: 456)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 71.1ms | Allocations: 137492)
+Completed 200 OK in 77ms (Views: 72.1ms | ActiveRecord: 1.0ms | Allocations: 138804)
+
+
+Started GET "/member/1/edit" for ::1 at 2023-07-25 19:08:06 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 47.3ms | Allocations: 111838)
+  Rendered members/edit.js.erb (Duration: 49.8ms | Allocations: 113396)
+Completed 200 OK in 60ms (Views: 54.7ms | ActiveRecord: 0.8ms | Allocations: 115069)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:11:54 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.7ms | Allocations: 420)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 296.7ms | Allocations: 229844)
+  Rendered home/index.html.erb within layouts/application (Duration: 299.4ms | Allocations: 231449)
+  Rendered shared/_header.html.erb (Duration: 2.7ms | Allocations: 496)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 211)
+  Rendered layout layouts/application.html.erb (Duration: 317.7ms | Allocations: 249172)
+Completed 200 OK in 560ms (Views: 317.0ms | ActiveRecord: 5.3ms | Allocations: 612792)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:12:06 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.7ms | Allocations: 409)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 52.8ms | Allocations: 119838)
+  Rendered home/index.html.erb within layouts/application (Duration: 54.7ms | Allocations: 120888)
+  Rendered shared/_header.html.erb (Duration: 1.1ms | Allocations: 456)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 60.1ms | Allocations: 124055)
+Completed 200 OK in 64ms (Views: 60.9ms | ActiveRecord: 0.9ms | Allocations: 125377)
+
+
+Started GET "/members/new.1" for ::1 at 2023-07-25 19:12:08 +0530
+Processing by MembersController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering members/new.html.erb within layouts/application
+  Rendered members/new.html.erb within layouts/application (Duration: 43.9ms | Allocations: 118887)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 153)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 47.6ms | Allocations: 121294)
+Completed 200 OK in 49ms (Views: 48.9ms | ActiveRecord: 0.0ms | Allocations: 122000)
+
+
+Started GET "/members/fetch_country_states?country_code=AF" for ::1 at 2023-07-25 19:12:11 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AF"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 2.8ms | Allocations: 1151)
+Completed 200 OK in 44ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 18731)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:12:17 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.7ms | Allocations: 409)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 53.7ms | Allocations: 118880)
+  Rendered home/index.html.erb within layouts/application (Duration: 56.0ms | Allocations: 119924)
+  Rendered shared/_header.html.erb (Duration: 1.1ms | Allocations: 456)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 61.2ms | Allocations: 123091)
+Completed 200 OK in 65ms (Views: 62.3ms | ActiveRecord: 0.6ms | Allocations: 124410)
+
+
+Started GET "/member/1/edit" for ::1 at 2023-07-25 19:12:18 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 51.4ms | Allocations: 112244)
+  Rendered members/edit.js.erb (Duration: 53.6ms | Allocations: 113806)
+Completed 200 OK in 64ms (Views: 56.0ms | ActiveRecord: 0.6ms | Allocations: 116832)
+
+
+Started GET "/member/1/edit" for ::1 at 2023-07-25 19:12:28 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 42.3ms | Allocations: 111078)
+  Rendered members/edit.js.erb (Duration: 43.7ms | Allocations: 112451)
+Completed 200 OK in 52ms (Views: 44.9ms | ActiveRecord: 1.3ms | Allocations: 113324)
+
+
+Started GET "/members/fetch_country_states?country_code=BD" for ::1 at 2023-07-25 19:12:31 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"BD"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 1.0ms | Allocations: 492)
+Completed 200 OK in 47ms (Views: 1.5ms | ActiveRecord: 0.0ms | Allocations: 21877)
+
+
+Started PATCH "/member/1" for ::1 at 2023-07-25 19:12:42 +0530
+Processing by MembersController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"John", "last_name"=>"Mark", "contact_number"=>"+381 273-992-1328 x435", "date_of_birth"=>"1995-08-14", "username"=>"richard 10", "city"=>"New Kenda", "country"=>"BD", "states"=>"01", "pincode"=>"69147-6076", "profile_title"=>"Senior Full Stack Ruby on Rails Developer", "about"=>"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."}, "commit"=>"Submit", "id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:16:in `update'
+[31mUnpermitted parameter: :states. Context: { controller: MembersController, action: update, request: #<ActionDispatch::Request:0x00007f5e383ef740>, params: {"_method"=>"patch", "authenticity_token"=>"[FILTERED]", "user"=>{"first_name"=>"John", "last_name"=>"Mark", "contact_number"=>"+381 273-992-1328 x435", "date_of_birth"=>"1995-08-14", "username"=>"richard 10", "city"=>"New Kenda", "country"=>"BD", "states"=>"01", "pincode"=>"69147-6076", "profile_title"=>"Senior Full Stack Ruby on Rails Developer", "about"=>"It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."}, "commit"=>"Submit", "controller"=>"members", "action"=>"update", "id"=>"1"} }[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/members_controller.rb:17:in `update'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "country" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["country", "BD"], ["updated_at", "2023-07-25 13:42:42.458160"], ["id", 1]]
+  ↳ app/controllers/members_controller.rb:17:in `update'
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/members_controller.rb:17:in `update'
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 4.3ms | Allocations: 4570)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:12:42 +0530
+Processing by HomeController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 47.1ms | Allocations: 117820)
+  Rendered home/index.html.erb within layouts/application (Duration: 48.0ms | Allocations: 118380)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 51.3ms | Allocations: 120650)
+Completed 200 OK in 53ms (Views: 51.1ms | ActiveRecord: 0.6ms | Allocations: 121054)
+
+
+Started GET "/members/fetch_country_states?country_code=AF" for ::1 at 2023-07-25 19:12:51 +0530
+Started GET "/?countrySearch=AF&authenticity_token=[FILTERED]&country=AF&_=1690292537187" for ::1 at 2023-07-25 19:12:51 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AF"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.4ms | Allocations: 159)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 1016)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AF", "authenticity_token"=>"[FILTERED]", "country"=>"AF", "_"=>"1690292537187"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AF"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 35.5ms | Allocations: 111005)
+  Rendered home/index.js.erb (Duration: 37.0ms | Allocations: 112546)
+Completed 200 OK in 39ms (Views: 37.1ms | ActiveRecord: 0.4ms | Allocations: 113091)
+
+
+Started GET "/members/fetch_country_states?country_code=AR" for ::1 at 2023-07-25 19:12:53 +0530
+Started GET "/?countrySearch=AR&authenticity_token=[FILTERED]&country=AR&_=1690292537188" for ::1 at 2023-07-25 19:12:53 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AR"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.5ms | Allocations: 140)
+Completed 200 OK in 25ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 12571)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AR", "authenticity_token"=>"[FILTERED]", "country"=>"AR", "_"=>"1690292537188"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AR"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 43.9ms | Allocations: 110397)
+  Rendered home/index.js.erb (Duration: 45.0ms | Allocations: 111798)
+Completed 200 OK in 47ms (Views: 45.5ms | ActiveRecord: 0.4ms | Allocations: 112257)
+
+
+Started GET "/members/fetch_country_states?country_code=JO" for ::1 at 2023-07-25 19:12:57 +0530
+Started GET "/?countrySearch=JO&authenticity_token=[FILTERED]&country=JO&_=1690292537189" for ::1 at 2023-07-25 19:12:57 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"JO"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.2ms | Allocations: 115)
+Completed 200 OK in 12ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 5664)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"JO", "authenticity_token"=>"[FILTERED]", "country"=>"JO", "_"=>"1690292537189"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "JO"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 37.4ms | Allocations: 111198)
+  Rendered home/index.js.erb (Duration: 38.5ms | Allocations: 112676)
+Completed 200 OK in 41ms (Views: 38.8ms | ActiveRecord: 0.5ms | Allocations: 113129)
+
+
+Started GET "/members/fetch_country_states?country_code=BD" for ::1 at 2023-07-25 19:13:02 +0530
+Started GET "/?countrySearch=BD&authenticity_token=[FILTERED]&country=BD&_=1690292537190" for ::1 at 2023-07-25 19:13:02 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"BD"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.5ms | Allocations: 235)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 1240)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"BD", "authenticity_token"=>"[FILTERED]", "country"=>"BD", "_"=>"1690292537190"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "BD"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 35.4ms | Allocations: 111211)
+  Rendered home/index.js.erb (Duration: 36.4ms | Allocations: 112689)
+Completed 200 OK in 38ms (Views: 36.7ms | ActiveRecord: 0.4ms | Allocations: 113141)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:13:04 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 47.8ms | Allocations: 117794)
+  Rendered home/index.html.erb within layouts/application (Duration: 48.9ms | Allocations: 118304)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 52.1ms | Allocations: 120574)
+Completed 200 OK in 54ms (Views: 51.8ms | ActiveRecord: 0.9ms | Allocations: 120924)
+
+
+Started GET "/member/1/edit" for ::1 at 2023-07-25 19:19:45 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 43.8ms | Allocations: 111087)
+  Rendered members/edit.js.erb (Duration: 44.9ms | Allocations: 112460)
+Completed 200 OK in 83ms (Views: 45.4ms | ActiveRecord: 8.4ms | Allocations: 116527)
+
+
+Started GET "/members/fetch_country_states?country_code=AF" for ::1 at 2023-07-25 19:19:48 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AF"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.6ms | Allocations: 159)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.0ms | Allocations: 1016)
+
+
+Started GET "/member/5/edit" for ::1 at 2023-07-25 19:20:16 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 48.1ms | Allocations: 111070)
+  Rendered members/edit.js.erb (Duration: 49.3ms | Allocations: 112441)
+Completed 200 OK in 52ms (Views: 50.0ms | ActiveRecord: 0.4ms | Allocations: 113302)
+
+
+Started GET "/members/fetch_country_states?country_code=AX" for ::1 at 2023-07-25 19:20:19 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AX"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.1ms | Allocations: 7)
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.0ms | Allocations: 835)
+
+
+Started GET "/member/1/edit" for ::1 at 2023-07-25 19:20:24 +0530
+Processing by MembersController#edit as JS
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:8:in `edit'
+  Rendering members/edit.js.erb
+  Rendered members/_form.html.erb (Duration: 40.7ms | Allocations: 111078)
+  Rendered members/edit.js.erb (Duration: 41.9ms | Allocations: 112451)
+Completed 200 OK in 47ms (Views: 42.6ms | ActiveRecord: 0.7ms | Allocations: 113320)
+
+
+Started GET "/members/fetch_country_states?country_code=AF" for ::1 at 2023-07-25 19:20:28 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AF"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.6ms | Allocations: 159)
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.0ms | Allocations: 1016)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:23:56 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.5ms | Allocations: 409)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 54.8ms | Allocations: 119996)
+  Rendered home/index.html.erb within layouts/application (Duration: 56.6ms | Allocations: 121052)
+  Rendered layout layouts/application.html.erb (Duration: 56.8ms | Allocations: 121119)
+Completed 500 Internal Server Error in 66ms (ActiveRecord: 7.6ms | Allocations: 123984)
+
+
+  
+ActionView::Template::Error (undefined method `country_code' for nil:NilClass):
+    24:         <div class="user-info">
+    25:             <h5><%= user.name %> </h5>
+    26:             <p class="lead"><%= user.profile_title %></p>
+    27:             <small class="text-primary"><%= user.country(@user.country_code) %></small><br>
+    28:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    29: 
+    30:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:27
+app/views/home/_user.html.erb:14
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:24:22 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 418)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 267.2ms | Allocations: 218841)
+  Rendered home/index.html.erb within layouts/application (Duration: 270.9ms | Allocations: 220448)
+  Rendered layout layouts/application.html.erb (Duration: 271.0ms | Allocations: 220522)
+Completed 500 Internal Server Error in 509ms (ActiveRecord: 5.6ms | Allocations: 584122)
+
+
+  
+ActionView::Template::Error (undefined method `country_code' for nil:NilClass):
+    24:         <div class="user-info">
+    25:             <h5><%= user.name %> </h5>
+    26:             <p class="lead"><%= user.profile_title %></p>
+    27:             <small class="text-primary"><%= user.country(@user.country_code) %></small><br>
+    28:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    29: 
+    30:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:27
+app/views/home/_user.html.erb:14
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:24:33 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.7ms | Allocations: 410)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 53.3ms | Allocations: 118886)
+  Rendered home/index.html.erb within layouts/application (Duration: 55.6ms | Allocations: 119936)
+  Rendered shared/_header.html.erb (Duration: 2.6ms | Allocations: 496)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 211)
+  Rendered layout layouts/application.html.erb (Duration: 76.9ms | Allocations: 137773)
+Completed 200 OK in 81ms (Views: 78.2ms | ActiveRecord: 0.6ms | Allocations: 139101)
+
+
+Started GET "/members/fetch_country_states?country_code=AR" for ::1 at 2023-07-25 19:24:39 +0530
+Started GET "/?countrySearch=AR&authenticity_token=[FILTERED]&country=AR&_=1690293273511" for ::1 at 2023-07-25 19:24:39 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AR"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 1.5ms | Allocations: 850)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 6362)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AR", "authenticity_token"=>"[FILTERED]", "country"=>"AR", "_"=>"1690293273511"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AR"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 38.0ms | Allocations: 111973)
+  Rendered home/index.js.erb (Duration: 39.5ms | Allocations: 113517)
+Completed 200 OK in 42ms (Views: 39.8ms | ActiveRecord: 0.4ms | Allocations: 114126)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:24:41 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 50.1ms | Allocations: 117836)
+  Rendered home/index.html.erb within layouts/application (Duration: 51.6ms | Allocations: 118341)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 54.8ms | Allocations: 120602)
+Completed 200 OK in 57ms (Views: 54.4ms | ActiveRecord: 1.1ms | Allocations: 120963)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:25:07 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 412)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 54.9ms | Allocations: 113966)
+  Rendered home/index.html.erb within layouts/application (Duration: 58.0ms | Allocations: 115012)
+  Rendered layout layouts/application.html.erb (Duration: 58.2ms | Allocations: 115079)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 0.6ms | Allocations: 116369)
+
+
+  
+ActionView::Template::Error (undefined method `country_code' for nil:NilClass):
+    24:         <div class="user-info">
+    25:             <h5><%= user.name %> </h5>
+    26:             <p class="lead"><%= user.profile_title %></p>
+    27:             <small class="text-primary"><%= country_name(@user.country_code) %></small><br>
+    28:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    29: 
+    30:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:27
+app/views/home/_user.html.erb:14
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:28:19 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.5ms | Allocations: 409)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 62.8ms | Allocations: 124204)
+  Rendered home/index.html.erb within layouts/application (Duration: 64.7ms | Allocations: 125251)
+  Rendered shared/_header.html.erb (Duration: 1.0ms | Allocations: 465)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 81.1ms | Allocations: 142921)
+Completed 200 OK in 88ms (Views: 80.0ms | ActiveRecord: 4.1ms | Allocations: 145675)
+
+
+Started GET "/members/fetch_country_states?country_code=AR" for ::1 at 2023-07-25 19:28:21 +0530
+Started GET "/?countrySearch=AR&authenticity_token=[FILTERED]&country=AR&_=1690293499629" for ::1 at 2023-07-25 19:28:21 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AR"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.9ms | Allocations: 402)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 2079)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AR", "authenticity_token"=>"[FILTERED]", "country"=>"AR", "_"=>"1690293499629"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AR"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 41.9ms | Allocations: 110991)
+  Rendered home/index.js.erb (Duration: 43.5ms | Allocations: 112530)
+Completed 200 OK in 46ms (Views: 43.6ms | ActiveRecord: 0.5ms | Allocations: 113122)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:28:23 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 56.1ms | Allocations: 117817)
+  Rendered home/index.html.erb within layouts/application (Duration: 57.3ms | Allocations: 118324)
+  Rendered shared/_header.html.erb (Duration: 0.4ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 62.1ms | Allocations: 120595)
+Completed 200 OK in 64ms (Views: 62.0ms | ActiveRecord: 0.7ms | Allocations: 120946)
+
+
+Started GET "/members/fetch_country_states?country_code=AF" for ::1 at 2023-07-25 19:28:27 +0530
+Started GET "/?countrySearch=AF&authenticity_token=[FILTERED]&country=AF&_=1690293503339" for ::1 at 2023-07-25 19:28:27 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AF"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.5ms | Allocations: 160)
+Completed 200 OK in 5ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 6388)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AF", "authenticity_token"=>"[FILTERED]", "country"=>"AF", "_"=>"1690293503339"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AF"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 40.4ms | Allocations: 110411)
+  Rendered home/index.js.erb (Duration: 41.6ms | Allocations: 111812)
+Completed 200 OK in 43ms (Views: 41.8ms | ActiveRecord: 0.5ms | Allocations: 112265)
+
+
+Started GET "/members/fetch_country_states?country_code=BD" for ::1 at 2023-07-25 19:28:29 +0530
+Started GET "/?countrySearch=BD&authenticity_token=[FILTERED]&country=BD&_=1690293503340" for ::1 at 2023-07-25 19:28:29 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"BD"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.4ms | Allocations: 235)
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 0.0ms | Allocations: 7579)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"BD", "authenticity_token"=>"[FILTERED]", "country"=>"BD", "_"=>"1690293503340"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "BD"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 35.3ms | Allocations: 111193)
+  Rendered home/index.js.erb (Duration: 36.4ms | Allocations: 112671)
+Completed 200 OK in 38ms (Views: 36.4ms | ActiveRecord: 0.5ms | Allocations: 113123)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:28:39 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.2ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 62.5ms | Allocations: 117819)
+  Rendered home/index.html.erb within layouts/application (Duration: 63.5ms | Allocations: 118320)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 148)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 66.8ms | Allocations: 120581)
+Completed 200 OK in 68ms (Views: 66.7ms | ActiveRecord: 0.6ms | Allocations: 120932)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:29:23 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 409)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 76.9ms | Allocations: 124366)
+  Rendered home/index.html.erb within layouts/application (Duration: 79.3ms | Allocations: 125422)
+  Rendered layout layouts/application.html.erb (Duration: 79.5ms | Allocations: 125489)
+Completed 500 Internal Server Error in 87ms (ActiveRecord: 3.9ms | Allocations: 128222)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `country_code' for #<User:0x00007f5d0427b510>
+Did you mean?  country_name):
+    24:         <div class="user-info">
+    25:             <h5><%= user.name %> </h5>
+    26:             <p class="lead"><%= user.profile_title %></p>
+    27:             <small class="text-primary"><%= user.country_name %></small><br>
+    28:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    29: 
+    30:           <!-- Button trigger modal -->
+  
+app/models/user.rb:44:in `country_name'
+app/views/home/_user.html.erb:27
+app/views/home/_user.html.erb:14
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:29:47 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 409)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 119.4ms | Allocations: 124382)
+  Rendered home/index.html.erb within layouts/application (Duration: 121.5ms | Allocations: 125435)
+  Rendered layout layouts/application.html.erb (Duration: 121.7ms | Allocations: 125502)
+Completed 500 Internal Server Error in 128ms (ActiveRecord: 4.9ms | Allocations: 128235)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `country_code' for #<User:0x00007f5d1ad1ad20>
+Did you mean?  country_name):
+    24:         <div class="user-info">
+    25:             <h5><%= user.name %> </h5>
+    26:             <p class="lead"><%= user.profile_title %></p>
+    27:             <small class="text-primary"><%= user.country_name %></small><br>
+    28:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    29: 
+    30:           <!-- Button trigger modal -->
+  
+app/models/user.rb:44:in `country_name'
+app/views/home/_user.html.erb:27
+app/views/home/_user.html.erb:14
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:30:06 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 127.6ms | Allocations: 123040)
+  Rendered home/index.html.erb within layouts/application (Duration: 128.4ms | Allocations: 123551)
+  Rendered layout layouts/application.html.erb (Duration: 128.7ms | Allocations: 123618)
+Completed 500 Internal Server Error in 134ms (ActiveRecord: 4.5ms | Allocations: 125742)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `params' for #<User:0x00007f5d144ce9b0>):
+    24:         <div class="user-info">
+    25:             <h5><%= user.name %> </h5>
+    26:             <p class="lead"><%= user.profile_title %></p>
+    27:             <small class="text-primary"><%= user.country_name %></small><br>
+    28:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    29: 
+    30:           <!-- Button trigger modal -->
+  
+app/models/user.rb:44:in `country_name'
+app/views/home/_user.html.erb:27
+app/views/home/_user.html.erb:14
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:30:17 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 72.6ms | Allocations: 123313)
+  Rendered home/index.html.erb within layouts/application (Duration: 73.6ms | Allocations: 123829)
+  Rendered layout layouts/application.html.erb (Duration: 73.8ms | Allocations: 123896)
+Completed 500 Internal Server Error in 79ms (ActiveRecord: 4.5ms | Allocations: 126020)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `country_code' for #<User:0x00007f5d1a1544f0>
+Did you mean?  country_name):
+    24:         <div class="user-info">
+    25:             <h5><%= user.name %> </h5>
+    26:             <p class="lead"><%= user.profile_title %></p>
+    27:             <small class="text-primary"><%= user.country_name %></small><br>
+    28:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    29: 
+    30:           <!-- Button trigger modal -->
+  
+app/models/user.rb:44:in `country_name'
+app/views/home/_user.html.erb:27
+app/views/home/_user.html.erb:14
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:30:27 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 81.8ms | Allocations: 122145)
+  Rendered home/index.html.erb within layouts/application (Duration: 82.7ms | Allocations: 122658)
+  Rendered layout layouts/application.html.erb (Duration: 82.9ms | Allocations: 122725)
+Completed 500 Internal Server Error in 89ms (ActiveRecord: 4.0ms | Allocations: 124850)
+
+
+  
+ActionView::Template::Error (undefined method `country_name' for #<User:0x00007f5d0c1a77d0>
+Did you mean?  country_was):
+    24:         <div class="user-info">
+    25:             <h5><%= user.name %> </h5>
+    26:             <p class="lead"><%= user.profile_title %></p>
+    27:             <small class="text-primary"><%= user.country_name %></small><br>
+    28:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    29: 
+    30:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:27
+app/views/home/_user.html.erb:14
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:30:36 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 1.0ms | Allocations: 412)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 75.2ms | Allocations: 118872)
+  Rendered home/index.html.erb within layouts/application (Duration: 77.8ms | Allocations: 119916)
+  Rendered shared/_header.html.erb (Duration: 1.2ms | Allocations: 466)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 100.0ms | Allocations: 137588)
+Completed 200 OK in 105ms (Views: 101.5ms | ActiveRecord: 0.5ms | Allocations: 138897)
+
+
+Started GET "/?country=JO&q%5Bcity_or_country_cont%5D=&_=1690293636774" for ::1 at 2023-07-25 19:30:38 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"JO", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690293636774"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "JO"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 37.5ms | Allocations: 111790)
+  Rendered home/index.js.erb (Duration: 39.4ms | Allocations: 113410)
+Completed 200 OK in 43ms (Views: 40.5ms | ActiveRecord: 0.5ms | Allocations: 114214)
+
+
+Started GET "/?country=VN&q%5Bcity_or_country_cont%5D=&_=1690293636775" for ::1 at 2023-07-25 19:30:39 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"VN", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690293636775"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "VN"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 49.4ms | Allocations: 111199)
+  Rendered home/index.js.erb (Duration: 50.8ms | Allocations: 112677)
+Completed 200 OK in 56ms (Views: 52.0ms | ActiveRecord: 0.5ms | Allocations: 113167)
+
+
+Started GET "/?country=Mayotte&q%5Bcity_or_country_cont%5D=&_=1690293636776" for ::1 at 2023-07-25 19:30:40 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"Mayotte", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690293636776"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "Mayotte"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 49.6ms | Allocations: 111627)
+  Rendered home/index.js.erb (Duration: 50.9ms | Allocations: 113182)
+Completed 200 OK in 54ms (Views: 51.5ms | ActiveRecord: 0.4ms | Allocations: 113671)
+
+
+Started GET "/?country=Swaziland&q%5Bcity_or_country_cont%5D=&_=1690293636777" for ::1 at 2023-07-25 19:30:41 +0530
+Processing by HomeController#index as JS
+  Parameters: {"country"=>"Swaziland", "q"=>{"city_or_country_cont"=>""}, "_"=>"1690293636777"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "Swaziland"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 44.4ms | Allocations: 110421)
+  Rendered home/index.js.erb (Duration: 45.5ms | Allocations: 111822)
+Completed 200 OK in 50ms (Views: 46.3ms | ActiveRecord: 0.4ms | Allocations: 112312)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:30:43 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 50.0ms | Allocations: 117807)
+  Rendered home/index.html.erb within layouts/application (Duration: 51.0ms | Allocations: 118316)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 54.4ms | Allocations: 120587)
+Completed 200 OK in 56ms (Views: 54.5ms | ActiveRecord: 0.6ms | Allocations: 120938)
+
+
+Started GET "/?q%5Bcity_or_country_cont%5D=Mayotte&commit=Search" for ::1 at 2023-07-25 19:30:45 +0530
+Processing by HomeController#index as JS
+  Parameters: {"q"=>{"city_or_country_cont"=>"Mayotte"}, "commit"=>"Search"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" WHERE ("users"."city" ILIKE '%Mayotte%' OR "users"."country" ILIKE '%Mayotte%') ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 35.7ms | Allocations: 111582)
+  Rendered home/index.js.erb (Duration: 36.8ms | Allocations: 113137)
+Completed 200 OK in 39ms (Views: 35.9ms | ActiveRecord: 1.4ms | Allocations: 114121)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:30:46 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 54.5ms | Allocations: 117811)
+  Rendered home/index.html.erb within layouts/application (Duration: 55.9ms | Allocations: 118312)
+  Rendered shared/_header.html.erb (Duration: 0.6ms | Allocations: 148)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 59.4ms | Allocations: 120561)
+Completed 200 OK in 62ms (Views: 59.7ms | ActiveRecord: 0.5ms | Allocations: 120911)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:39:56 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.8ms | Allocations: 412)
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 59.3ms | Allocations: 119384)
+  Rendered home/index.html.erb within layouts/application (Duration: 61.5ms | Allocations: 120438)
+  Rendered layout layouts/application.html.erb (Duration: 61.8ms | Allocations: 120505)
+Completed 500 Internal Server Error in 94ms (ActiveRecord: 7.1ms | Allocations: 125495)
+
+
+  
+ActionView::Template::Error (undefined method `country_code' for nil:NilClass):
+    24:         <div class="user-info">
+    25:             <h5><%= user.name %> </h5>
+    26:             <p class="lead"><%= user.profile_title %></p>
+    27:             <small class="text-primary"><%= country_name(@user.country_code) %></small><br>
+    28:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    29: 
+    30:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:27
+app/views/home/_user.html.erb:14
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:40:35 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.5ms | Allocations: 409)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:14
+  Rendered home/_user.html.erb (Duration: 61.5ms | Allocations: 124209)
+  Rendered home/index.html.erb within layouts/application (Duration: 63.4ms | Allocations: 125259)
+  Rendered shared/_header.html.erb (Duration: 1.5ms | Allocations: 465)
+  Rendered shared/_footer.html.erb (Duration: 0.5ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 92.8ms | Allocations: 142929)
+Completed 200 OK in 103ms (Views: 90.1ms | ActiveRecord: 8.3ms | Allocations: 145707)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:41:54 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.7ms | Allocations: 414)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:15
+  Rendered home/_user.html.erb (Duration: 82.4ms | Allocations: 118879)
+  Rendered home/index.html.erb within layouts/application (Duration: 85.6ms | Allocations: 119923)
+  Rendered shared/_header.html.erb (Duration: 1.0ms | Allocations: 456)
+  Rendered shared/_footer.html.erb (Duration: 0.6ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 91.9ms | Allocations: 123101)
+Completed 200 OK in 99ms (Views: 95.6ms | ActiveRecord: 0.6ms | Allocations: 124414)
+
+
+Started GET "/members/fetch_country_states?country_code=BH" for ::1 at 2023-07-25 19:41:56 +0530
+Started GET "/?countrySearch=BH&authenticity_token=[FILTERED]&country=BH&_=1690294314829" for ::1 at 2023-07-25 19:41:56 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"BH"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 0.8ms | Allocations: 359)
+Completed 200 OK in 9ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 3501)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"BH", "authenticity_token"=>"[FILTERED]", "country"=>"BH", "_"=>"1690294314829"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "BH"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:15
+  Rendered home/_user.html.erb (Duration: 37.5ms | Allocations: 111013)
+  Rendered home/index.js.erb (Duration: 39.8ms | Allocations: 112555)
+Completed 200 OK in 42ms (Views: 40.0ms | ActiveRecord: 0.4ms | Allocations: 113147)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:41:58 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:15
+  Rendered home/_user.html.erb (Duration: 97.1ms | Allocations: 117817)
+  Rendered home/index.html.erb within layouts/application (Duration: 98.5ms | Allocations: 118327)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 101.8ms | Allocations: 120598)
+Completed 200 OK in 105ms (Views: 102.1ms | ActiveRecord: 0.6ms | Allocations: 120949)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:42:35 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.8ms | Allocations: 412)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:15
+  Rendered home/_user.html.erb (Duration: 133.9ms | Allocations: 119370)
+  Rendered home/index.html.erb within layouts/application (Duration: 136.3ms | Allocations: 120418)
+  Rendered layout layouts/application.html.erb (Duration: 136.6ms | Allocations: 120485)
+Completed 500 Internal Server Error in 144ms (ActiveRecord: 4.9ms | Allocations: 123217)
+
+
+  
+ActionView::Template::Error (undefined method `country_code' for nil:NilClass):
+    25:         <div class="user-info">
+    26:             <h5><%= user.name %> </h5>
+    27:             <p class="lead"><%= user.profile_title %></p>
+    28:             <small class="text-primary"><%= country_name(@user.country_code) %></small><br>
+    29:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    30: 
+    31:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:28
+app/views/home/_user.html.erb:15
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:44:03 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 409)
+  Rendered home/_user.html.erb (Duration: 40.7ms | Allocations: 113091)
+  Rendered home/index.html.erb within layouts/application (Duration: 50.0ms | Allocations: 115132)
+  Rendered layout layouts/application.html.erb (Duration: 50.4ms | Allocations: 115199)
+Completed 500 Internal Server Error in 58ms (ActiveRecord: 0.7ms | Allocations: 116483)
+
+
+  
+ActionView::Template::Error (undefined method `country_code' for nil:NilClass):
+    25:         <div class="user-info">
+    26:             <h5><%= user.name %> </h5>
+    27:             <p class="lead"><%= user.profile_title %></p>
+    28:             <small class="text-primary"><%= country_name(@user.country_code) %></small><br>
+    29:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    30: 
+    31:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:28
+app/views/home/_user.html.erb:15
+app/views/home/index.html.erb:84
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:44:28 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendered home/_user.html.erb (Duration: 38.4ms | Allocations: 112622)
+  Rendered home/index.html.erb within layouts/application (Duration: 53.4ms | Allocations: 118913)
+  Rendered layout layouts/application.html.erb (Duration: 53.5ms | Allocations: 118980)
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 4.2ms | Allocations: 121105)
+
+
+  
+ActionView::Template::Error (undefined method `country_code' for nil:NilClass):
+    25:         <div class="user-info">
+    26:             <h5><%= user.name %> </h5>
+    27:             <p class="lead"><%= user.profile_title %></p>
+    28:             <small class="text-primary"><%= country_name(@user.country_code) %></small><br>
+    29:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    30: 
+    31:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:28
+app/views/home/_user.html.erb:15
+app/views/home/index.html.erb:84
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:44:52 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 410)
+  Rendered home/_user.html.erb (Duration: 70.9ms | Allocations: 117091)
+  Rendered home/index.html.erb within layouts/application (Duration: 76.9ms | Allocations: 119129)
+  Rendered layout layouts/application.html.erb (Duration: 77.1ms | Allocations: 119196)
+Completed 500 Internal Server Error in 82ms (ActiveRecord: 0.8ms | Allocations: 120480)
+
+
+  
+ActionView::Template::Error (undefined method `country_code' for #<User:0x00007f5d142ba818>
+Did you mean?  country):
+    25:         <div class="user-info">
+    26:             <h5><%= user.name %> </h5>
+    27:             <p class="lead"><%= user.profile_title %></p>
+    28:             <small class="text-primary"><%= country_name(user.country_code) %></small><br>
+    29:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    30: 
+    31:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:28
+app/views/home/_user.html.erb:15
+app/views/home/index.html.erb:84
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:46:01 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_selected_user.html.erb (Duration: 0.7ms | Allocations: 412)
+  Rendered home/_user.html.erb (Duration: 60.8ms | Allocations: 114024)
+  Rendered home/index.html.erb within layouts/application (Duration: 68.6ms | Allocations: 116060)
+  Rendered layout layouts/application.html.erb (Duration: 68.8ms | Allocations: 116127)
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 1.3ms | Allocations: 117411)
+
+
+  
+ActionView::Template::Error (undefined method `name' for #<ISO3166::Country:0x00007f5d143a2938>):
+    25:         <div class="user-info">
+    26:             <h5><%= user.name %> </h5>
+    27:             <p class="lead"><%= user.profile_title %></p>
+    28:             <small class="text-primary"><%= country_name(user.country) %></small><br>
+    29:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    30: 
+    31:           <!-- Button trigger modal -->
+  
+app/helpers/application_helper.rb:14:in `country_name'
+app/views/home/_user.html.erb:28
+app/views/home/_user.html.erb:15
+app/views/home/index.html.erb:84
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:46:44 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_user.html.erb (Duration: 1.5ms | Allocations: 1598)
+  Rendered home/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 3639)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 3707)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.6ms | Allocations: 4992)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!-- search option form for country -->
+<div class="col-lg-2 mb-3">
+  <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
+<div class="field">
+  <%= form.label :country, class: "form-label" %>
+  <%= form.country_select :country, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
+</div>
+
+  <% end %>
+</div>
+
+<%= render 'selected_user' %>
+
+<div class="row mt-4 mb-4">
+  <% @users.each do |user| %>
+  <div class="col-lg-3 mt-3 mb-3">
+    <div class="card text-center shadow" style="min-height: 400px;">
+      <div class="card-body">
+        <div class="form-check">
+          <input class="form-check-input user-select-check" type="checkbox" id="user_<%= user.id %>" data-user-id="<%= user.id %>">
+          <label class="form-check-label" for="user_<%= user.id %>">
+          </label>
+        </div>
+        <%= image_tag "user.png", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
+        <div class="user-info">
+            <h5><%= user.name %> </h5>
+            <p class="lead"><%= user.profile_title %></p>
+            <small class="text-primary"><%= country_name(user.country.country_code) %</small><br>
+          <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+
+          <!-- Button trigger modal -->
+          <%= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
+          <!-- Button trigger modal -->
+          <%#= link_to "New", new_member_path(user),class: 'btn btn-primary mt-3' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<!-- search the country by using select option -->
+<script>
+  selectCountry = (object) => {
+    var formData = $("#countryDetail").serializeArray();
+    var searchValue = object.value;
+    var combinedData = [];
+    combinedData.push({ name: 'countrySearch', value: searchValue });
+    $.each(formData, function(i, field){
+      combinedData.push(field);
+    });
+    $.ajax({
+      url: '/',
+      type: "GET",
+      dataType: "script",
+      data: combinedData
+    });
+  };
+</script>
+
+
+
+):
+1:    <!-- search option form for country -->
+2:    <div class="col-lg-2 mb-3">
+3:      <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
+4:    <div class="field">
+5:      <%= form.label :country, class: "form-label" %>
+6:      <%= form.country_select :country, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
+7:    </div>
+8:    
+9:      <% end %>
+10:    </div>
+11:    
+12:    <%= render 'selected_user' %>
+13:    
+14:    <div class="row mt-4 mb-4">
+15:      <% @users.each do |user| %>
+16:      <div class="col-lg-3 mt-3 mb-3">
+17:        <div class="card text-center shadow" style="min-height: 400px;">
+18:          <div class="card-body">
+19:            <div class="form-check">
+20:              <input class="form-check-input user-select-check" type="checkbox" id="user_<%= user.id %>" data-user-id="<%= user.id %>">
+21:              <label class="form-check-label" for="user_<%= user.id %>">
+22:              </label>
+23:            </div>
+24:            <%= image_tag "user.png", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
+25:            <div class="user-info">
+26:                <h5><%= user.name %> </h5>
+27:                <p class="lead"><%= user.profile_title %></p>
+28:                <small class="text-primary"><%= country_name(user.country.country_code) %</small><br>
+29:              <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+30:    
+31:              <!-- Button trigger modal -->
+32:              <%= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
+33:              <!-- Button trigger modal -->
+34:              <%#= link_to "New", new_member_path(user),class: 'btn btn-primary mt-3' %>
+35:            </div>
+36:          </div>
+37:        </div>
+38:      </div>
+39:      <% end %>
+40:    </div>
+41:    
+42:    <!-- search the country by using select option -->
+43:    <script>
+44:      selectCountry = (object) => {
+45:        var formData = $("#countryDetail").serializeArray();
+46:        var searchValue = object.value;
+47:        var combinedData = [];
+48:        combinedData.push({ name: 'countrySearch', value: searchValue });
+49:        $.each(formData, function(i, field){
+50:          combinedData.push(field);
+51:        });
+52:        $.ajax({
+53:          url: '/',
+54:          type: "GET",
+55:          dataType: "script",
+56:          data: combinedData
+57:        });
+58:      };
+59:    </script>
+  
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/index.html.erb:84
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:46:49 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_user.html.erb (Duration: 1.7ms | Allocations: 1583)
+  Rendered home/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 3039)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 3107)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.5ms | Allocations: 3435)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!-- search option form for country -->
+<div class="col-lg-2 mb-3">
+  <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
+<div class="field">
+  <%= form.label :country, class: "form-label" %>
+  <%= form.country_select :country, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
+</div>
+
+  <% end %>
+</div>
+
+<%= render 'selected_user' %>
+
+<div class="row mt-4 mb-4">
+  <% @users.each do |user| %>
+  <div class="col-lg-3 mt-3 mb-3">
+    <div class="card text-center shadow" style="min-height: 400px;">
+      <div class="card-body">
+        <div class="form-check">
+          <input class="form-check-input user-select-check" type="checkbox" id="user_<%= user.id %>" data-user-id="<%= user.id %>">
+          <label class="form-check-label" for="user_<%= user.id %>">
+          </label>
+        </div>
+        <%= image_tag "user.png", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
+        <div class="user-info">
+            <h5><%= user.name %> </h5>
+            <p class="lead"><%= user.profile_title %></p>
+            <small class="text-primary"><%= country_name(user.country.country_code) %</small><br>
+          <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+
+          <!-- Button trigger modal -->
+          <%= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
+          <!-- Button trigger modal -->
+          <%#= link_to "New", new_member_path(user),class: 'btn btn-primary mt-3' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<!-- search the country by using select option -->
+<script>
+  selectCountry = (object) => {
+    var formData = $("#countryDetail").serializeArray();
+    var searchValue = object.value;
+    var combinedData = [];
+    combinedData.push({ name: 'countrySearch', value: searchValue });
+    $.each(formData, function(i, field){
+      combinedData.push(field);
+    });
+    $.ajax({
+      url: '/',
+      type: "GET",
+      dataType: "script",
+      data: combinedData
+    });
+  };
+</script>
+
+
+
+):
+1:    <!-- search option form for country -->
+2:    <div class="col-lg-2 mb-3">
+3:      <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
+4:    <div class="field">
+5:      <%= form.label :country, class: "form-label" %>
+6:      <%= form.country_select :country, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
+7:    </div>
+8:    
+9:      <% end %>
+10:    </div>
+11:    
+12:    <%= render 'selected_user' %>
+13:    
+14:    <div class="row mt-4 mb-4">
+15:      <% @users.each do |user| %>
+16:      <div class="col-lg-3 mt-3 mb-3">
+17:        <div class="card text-center shadow" style="min-height: 400px;">
+18:          <div class="card-body">
+19:            <div class="form-check">
+20:              <input class="form-check-input user-select-check" type="checkbox" id="user_<%= user.id %>" data-user-id="<%= user.id %>">
+21:              <label class="form-check-label" for="user_<%= user.id %>">
+22:              </label>
+23:            </div>
+24:            <%= image_tag "user.png", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
+25:            <div class="user-info">
+26:                <h5><%= user.name %> </h5>
+27:                <p class="lead"><%= user.profile_title %></p>
+28:                <small class="text-primary"><%= country_name(user.country.country_code) %</small><br>
+29:              <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+30:    
+31:              <!-- Button trigger modal -->
+32:              <%= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
+33:              <!-- Button trigger modal -->
+34:              <%#= link_to "New", new_member_path(user),class: 'btn btn-primary mt-3' %>
+35:            </div>
+36:          </div>
+37:        </div>
+38:      </div>
+39:      <% end %>
+40:    </div>
+41:    
+42:    <!-- search the country by using select option -->
+43:    <script>
+44:      selectCountry = (object) => {
+45:        var formData = $("#countryDetail").serializeArray();
+46:        var searchValue = object.value;
+47:        var combinedData = [];
+48:        combinedData.push({ name: 'countrySearch', value: searchValue });
+49:        $.each(formData, function(i, field){
+50:          combinedData.push(field);
+51:        });
+52:        $.ajax({
+53:          url: '/',
+54:          type: "GET",
+55:          dataType: "script",
+56:          data: combinedData
+57:        });
+58:      };
+59:    </script>
+  
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/index.html.erb:84
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:47:03 +0530
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_user.html.erb (Duration: 2.4ms | Allocations: 2175)
+  Rendered home/index.html.erb within layouts/application (Duration: 31.9ms | Allocations: 30274)
+  Rendered layout layouts/application.html.erb (Duration: 32.2ms | Allocations: 30349)
+Completed 500 Internal Server Error in 231ms (ActiveRecord: 4.8ms | Allocations: 393944)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!-- search option form for country -->
+<div class="col-lg-2 mb-3">
+  <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
+<div class="field">
+  <%= form.label :country, class: "form-label" %>
+  <%= form.country_select :country, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
+</div>
+
+  <% end %>
+</div>
+
+<%= render 'selected_user' %>
+
+<div class="row mt-4 mb-4">
+  <% @users.each do |user| %>
+  <div class="col-lg-3 mt-3 mb-3">
+    <div class="card text-center shadow" style="min-height: 400px;">
+      <div class="card-body">
+        <div class="form-check">
+          <input class="form-check-input user-select-check" type="checkbox" id="user_<%= user.id %>" data-user-id="<%= user.id %>">
+          <label class="form-check-label" for="user_<%= user.id %>">
+          </label>
+        </div>
+        <%= image_tag "user.png", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
+        <div class="user-info">
+            <h5><%= user.name %> </h5>
+            <p class="lead"><%= user.profile_title %></p>
+            <small class="text-primary"><%= country_name(user.country.country_code) %</small><br>
+          <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+
+          <!-- Button trigger modal -->
+          <%= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
+          <!-- Button trigger modal -->
+          <%#= link_to "New", new_member_path(user),class: 'btn btn-primary mt-3' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<!-- search the country by using select option -->
+<script>
+  selectCountry = (object) => {
+    var formData = $("#countryDetail").serializeArray();
+    var searchValue = object.value;
+    var combinedData = [];
+    combinedData.push({ name: 'countrySearch', value: searchValue });
+    $.each(formData, function(i, field){
+      combinedData.push(field);
+    });
+    $.ajax({
+      url: '/',
+      type: "GET",
+      dataType: "script",
+      data: combinedData
+    });
+  };
+</script>
+
+
+
+):
+1:    <!-- search option form for country -->
+2:    <div class="col-lg-2 mb-3">
+3:      <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
+4:    <div class="field">
+5:      <%= form.label :country, class: "form-label" %>
+6:      <%= form.country_select :country, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
+7:    </div>
+8:    
+9:      <% end %>
+10:    </div>
+11:    
+12:    <%= render 'selected_user' %>
+13:    
+14:    <div class="row mt-4 mb-4">
+15:      <% @users.each do |user| %>
+16:      <div class="col-lg-3 mt-3 mb-3">
+17:        <div class="card text-center shadow" style="min-height: 400px;">
+18:          <div class="card-body">
+19:            <div class="form-check">
+20:              <input class="form-check-input user-select-check" type="checkbox" id="user_<%= user.id %>" data-user-id="<%= user.id %>">
+21:              <label class="form-check-label" for="user_<%= user.id %>">
+22:              </label>
+23:            </div>
+24:            <%= image_tag "user.png", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
+25:            <div class="user-info">
+26:                <h5><%= user.name %> </h5>
+27:                <p class="lead"><%= user.profile_title %></p>
+28:                <small class="text-primary"><%= country_name(user.country.country_code) %</small><br>
+29:              <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+30:    
+31:              <!-- Button trigger modal -->
+32:              <%= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
+33:              <!-- Button trigger modal -->
+34:              <%#= link_to "New", new_member_path(user),class: 'btn btn-primary mt-3' %>
+35:            </div>
+36:          </div>
+37:        </div>
+38:      </div>
+39:      <% end %>
+40:    </div>
+41:    
+42:    <!-- search the country by using select option -->
+43:    <script>
+44:      selectCountry = (object) => {
+45:        var formData = $("#countryDetail").serializeArray();
+46:        var searchValue = object.value;
+47:        var combinedData = [];
+48:        combinedData.push({ name: 'countrySearch', value: searchValue });
+49:        $.each(formData, function(i, field){
+50:          combinedData.push(field);
+51:        });
+52:        $.ajax({
+53:          url: '/',
+54:          type: "GET",
+55:          dataType: "script",
+56:          data: combinedData
+57:        });
+58:      };
+59:    </script>
+  
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/_user.html.erb:28: syntax error, unexpected '<'
+app/views/home/_user.html.erb:35: unknown regexp options - dv
+app/views/home/_user.html.erb:35: unmatched close parenthesis: /small><br>
+app/views/home/_user.html.erb:36: syntax error, unexpected '<'
+app/views/home/_user.html.erb:37: unknown regexp options - dv
+app/views/home/_user.html.erb:38: syntax error, unexpected '<'
+app/views/home/_user.html.erb:40: unknown regexp options - dv
+app/views/home/_user.html.erb:42: syntax error, unexpected '<'
+app/views/home/_user.html.erb:42: syntax error, unexpected local variable or method, expecting `do' or '{' or '('
+app/views/home/_user.html.erb:42: syntax error, unexpected '\n', expecting `do' for lambda or tLAMBEG
+app/views/home/_user.html.erb:44: syntax error, unexpected =>, expecting ')'
+app/views/home/_user.html.erb:45: `$(' is not allowed as a global variable name
+app/views/home/_user.html.erb:45: syntax error, unexpected '(', expecting ')'
+app/views/home/_user.html.erb:48: syntax error, unexpected backslash
+app/views/home/_user.html.erb:64: syntax error, unexpected end-of-input, expecting `end'
+app/views/home/index.html.erb:84
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:47:17 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_selected_user.html.erb (Duration: 1.4ms | Allocations: 411)
+  Rendered home/_user.html.erb (Duration: 186.9ms | Allocations: 192654)
+  Rendered home/index.html.erb within layouts/application (Duration: 191.5ms | Allocations: 194711)
+  Rendered layout layouts/application.html.erb (Duration: 191.8ms | Allocations: 194779)
+Completed 500 Internal Server Error in 198ms (ActiveRecord: 0.7ms | Allocations: 196077)
+
+
+  
+ActionView::Template::Error (undefined method `country_code' for "BD":String):
+    25:         <div class="user-info">
+    26:             <h5><%= user.name %> </h5>
+    27:             <p class="lead"><%= user.profile_title %></p>
+    28:             <small class="text-primary"><%= country_name(user.country.country_code) %></small><br>
+    29:           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+    30: 
+    31:           <!-- Button trigger modal -->
+  
+app/views/home/_user.html.erb:28
+app/views/home/_user.html.erb:15
+app/views/home/index.html.erb:84
+app/views/home/index.html.erb:83
+Started GET "/" for ::1 at 2023-07-25 19:48:18 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 409)
+  Rendered home/_user.html.erb (Duration: 42.0ms | Allocations: 117983)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 34.0ms | Allocations: 116150)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 33.3ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 41.5ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 40.7ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 36.5ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 35.1ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 40.6ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 47.5ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 36.3ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 34.6ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 33.3ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 35.5ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 37.7ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 34.1ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 34.7ms | Allocations: 116149)
+  Rendered home/index.html.erb within layouts/application (Duration: 608.3ms | Allocations: 1863021)
+  Rendered shared/_header.html.erb (Duration: 2.2ms | Allocations: 496)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 211)
+  Rendered layout layouts/application.html.erb (Duration: 623.6ms | Allocations: 1880856)
+Completed 200 OK in 631ms (Views: 625.3ms | ActiveRecord: 1.2ms | Allocations: 1882185)
+
+
+Started GET "/members/fetch_country_states?country_code=BH" for ::1 at 2023-07-25 19:48:21 +0530
+Started GET "/?countrySearch=BH&authenticity_token=[FILTERED]&country=BH&_=1690294699596" for ::1 at 2023-07-25 19:48:21 +0530
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"BH"}
+  Rendering members/fetch_country_states.turbo_stream.erb
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 1.4ms | Allocations: 792)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 2913)
+
+
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"BH", "authenticity_token"=>"[FILTERED]", "country"=>"BH", "_"=>"1690294699596"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "BH"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:15
+  Rendered home/_user.html.erb (Duration: 34.5ms | Allocations: 111387)
+  Rendered home/index.js.erb (Duration: 36.0ms | Allocations: 112921)
+Completed 200 OK in 38ms (Views: 36.2ms | ActiveRecord: 0.4ms | Allocations: 113522)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:48:23 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered home/_user.html.erb (Duration: 53.8ms | Allocations: 116891)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 38.1ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 36.0ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 39.2ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 36.7ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 40.9ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 41.2ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 35.7ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 36.7ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 48.3ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 42.3ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 42.3ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 42.2ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 42.6ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 42.9ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 44.2ms | Allocations: 116149)
+  Rendered home/index.html.erb within layouts/application (Duration: 673.9ms | Allocations: 1861368)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 677.9ms | Allocations: 1863640)
+Completed 200 OK in 682ms (Views: 677.6ms | ActiveRecord: 1.3ms | Allocations: 1864002)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:49:35 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/index.html.erb:83
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 9)
+  Rendered home/_user.html.erb (Duration: 39.2ms | Allocations: 117435)
+  Rendered home/_selected_user.html.erb (Duration: 0.2ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 40.9ms | Allocations: 116147)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 55.8ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 44.9ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 40.6ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 43.4ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 37.6ms | Allocations: 116144)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 41.3ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 39.4ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 68.5ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 59.3ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 37.4ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 43.0ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 40.6ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 30.6ms | Allocations: 116149)
+  Rendered home/_selected_user.html.erb (Duration: 0.1ms | Allocations: 8)
+  Rendered home/_user.html.erb (Duration: 44.2ms | Allocations: 116149)
+  Rendered home/index.html.erb within layouts/application (Duration: 725.9ms | Allocations: 1866751)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 159)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 744.1ms | Allocations: 1883506)
+Completed 200 OK in 749ms (Views: 741.5ms | ActiveRecord: 5.1ms | Allocations: 1885655)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:50:19 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.6ms | Allocations: 412)
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:15
+  Rendered home/_user.html.erb (Duration: 50.5ms | Allocations: 118884)
+  Rendered home/index.html.erb within layouts/application (Duration: 52.8ms | Allocations: 119940)
+  Rendered shared/_header.html.erb (Duration: 0.9ms | Allocations: 456)
+  Rendered shared/_footer.html.erb (Duration: 0.4ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 57.9ms | Allocations: 123119)
+Completed 200 OK in 62ms (Views: 59.3ms | ActiveRecord: 0.7ms | Allocations: 124442)
+
+
+Started GET "/members/fetch_country_states?country_code=AD" for ::1 at 2023-07-25 19:50:24 +0530
+Started GET "/?countrySearch=AD&authenticity_token=[FILTERED]&country=AD&_=1690294820083" for ::1 at 2023-07-25 19:50:24 +0530
+Processing by HomeController#index as JS
+  Parameters: {"countrySearch"=>"AD", "authenticity_token"=>"[FILTERED]", "country"=>"AD", "_"=>"1690294820083"}
+Processing by MembersController#fetch_country_states as */*
+  Parameters: {"country_code"=>"AD"}
+  Rendering home/index.js.erb
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  Rendering members/fetch_country_states.turbo_stream.erb
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."country" = $1 ORDER BY "users"."created_at" ASC LIMIT $2[0m  [["country", "AD"], ["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:15
+  Rendered home/_user.html.erb (Duration: 35.3ms | Allocations: 111727)
+  Rendered home/index.js.erb (Duration: 42.2ms | Allocations: 115064)
+Completed 200 OK in 48ms (Views: 45.9ms | ActiveRecord: 0.6ms | Allocations: 117656)
+
+
+  Rendered members/fetch_country_states.turbo_stream.erb (Duration: 2.8ms | Allocations: 2338)
+Completed 200 OK in 44ms (Views: 37.8ms | ActiveRecord: 0.0ms | Allocations: 115809)
+
+
+Started GET "/" for ::1 at 2023-07-25 19:50:28 +0530
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/_selected_user.html.erb (Duration: 0.0ms | Allocations: 9)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "users".* FROM "users" ORDER BY "users"."created_at" ASC LIMIT $1[0m  [["LIMIT", 16]]
+  ↳ app/views/home/_user.html.erb:15
+  Rendered home/_user.html.erb (Duration: 49.2ms | Allocations: 117814)
+  Rendered home/index.html.erb within layouts/application (Duration: 50.6ms | Allocations: 118324)
+  Rendered shared/_header.html.erb (Duration: 0.3ms | Allocations: 150)
+  Rendered shared/_footer.html.erb (Duration: 0.0ms | Allocations: 8)
+  Rendered layout layouts/application.html.erb (Duration: 53.9ms | Allocations: 120583)
+Completed 200 OK in 56ms (Views: 54.2ms | ActiveRecord: 0.4ms | Allocations: 120934)
+
+

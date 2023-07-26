@@ -1,5 +1,10 @@
 class MembersController < ApplicationController
 
+  def index
+    @user = User.find(params[:id]) # Or whatever logic you use to find the user
+    # Additional code and logic for the index action
+  end
+  
   def show
     @user = User.find(params[:id])
   end
@@ -19,6 +24,11 @@ class MembersController < ApplicationController
   else
     render :edit
   end
+end
+
+def fetch_country_states
+  country = ISO3166::Country[params[:country_code]]
+  @states = country.states.map { |state| [state.first, state[1].translations[I18n.locale.to_s]] }
 end
 
 
