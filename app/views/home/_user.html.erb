@@ -1,10 +1,10 @@
 <!-- search option form for country -->
 <div class="col-lg-2 mb-3">
   <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
-<div class="field">
-  <%= form.label :country, class: "form-label" %>
-  <%= form.country_select :country, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
-</div>
+  <div class="field">
+    <%= form.label :country, class: "form-label" %>
+    <%= form.country_select :country, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
+  </div>
 
   <% end %>
 </div>
@@ -23,9 +23,9 @@
         </div>
         <%= image_tag "user.png", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
         <div class="user-info" data-controller="user-name" >
-            <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= user.name %> </h5>
-            <p class="lead"><%= user.profile_title %></p>
-            <small class="text-primary"><%= user.country %></small><br>
+          <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= user.name %> </h5>
+          <p class="lead"><%= user.profile_title %></p>
+          <small class="text-primary"><%= user.country %></small><br>
           <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
 
           <!-- Button trigger modal -->
@@ -57,5 +57,4 @@
     });
   };
 </script>
-
 

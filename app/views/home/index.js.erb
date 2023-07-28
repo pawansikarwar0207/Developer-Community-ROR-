@@ -1,3 +1,35 @@
 $("#users").html("<%= escape_javascript render('user', user: @user) %>")
 
 
+// home/index.js.erb
+
+// ... Your existing code ...
+
+// Function to fetch country states
+function fetchCountryStates(countryCode) {
+  $.ajax({
+    url: "/members/fetch_country_states",
+    method: "GET",
+    data: { country_code: countryCode },
+    dataType: "json",
+    success: function (data) {
+      // Assuming the response data is an array of state information in the format [ [state_code, state_name], ... ]
+      // You can adapt this based on the actual response structure from the controller.
+      data.forEach(function (state) {
+        var stateCode = state[0];
+        var stateName = state[1];
+
+        // Use the stateCode and stateName as needed, e.g., populate a dropdown with states.
+        // For example:
+        var option = '<option value="' + stateCode + '">' + stateName + '</option>';
+        $("#state-dropdown").append(option);
+      });
+    },
+    error: function (error) {
+      // Handle the error if needed
+      console.error(error);
+    }
+  });
+}
+
+// ... Your existing code ...

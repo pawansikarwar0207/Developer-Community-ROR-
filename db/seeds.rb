@@ -28,4 +28,12 @@ ActiveRecord::Base.transaction do
       )
     puts "User #{i+1} created successfully"
   end
+
+
+  100.times do |i|
+    user = User.create(
+      contact_number: Faker::PhoneNumber.phone_number_with_country_code
+      )
+    puts "contact_number #{i+1} created successfully"
+  end
 end

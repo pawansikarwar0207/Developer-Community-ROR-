@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validate :validate_country
 
+  has_many :work_experiences
+
   PROFILE_TITLE = [
     'Senior Ruby on Rails Developer',
     'Full Stack Ruby on Rails Developer',

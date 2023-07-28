@@ -7,14 +7,14 @@ export default class extends Controller {
     this.modal = new bootstrap.Modal(this.element, {
       keyboard: false
     })
-    this.modal.show()
+    this.modal.show();
   }
 
   disconnect() {
-    this.modal.hide()
+    this.modal.hide();
   }
 
   submitEnd(event) {
-    this.modal.hide()
+    this.modal.hide();
   }
 }
