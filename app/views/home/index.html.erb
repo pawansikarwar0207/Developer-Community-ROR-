@@ -8,8 +8,7 @@
         <%= form.submit 'Search', class:'btn btn-primary', id: 'button-addon2' %>
       </div>
       <% end %>
-      <div class="badge fs-6 text-dark rounded-0 mt-2" id="results">
-        <button type="button" class="btn-close float-end mx-2" id="close-button" aria-label="Close"></button>
+      <div class="fs-6 text-dark rounded-0 mt-2" id="results">    
       </div>
 
       <!-- Start For Search the country using tab -->
@@ -36,14 +35,12 @@
       <!-- Search the country by using search form -->
       <script>
        $(document).ready(function(){
-        $("#close-button").hide();
         $("#button-addon2").click(function(){
           var x = $("#search-result").serializeArray();
           $.each(x, function(i, field){
             var fieldName = $(`input[name="${field.name}"]`).data('field-name') || field.name;
-            $("#results").append(fieldName + " : " + field.value + " ");
+            $("#results").html(`<div class="badge bg-light cursor-pointer border text-dark p-2" >${fieldName} : ${field.value} <span class="float-end mx-2" id="close-button" ><i class="fa fa-close"></i></span></div>`);
           });
-          $("#close-button").show();
           $("#close-button").click(function(){
             $("#results").empty();
             $(this).hide();

@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   resources :members
 
   resources :work_experiences
+  resources :connections
 
 end

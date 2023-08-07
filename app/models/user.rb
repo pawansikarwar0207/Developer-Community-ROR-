@@ -6,7 +6,8 @@ class User < ApplicationRecord
 
   validate :validate_country
 
-  has_many :work_experiences
+  has_many :work_experiences, dependent: :destroy
+  has_many :connections, dependent: :destroy
 
   PROFILE_TITLE = [
     'Senior Ruby on Rails Developer',
@@ -42,10 +43,18 @@ class User < ApplicationRecord
     end
   end
 
-   def country_name
-    country = ISO3166::Country[country_code]
-    country.translations[I18n.locale.to_s] || country.name
+  # def country_name
+  #   country = ISO3166::Country[country_code]
+  #   country.translations[I18n.locale.to_s] || country.name
+  # end
+
+  def country_name
+     c = ISO3166::Country[self.country]
+     return c.translations[I18n.locale.to_s] || c.name
   end
 
-  has_many :articles
+  def check_if_already_connected?(current_user, user)
+    current_user != user && !current_user.connections.pluck(:connected_user_id).include?(user.id)
+  end
+  
 end

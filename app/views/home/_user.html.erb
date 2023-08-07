@@ -2,10 +2,10 @@
 <div class="col-lg-2 mb-3">
   <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
   <div class="field">
-    <%= form.label :country, class: "form-label" %>
-    <%= form.country_select :country, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
+    <%#= form.label :country, class: "form-label" %>
+    <label class="fomr-label mb-2"><strong>Country : </strong></label>
+    <%= form.select :country, countries_options, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
   </div>
-
   <% end %>
 </div>
 
@@ -42,6 +42,7 @@
 <!-- search the country by using select option -->
 <script>
   selectCountry = (object) => {
+    debugger
     var formData = $("#countryDetail").serializeArray();
     var searchValue = object.value;
     var combinedData = [];
@@ -53,7 +54,7 @@
       url: '/',
       type: "GET",
       dataType: "script",
-      data: combinedData
+      data: combinedData,
     });
   };
 </script>
