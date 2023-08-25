@@ -1,18 +1,18 @@
-<div class="col-lg-10 mx-auto mt-5">
+<!-- <div class="col-lg-10 mx-auto mt-5">
   <div class="card mt-4 mb-4">
     <div class="card-body">
       <h3 class="text-center mb-3">Search Professionals across the world!</h3>
-      <%= search_form_for @q, url:root_path, id:'search-result', remote: true do |form| %>
+      <%#= search_form_for @q, url:root_path, id:'search-result', remote: true do |form| %>
       <div class="input-group mb-3">
-        <%= form.search_field :city_or_country_cont, class: 'form-control', placeholder: 'Search by country or city', area: { label: 'Search by country or city', describedby: 'button-addon2' }, data: { field_name: 'City or Country' } %>
-        <%= form.submit 'Search', class:'btn btn-primary', id: 'button-addon2' %>
+        <%#= form.search_field :city_or_country_cont, class: 'form-control', placeholder: 'Search by country or city', area: { label: 'Search by country or city', describedby: 'button-addon2' }, data: { field_name: 'City or Country' } %>
+        <%#= form.submit 'Search', class:'btn btn-primary', id: 'button-addon2' %>
       </div>
-      <% end %>
+      <%# end %>
       <div class="fs-6 text-dark rounded-0 mt-2" id="results">    
-      </div>
+      </div> -->
 
       <!-- Start For Search the country using tab -->
-      <div>
+<!--       <div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link" data-country="JO" onclick="countryStatus(this)" >Jordan</a>
@@ -26,14 +26,13 @@
           <li class="nav-item">
             <a class="nav-link" data-country="Swaziland" onclick="countryStatus(this)" >Swaziland</a>
           </li>
-          <!-- Add more tabs for additional filters if needed -->
         </ul>
-      </div>
+      </div> -->
       <!-- End For Search the country using tab -->
 
 
       <!-- Search the country by using search form -->
-      <script>
+     <!--  <script>
        $(document).ready(function(){
         $("#button-addon2").click(function(){
           var x = $("#search-result").serializeArray();
@@ -55,10 +54,10 @@
       });
     </script>
   </div>
-</div>
+</div> -->
 
 <!-- For Search the country using tab -->
-<script>
+<!-- <script>
   countryStatus = (object) => {
     var formData = $('#search-result').serializeArray();
     var searchValue = object.dataset.country;
@@ -74,7 +73,7 @@
       data: combinedData
     });
   };
-</script>
+</script> -->
 
 <div id="users">
   <%= render 'user' %>

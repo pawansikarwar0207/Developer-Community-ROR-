@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'search', to: 'search#index'
+  get 'posts/index'
+ 
   devise_for :users
   root 'home#index'
   get 'member/:id', to: 'members#show', as: :member  
@@ -19,5 +22,9 @@ Rails.application.routes.draw do
 
   resources :work_experiences
   resources :connections
+  
+  resources :posts do
+    resources :comments
+  end
 
 end

@@ -1,43 +1,122 @@
 <!-- search option form for country -->
-<div class="col-lg-2 mb-3">
-  <%= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
+<!-- <div class="col-lg-2 mb-3">
+  <%#= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
   <div class="field">
     <%#= form.label :country, class: "form-label" %>
     <label class="fomr-label mb-2"><strong>Country : </strong></label>
-    <%= form.select :country, countries_options, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
+    <%#= form.select :country, countries_options, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
   </div>
-  <% end %>
+  <%# end %>
+</div> -->
+
+<%#= render 'selected_user' %>
+
+<!-- User Profile  -->
+<div class="col-lg-10 mx-auto mt-3 mb-3">
+  <div class="row">
+    <% if user_signed_in? %>
+    <div class="col-lg-3  border border-primary rounded text-center">
+      <%= image_tag "user1.avif", style: "width: 120px; border-radius: 50%; border: 2px solid black;", class: 'mb-3 mt-3' %>
+      <%= link_to member_path(current_user), style: "text-decoration:none;" do %>
+      <h5><%= current_user.name %></h5>
+      <% end %>
+      <p class="lead fs-6 mb-5"><%= current_user.profile_title %></p>
+    </div>
+    <div class="col-lg-7 ">
+     <%= link_to new_post_path, class: "btn btn-outline-primary py-2 rounded-pill mr-1 pr-5 mt-3", data: { controller: "bs-modal-form" } do %>
+     Start a Post
+     <% end %>
+   </div>
+   <% end %>
+ </div>
 </div>
+<!-- User Profile  -->
 
-<%= render 'selected_user' %>
-
+<!-- Uploded post by user -->
 <div class="row mt-4 mb-4">
-  <% @users.each do |user| %>
+  <% @posts.each do |post| %>
+  <div class="col-lg-10 mx-auto mt-3 mb-3">
+    <div class="card border-primary shadow" style="min-height: 320px;">
+      <div class="card-body">
+        <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
+        <div class="container" >
+         <div class="row">
+           <div class="col-2 mb-3">
+             <%= image_tag "user1.avif", style: "width: 60px; border-radius: 50%; border: 2px solid black;", class: "mt-2" %>
+           </div>
+           <div class="col-10 mt-3 mb-3">
+             <h5 class="text-primary fs-6 mx-5"><%= post.user.name %></h5>
+             <small class="text-muted fs-6 mx-5"><%= truncate(post.user.profile_title, lenght: 02) %></small>
+             <p class="text-muted mx-5"><em>Post <%= time_ago_in_words (post.created_at) %> ago </em></p>
+           </div>
+         </div>
+       </div> 
+       <% end %>
+       <div class="user-info mt-5" data-controller="user-name" >
+        <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= post.title %> </h5>
+        <p><%= post.description %></p>
+      </div>
+      <div>  
+        <% if post.image.attached? %>
+        <%= image_tag post.image, style: "width: 400px; height: 200px; max-width:100%; max-height: 100%;", class: 'mb-3' %>
+        <% end %>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-6">
+          <%#= link_to new_post_comment_path(post),class: "btn btn-outline-primary py-2 rounded-pill mr-1 pr-5", data: { controller: 'bs-modal-form' } do %>
+          <!-- <i class="fa-regular fa-comment"></i> Add Comments  -->
+          <%# end %>
+        </div>
+        <div class="col-lg-6 d-flex justify-content-end">
+          <% if user_signed_in? && (post.user == current_user) %>
+          <%= link_to  post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?"}, class: "btn btn-danger mt-2 me-2" do %>
+          <i class="fa-solid fa-trash"></i> 
+          <!-- Delete Post -->
+          <% end %>
+          <%= link_to edit_post_path(post),data: { controller: 'bs-modal-form' }, class: "btn btn-warning mt-2 me-2" do %>
+          <i class="fa-solid fa-pencil"></i> 
+          <!-- Edit Post -->
+          <% end %>
+          <% end %>
+          <%= link_to post_path(post), class:'btn btn-primary mt-2 me-2' do %>
+          <i class="fa-solid fa-eye"></i>  
+          <!-- View Post  -->
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+</div>
+<!-- Uploded post by user -->
+
+
+<!-- <div class="row mt-4 mb-4">
+  <%# @users.each do |user| %>
   <div class="col-lg-3 mt-3 mb-3">
     <div class="card text-center shadow" style="min-height: 400px;">
       <div class="card-body">
         <div class="form-check">
-          <input class="form-check-input user-select-check" type="checkbox" id="user_<%= user.id %>" data-user-id="<%= user.id %>">
-          <label class="form-check-label" for="user_<%= user.id %>">
+          <input class="form-check-input user-select-check" type="checkbox" id="user_<%#= user.id %>" data-user-id="<%#= user.id %>">
+          <label class="form-check-label" for="user_<%#= user.id %>">
           </label>
         </div>
-        <%= image_tag "user.png", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
+        <%#= image_tag "user1.avif", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
         <div class="user-info" data-controller="user-name" >
-          <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= user.name %> </h5>
-          <p class="lead"><%= user.profile_title %></p>
-          <small class="text-primary"><%= user.country %></small><br>
-          <%= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
-
-          <!-- Button trigger modal -->
-          <%= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
-          <!-- Button trigger modal -->
+          <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%#= user.name %> </h5>
+          <p class="lead"><%#= user.profile_title %></p>
+          <small class="text-primary"><%#= user.country %></small><br>
+          <%#= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
+          <%#= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
           <%#= link_to "New", new_member_path(user),class: 'btn btn-primary mt-3' %>
         </div>
       </div>
     </div>
   </div>
-  <% end %>
-</div>
+  <%# end %>
+</div> -->
 
 <!-- search the country by using select option -->
 <script>

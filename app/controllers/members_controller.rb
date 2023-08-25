@@ -32,10 +32,13 @@ class MembersController < ApplicationController
   end
 
   def update_personal_details
-    respond_to do |format|
-      if current_user.update(user_params)
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('member_personal_details', partial: 'members/member_personal_details', locals: { user: current_user })  }
-      end
+    if current_user.update(user_params)
+      render_turbo_stream(
+        'replace',
+        'member_personal_details',
+        'members/member_personal_details',
+        { user: current_user }
+        )
     end
   end
 
@@ -48,23 +51,26 @@ class MembersController < ApplicationController
   end
 
   def update_description
-    respond_to do |format|
-      if current_user.update(about: params[:user][:about] )
-        format.turbo_stream { render turbo_stream: turbo_stream.replace('member-description', partial: 'members/member_description', locals: { user: current_user })  }
-      end
+    if current_user.update(about: params[:user][:about] )
+      render_turbo_stream(
+        'replace',
+        'member-description',
+        'members/member_description',
+         { user: current_user }
+        )
     end
   end
 
 
   def connections
     @user = User.find(params[:id])
-    @connected_users = if params[:mutul_connections].present?
-                          mutually_connected_ids = current_user.mutually_connected_ids(@user)
-                          User.where(id: mutually_connected_ids)
+    total_users = if params[:mutul_connections].present?
+                          User.where(id: mutually_connected_ids(@user))
                         else
                           User.where(id: @user.connected_user_ids)
                         end
-    @total_connections = @connected_users.count
+    @connected_users = total_users.page(params[:page]).per(2)
+    @total_connections = total_users.count
   end
 
   private

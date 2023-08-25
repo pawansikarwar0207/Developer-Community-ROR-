@@ -8,6 +8,14 @@ class User < ApplicationRecord
 
   has_many :work_experiences, dependent: :destroy
   has_many :connections, dependent: :destroy
+  
+  has_many :posts, dependent: :destroy
+
+  has_many :comments, as: :commentable
+
+  # For showing the notifications
+  has_many :notifications, as: :recipient, dependent: :destroy
+
 
   PROFILE_TITLE = [
     'Senior Ruby on Rails Developer',

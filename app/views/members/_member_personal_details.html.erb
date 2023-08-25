@@ -44,7 +44,7 @@
         </div>
         <% end %>
 
-        <% if current_user != @user %>
+        <% if current_user != @user && @mutul_connections.present? && @mutul_connections.count > 0 %>
         <div id="mutul-connection-count">
           <%= link_to pluralize(@mutul_connections.count, 'mutul_connection'),member_connections_path(user, mutul_connection: true ) %>
         </div>

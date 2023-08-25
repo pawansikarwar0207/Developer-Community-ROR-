@@ -1,0 +1,33 @@
+<div class="col-lg-10 mx-auto mt-3">
+  <p style="color: green;"><%= notice %></p>
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-5">
+          <% if @post.image.attached? %>
+          <%= image_tag @post.image, style: "width: 800px; height: 300px; max-width:100%; max-height: 100%;", class: 'mb-3' %>
+          <% end %>
+        </div>
+        <div class="col-lg-6">
+          <small class="text-primary">User ID : <%= @post.user_id %></small>
+          <p><strong>Post Uploaded by :</strong> <%= @user.name %></p>
+          <p> <strong>Title : </strong><%= @post.title  %> </p>
+          <p> <strong>Description : </strong><%= @post.description  %> </p>
+        </div>
+      </div>    
+
+      <div class="container mt-3">
+        <%= render partial: "comments/form", locals: { comment: Comment.new(commentable: @post), submit_label: "Create Comment" } %>
+        
+        <% @comments.each do |comment| %>
+          <%= render 'comments/comment', comment: comment %>
+        <% end %>
+      </div>
+    </div>
+  </div> 
+
+  <%= link_to 'Back', root_path, class: 'btn btn-warning mt-3' %>
+  <% if user_signed_in? && (@post.user == current_user) %>
+  <%= link_to 'Edit Post', edit_post_path(@post),data: { controller: 'bs-modal-form' }, class: "btn btn-primary mt-3" %>
+  <% end %>
+</div>

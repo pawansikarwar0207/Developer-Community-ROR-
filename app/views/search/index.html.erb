@@ -1,0 +1,23 @@
+<div class="col-lg-10 mx-auto mt-3">
+<% if params[:q].present? %>
+  <h3 class="text-center mb-3"><%= pluralize(@posts.count, "Result") %></h3>
+<% end %>
+  <table class="table table-dark table-striped mt-3">
+    <thead>
+      <tr>
+        <th><%= sort_link(@query, :title, "Title", default_order: :asc  ) %></th>
+        <th><%= sort_link(@query, :description, "Content") %></th>
+        <th><%= sort_link(@query, :user_id, "Users") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+      <tr>
+        <td><%= link_to post.title, post %></td>
+        <td><%= post.description.truncate_words(15) %></td>
+        <td><%= link_to post.user.name, member_path(post.user) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
