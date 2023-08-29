@@ -9,7 +9,7 @@ class Post < ApplicationRecord
 
   # For showing the notifications
   has_noticed_notifications model_name: 'Notification'
-  has_many :notifications, through: :user, dependent: :destroy
+  has_many :notifications, through: :user
 
 
   def self.ransackable_attributes(auth_object = nil)

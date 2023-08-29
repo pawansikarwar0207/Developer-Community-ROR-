@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="countries"
 export default class extends Controller {
   connect() {
-    console.log('Connected!!!')
+    console.log('Countries Connected!!!')
   }
   initialize() {
     this.element.setAttribute("data-action", "change->countries#loadCountryStates")

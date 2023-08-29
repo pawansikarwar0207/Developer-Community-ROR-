@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit show update destroy]
   
   def index
-    @posts = Post.all.order(created_at: :desc)
+   @posts = current_user.posts.includes(:user, :comments, :notifications, image_attachment: :blob).order(created_at: :desc)
   end
 
   def new

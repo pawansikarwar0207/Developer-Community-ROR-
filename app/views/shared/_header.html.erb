@@ -11,7 +11,7 @@
           <%= link_to 'My Profile', member_path(current_user), class:'nav-link active'%>  
         </li>
         <li>
-          <%#= link_to 'My Post', post_path(current_user), class:'nav-link active'%>  
+          <%= link_to 'My Post', user_posts_path(current_user), class:'nav-link active'%>  
         </li>
         <li>
           <%= link_to 'My Network', connections_path, class:'nav-link active'%>  
@@ -22,11 +22,13 @@
           <%= link_to 'Sign In', new_user_session_path, class:'nav-link active' %>
           <% end %>  
         </li>
+        <li class="nav-item">
+          <%= render 'shared/notifications' %>
+        </li>
       </ul>
-    </div>
-    <div class="collapse navbar-collapse">
-      <%= render 'shared/notifications' %>
-    </div>
-    <%= render 'search/form' %>
+      <div class="d-flex">
+        <%= render 'search/form' %>
+      </div>
+    </div>    
   </div>
 </nav>

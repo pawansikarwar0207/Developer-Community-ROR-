@@ -18,13 +18,21 @@ Rails.application.routes.draw do
 
   get 'member-connections/:id', to: 'members#connections', as: 'member_connections'
 
-  resources :members
+  resources :members do
+    collection do
+      get :fetch_country_states
+    end
+  end
 
   resources :work_experiences
   resources :connections
   
   resources :posts do
     resources :comments
+  end
+
+  resources :users do
+    resources :posts
   end
 
 end

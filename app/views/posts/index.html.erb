@@ -1,17 +1,17 @@
 <div class="col-lg-10 mx-auto">
   <div class="row mt-4 mb-4">
     <% @posts.each do |post| %>
-    <div class="col-lg-3 mt-3 mb-3">
-      <div class="card text-center shadow" style="min-height: 320px;">
+    <div class="col-lg-6 mt-3 mb-3">
+      <div class="card text-center shadow rounded-0" style="min-height: 400px;">
         <div class="card-body">
            <% if post.image.attached? %>
-            <%= image_tag post.image, style: "width: 220px;", class: 'mb-3' %>
+            <%= image_tag post.image, class: 'post_images mb-3' %>
           <% end %>
           <div class="user-info" data-controller="user-name" >
             <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= post.title %> </h5>
-            <p class="lead"><%= post.description %></p>
-            <small class="text-primary"><%= post.user_id %></small><br>
-            <%= link_to "View Post", posts_path(post), class:'btn btn-primary mt-2' %>
+            <p class="lead"><%= post.description.truncate_words(50) %></p>
+            <small class="text-primary"><%#= post.user_id %></small><br>
+            <%#= link_to "View Post", posts_path(@post), class:'btn btn-primary mt-2' %>
           </div>
         </div>
       </div>
@@ -19,3 +19,17 @@
     <% end %>
   </div>
 </div>
+
+<style>
+  .post_images {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .post_images img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

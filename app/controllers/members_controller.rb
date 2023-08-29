@@ -1,14 +1,14 @@
 class MembersController < ApplicationController
-  before_action :authenticate_user!, only: %i[edit_description update_description edit_personal_details update_personal_details ]
 
   def index
     @user = User.find(params[:id])
+    @user = User.includes(:comments, :notifications, :posts, :connections, :work_experiences)
   end
 
   def show
     @user = User.find(params[:id])
     @connections = Connection.where('user_id = ? OR connected_user_id = ?', params[:id], params[:id]).where(status: 'accepted')
-    @mutul_connections = current_user.mutually_connected_ids(@user)
+    @mutual_connections = current_user.mutually_connected_ids(@user)
   end
 
   def edit
@@ -61,15 +61,14 @@ class MembersController < ApplicationController
     end
   end
 
-
   def connections
     @user = User.find(params[:id])
-    total_users = if params[:mutul_connections].present?
-                          User.where(id: mutually_connected_ids(@user))
+    total_users = if params[:mutual_connections].present?
+                          User.where(id: current_user.mutually_connected_ids(@user))
                         else
                           User.where(id: @user.connected_user_ids)
                         end
-    @connected_users = total_users.page(params[:page]).per(2)
+    @connected_users = total_users.page(params[:page]).per(10)
     @total_connections = total_users.count
   end
 

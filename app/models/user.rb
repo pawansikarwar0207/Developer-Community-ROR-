@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable, :trackable
 
-  validate :validate_country
+  # validate :validate_country
 
   has_many :work_experiences, dependent: :destroy
+  
   has_many :connections, dependent: :destroy
   
   has_many :posts, dependent: :destroy
@@ -15,6 +16,7 @@ class User < ApplicationRecord
 
   # For showing the notifications
   has_many :notifications, as: :recipient, dependent: :destroy
+  
 
 
   PROFILE_TITLE = [
@@ -43,23 +45,23 @@ class User < ApplicationRecord
   end
 
 
-  def validate_country
-    return if country.nil?
+  # def validate_country
+  #   return if country.nil?
 
-    unless ISO3166::Country.all.map { |country| country.alpha2 }.include?(country)
-      errors.add(:country, 'is not valid')
-    end
-  end
+  #   unless ISO3166::Country.all.map { |country| country.alpha2 }.include?(country)
+  #     errors.add(:country, 'is not valid')
+  #   end
+  # end
 
   # def country_name
   #   country = ISO3166::Country[country_code]
   #   country.translations[I18n.locale.to_s] || country.name
   # end
 
-  def country_name
-     c = ISO3166::Country[self.country]
-     return c.translations[I18n.locale.to_s] || c.name
-  end
+  # def country_name
+  #    c = ISO3166::Country[self.country]
+  #    return c.translations[I18n.locale.to_s] || c.name
+  # end
 
   def my_connection(user)
     Connection.where("(user_id = ? AND connected_user_id = ? ) OR (user_id = ? AND connected_user_id = ? )", user.id, id, id, user.id)

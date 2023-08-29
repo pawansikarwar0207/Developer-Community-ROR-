@@ -1,140 +1,110 @@
-<!-- search option form for country -->
-<!-- <div class="col-lg-2 mb-3">
-  <%#= form_with(model: @user, id:'countryDetail', remote: true) do |form| %>
-  <div class="field">
-    <%#= form.label :country, class: "form-label" %>
-    <label class="fomr-label mb-2"><strong>Country : </strong></label>
-    <%#= form.select :country, countries_options, { prompt: "Select a country" }, onclick: "selectCountry(this)", class: "form-select", data: { controller: "countries" } %>
-  </div>
-  <%# end %>
-</div> -->
-
-<%#= render 'selected_user' %>
-
-<!-- User Profile  -->
-<div class="col-lg-10 mx-auto mt-3 mb-3">
+<div class="container col-lg-10 mx-auto mt-3">
   <div class="row">
-    <% if user_signed_in? %>
-    <div class="col-lg-3  border border-primary rounded text-center">
-      <%= image_tag "user1.avif", style: "width: 120px; border-radius: 50%; border: 2px solid black;", class: 'mb-3 mt-3' %>
-      <%= link_to member_path(current_user), style: "text-decoration:none;" do %>
-      <h5><%= current_user.name %></h5>
-      <% end %>
-      <p class="lead fs-6 mb-5"><%= current_user.profile_title %></p>
-    </div>
-    <div class="col-lg-7 ">
-     <%= link_to new_post_path, class: "btn btn-outline-primary py-2 rounded-pill mr-1 pr-5 mt-3", data: { controller: "bs-modal-form" } do %>
-     Start a Post
-     <% end %>
-   </div>
-   <% end %>
- </div>
-</div>
-<!-- User Profile  -->
+    <div class="col-lg-3 col-md-4 col-sm-12">
+      <!-- User Profile  -->
+      <div class="card text-center mb-3 rounded-0 shadow">
+        <div class="card-body">
+          <%= image_tag "user1.avif", style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
+          <%= link_to member_path(current_user), style: "text-decoration:none;" do %>
+          <h5 class="text-dark"><%= current_user.name %></h5>
+          <% end %>
+          <small class=" text-muted"><%= current_user.profile_title %></small>
+          <hr>
 
-<!-- Uploded post by user -->
-<div class="row mt-4 mb-4">
-  <% @posts.each do |post| %>
-  <div class="col-lg-10 mx-auto mt-3 mb-3">
-    <div class="card border-primary shadow" style="min-height: 320px;">
-      <div class="card-body">
-        <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
-        <div class="container" >
-         <div class="row">
-           <div class="col-2 mb-3">
-             <%= image_tag "user1.avif", style: "width: 60px; border-radius: 50%; border: 2px solid black;", class: "mt-2" %>
+          <!-- start of showing the current user connection by this link -->
+          <div>
+            <%#= link_to pluralize(@current_user.connections.count, 'connection'), member_connections_path(current_user), style: 'text-decoration:none;' %>
+          </div>
+          <!-- end of showing the current user connection by this link -->
+        </div>
+      </div>
+      <!-- User Profile  -->
+    </div>
+    <div class="col-lg-9 col-md-8 col-sm-12">
+      <div class="card col-lg-10 col-md-8 col-sm-12 mx-auto mb-3 rounded-0 shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-2 px-2">
+             <%= image_tag "user1.avif", style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
            </div>
-           <div class="col-10 mt-3 mb-3">
-             <h5 class="text-primary fs-6 mx-5"><%= post.user.name %></h5>
-             <small class="text-muted fs-6 mx-5"><%= truncate(post.user.profile_title, lenght: 02) %></small>
-             <p class="text-muted mx-5"><em>Post <%= time_ago_in_words (post.created_at) %> ago </em></p>
-           </div>
-         </div>
-       </div> 
-       <% end %>
-       <div class="user-info mt-5" data-controller="user-name" >
-        <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= post.title %> </h5>
-        <p><%= post.description %></p>
-      </div>
-      <div>  
-        <% if post.image.attached? %>
-        <%= image_tag post.image, style: "width: 400px; height: 200px; max-width:100%; max-height: 100%;", class: 'mb-3' %>
-        <% end %>
-      </div>
-      
-      <div class="row">
-        <div class="col-lg-6">
-          <%#= link_to new_post_comment_path(post),class: "btn btn-outline-primary py-2 rounded-pill mr-1 pr-5", data: { controller: 'bs-modal-form' } do %>
-          <!-- <i class="fa-regular fa-comment"></i> Add Comments  -->
-          <%# end %>
-        </div>
-        <div class="col-lg-6 d-flex justify-content-end">
-          <% if user_signed_in? && (post.user == current_user) %>
-          <%= link_to  post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?"}, class: "btn btn-danger mt-2 me-2" do %>
-          <i class="fa-solid fa-trash"></i> 
-          <!-- Delete Post -->
-          <% end %>
-          <%= link_to edit_post_path(post),data: { controller: 'bs-modal-form' }, class: "btn btn-warning mt-2 me-2" do %>
-          <i class="fa-solid fa-pencil"></i> 
-          <!-- Edit Post -->
-          <% end %>
-          <% end %>
-          <%= link_to post_path(post), class:'btn btn-primary mt-2 me-2' do %>
-          <i class="fa-solid fa-eye"></i>  
-          <!-- View Post  -->
-          <% end %>
+           <div class="col-10 px-4 pt-1">
+            <%= link_to new_post_path, class: "d-flex btn btn-outline-light text-dark border py-2 rounded-pill mr-1 pr-5 mt-2", data: { controller: "bs-modal-form" } do %>
+            Start a Post
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<% end %>
-</div>
-<!-- Uploded post by user -->
-
-
-<!-- <div class="row mt-4 mb-4">
-  <%# @users.each do |user| %>
-  <div class="col-lg-3 mt-3 mb-3">
-    <div class="card text-center shadow" style="min-height: 400px;">
-      <div class="card-body">
-        <div class="form-check">
-          <input class="form-check-input user-select-check" type="checkbox" id="user_<%#= user.id %>" data-user-id="<%#= user.id %>">
-          <label class="form-check-label" for="user_<%#= user.id %>">
-          </label>
-        </div>
-        <%#= image_tag "user1.avif", style: "width: 150px; border-radius: 50%; border: 2px solid black;", class: 'mb-3' %>
-        <div class="user-info" data-controller="user-name" >
-          <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%#= user.name %> </h5>
-          <p class="lead"><%#= user.profile_title %></p>
-          <small class="text-primary"><%#= user.country %></small><br>
-          <%#= link_to "View Profile", member_path(user), class:'btn btn-primary mt-3' %>
-          <%#= link_to 'Edit', edit_member_path(user), class: 'btn btn-primary mt-3', remote: true %>
-          <%#= link_to "New", new_member_path(user),class: 'btn btn-primary mt-3' %>
+    <!-- Uploded post by user -->
+    <div class="row mb-4">
+      <% @posts.each do |post| %>
+      <div class="col-lg-10 mx-auto mb-3">
+        <div class="card rounded-0 shadow" style="min-height: 320px;">
+          <div class="card-body">
+            <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
+            <div class="container" >
+             <div class="row">
+               <div class="col-2 mb-3 d-grid">
+                 <%= image_tag "user1.avif", style: "width: 75px;", class: "mt-2 border border-3 rounded-circle" %>
+               </div>
+               <div class="col-10 mt-3 mb-3 d-grid  ">
+                <h5 class="text-dark mx-5"><%= post.user.name %></h5>
+                <small class="text-muted mx-5"><%= post.user.profile_title %></small>
+                <small class="text-muted mx-5">Post <%= time_ago_in_words (post.created_at) %> ago</small>
+              </div>
+            </div>
+          </div> 
+          <% end %>
+          <div class="user-info mt-5" data-controller="user-name" >
+            <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= post.title %> </h5>
+            <p><%= post.description %></p>
+          </div>
+          <div>  
+            <% if post.image.attached? %>
+            <%= image_tag post.image, class: 'image-container mb-3' %>
+            <% end %>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+            </div>
+            <div class="col-lg-6 d-flex justify-content-end">
+              <% if post.user == current_user %>
+              <%= link_to  post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?"}, class: "btn btn-danger mt-2 me-2" do %>
+              <i class="fa-solid fa-trash"></i> 
+              <!-- Delete Post -->
+              <% end %>
+              <%= link_to edit_post_path(post),data: { controller: 'bs-modal-form' }, class: "btn btn-warning mt-2 me-2" do %>
+              <i class="fa-solid fa-pencil"></i> 
+              <!-- Edit Post -->
+              <% end %>
+              <% end %>
+              <%= link_to post_path(post), class:'btn btn-primary mt-2 me-2' do %>
+              <i class="fa-solid fa-eye"></i>  
+              <!-- View Post  -->
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+    <% end %>
   </div>
-  <%# end %>
-</div> -->
+  <!-- Uploded post by user -->
+</div>
+</div>
+</div>
 
-<!-- search the country by using select option -->
-<script>
-  selectCountry = (object) => {
-    debugger
-    var formData = $("#countryDetail").serializeArray();
-    var searchValue = object.value;
-    var combinedData = [];
-    combinedData.push({ name: 'countrySearch', value: searchValue });
-    $.each(formData, function(i, field){
-      combinedData.push(field);
-    });
-    $.ajax({
-      url: '/',
-      type: "GET",
-      dataType: "script",
-      data: combinedData,
-    });
-  };
-</script>
+<!-- using style for post section -->
+<style>
+  .image-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
 
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+</style>

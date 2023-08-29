@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :find_commentable, only: [:create, :destroy, :new, :edit, :update, :show  ]
+  
+  before_action :find_commentable, only: [:create, :destroy, :new, :edit, :update, :show]
 
 
   def create

@@ -26,8 +26,8 @@
     </div>
   </div> 
 
-  <%= link_to 'Back', root_path, class: 'btn btn-warning mt-3' %>
-  <% if user_signed_in? && (@post.user == current_user) %>
-  <%= link_to 'Edit Post', edit_post_path(@post),data: { controller: 'bs-modal-form' }, class: "btn btn-primary mt-3" %>
+  <%= link_to 'Back', root_path, class: 'btn btn-warning mt-3 mb-3' %>
+  <% if @post.user == current_user %>
+  <%= link_to 'Edit Post', edit_post_path(@post),data: { controller: 'bs-modal-form' }, class: "btn btn-primary mt-3 mb-3" %>
   <% end %>
 </div>
