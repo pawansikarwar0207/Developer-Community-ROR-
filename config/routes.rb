@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
   get 'search', to: 'search#index'
   get 'posts/index'
- 
-  devise_for :users
+
+
   root 'home#index'
   get 'member/:id', to: 'members#show', as: :member  
   get 'member/:id/edit', to: 'members#edit', as: :edit_member
