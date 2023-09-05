@@ -38,13 +38,13 @@
 
         <% if @connections.present? %>
         <div id="connection-count">
-          <%= link_to pluralize(@connections.count, 'connection'), member_connections_path(user) %>
+          <%= link_to pluralize(@connections.count, 'connection'), member_connections_path(user), style: "text-decoration:none;" %>
         </div>
         <% end %>
 
         <% if current_user != @user && @mutual_connections.present? && @mutual_connections.count > 0 %>
         <div id="mutual-connection-count">
-          <%= link_to pluralize(@mutual_connections.count, 'mutual_connection'),member_connections_path(user, mutual_connection: true ) %>
+          <%= link_to pluralize(@mutual_connections.count, 'mutual connection'),member_connections_path(user, mutual_connection: true ), style: "text-decoration:none;" %>
         </div>
         <% end %>
       </div>
