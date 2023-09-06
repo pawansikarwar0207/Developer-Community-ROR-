@@ -1,114 +1,114 @@
 <div class="container col-lg-10 mx-auto mt-3 bg-light">
   <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-12 mt-3">
-      <!-- User Profile  -->
       <div class="card text-center mb-3 rounded-0 shadow">
         <div class="card-body">
           <%= image_tag "user1.avif", style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
           <%= link_to member_path(current_user), style: "text-decoration:none;" do %>
-          <h5 class="text-dark"><%= current_user.name %></h5>
+            <h5 class="text-dark"><%= current_user.name %></h5>
           <% end %>
           <small class=" text-muted"><%= current_user.profile_title %></small>
           <hr>
-
-          <!-- start of showing the current user connection by this link -->
-          <div>
-            <%#= link_to pluralize(@current_user.connections.count, 'connection'), member_connections_path(current_user), style: 'text-decoration:none;' %>
-          </div>
-          <!-- end of showing the current user connection by this link -->
         </div>
       </div>
-      <!-- User Profile  -->
     </div>
-
     <div class="col-lg-9 col-md-8 col-sm-12 mt-3">
       <div class="card col-lg-10 col-md-8 col-sm-12 mx-auto mb-3 rounded-0 shadow">
         <div class="card-body">
           <div class="row">
             <div class="col-2 px-2">
-             <%= image_tag "user1.avif", style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
-           </div>
-           <div class="col-10 px-4 pt-1">
-            <%= link_to new_post_path, class: "d-flex btn btn-outline-light text-dark border py-2 rounded-pill mr-1 pr-5 mt-2", data: { controller: "bs-modal-form" } do %>
-            Start a Post
-            <% end %>
+              <%= image_tag "user1.avif", style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
+            </div>
+            <div class="col-10 px-4 pt-1">
+              <%= link_to new_post_path, class: "d-flex btn btn-outline-light text-dark border py-2 rounded-pill mr-1 pr-5 mt-2", data: { controller: "bs-modal-form" } do %>
+              Start a Post
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Uploded post by user -->
-    <div class="row mb-4">
-      <% @posts.each do |post| %>
-      <div class="col-lg-10 mx-auto mb-3">
-        <div class="card rounded-0 shadow" style="min-height: 320px;">
-          <div class="card-body">
-            <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
-            <div class="container">
-              <div class="row">
-                <div class="col-2 mb-3 d-grid">
-                  <%= image_tag "user1.avif", style: "width: 75px;", class: "mt-2 border border-3 rounded-circle" %>
+      <div class="row mb-4">
+        <% @posts.each do |post| %>
+          <div class="col-lg-10 mx-auto mb-3">
+            <div class="card rounded-0 shadow" style="min-height: 320px;">
+              <div class="card-body">
+                <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-2 mb-3 d-grid">
+                        <%= image_tag "user1.avif", style: "width: 75px;", class: "mt-2 border border-3 rounded-circle" %>
+                      </div>
+                      <div class="col-10 mt-3 mb-3 d-grid">
+                        <h5 class="text-dark mx-5"><%= post.user.name %></h5>
+                        <small class="text-muted mx-5"><%= post.user.profile_title %></small>
+                        <small class="text-muted mx-5">Post <%= time_ago_in_words(post.created_at) %> ago</small>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+                <div class="user-info mt-5" data-controller="user-name">
+                  <h5 data-user-name-target='name' data-action="click->user-name#getUserName"><%= post.title %> </h5>
+                  <div data-controller="show-more">
+                    <div data-show-more-target="description">
+                      <p><%= simple_format(post.description) %></p>
+                    </div>
+                    <div class="row">
+                       <div class="col-lg-12 d-flex justify-content-end">
+                          <button 
+                            data-action="click->show-more#toggleVisibility" 
+                            data-show-more-target="toggleButton" 
+                            class="btn btn-outline-light text-primary btn-sm mb-3 mt-3">
+                            Show More
+                          </button>
+                       </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-10 mt-3 mb-3 d-grid">
-                  <h5 class="text-dark mx-5"><%= post.user.name %></h5>
-                  <small class="text-muted mx-5"><%= post.user.profile_title %></small>
-                  <small class="text-muted mx-5">Post <%= time_ago_in_words(post.created_at) %> ago</small>
-                </div>
-              </div>
-            </div>
-            <% end %>
-            <div class="user-info mt-5" data-controller="user-name">
-              <h5 data-user-name-target='name' data-action="click->user-name#getUserName"><%= post.title %> </h5>
-
-              <div data-controller="show-more">
-                <div data-show-more-target="description">
-                  <p><%= simple_format(post.description) %></p>
+                <div>
+                  <% if post.image.attached? %>
+                    <%= image_tag post.image, class: 'image-container mb-3' %>
+                  <% end %>
                 </div>
                 <div class="row">
-                  <div class="col-lg-12 d-flex justify-content-end">
-                    <button 
-                    data-action="click->show-more#toggleVisibility" 
-                    data-show-more-target="toggleButton" 
-                    class="btn btn-outline-light text-primary btn-sm mb-3 mt-3">
-                    Show More
-                  </button>
+                  <div class="col-lg-6">
+                    <% if user_signed_in? %>
+                    <% like = current_user.likes.find_by(post: post) %>
+                    <% if like.nil? %>
+                    <%= button_to  likes_path, params: { like: {post_id: post.id}}, method: :post, class:"btn btn-light position-absolute mt-2" do %>
+                    <i class="fa-regular fa-thumbs-up fa-xl", title="Like"></i> 
+                    <% end -%>
+                    <% else %>
+                    <%= button_to like_path(like), params: { like: {post_id: post.id}}, method: :delete, class:"btn btn-light position-absolute mt-2" do %>
+                    <i class="fa-regular fa-thumbs-down fa-xl", title="Dislike"></i>
+                    <% end -%>
+                    <% end -%>
+                    <% end -%>
+                    <span class="position-relative top-0  translate-middle badge rounded-pill bg-danger"><%= post.likes.count%></span>
+                  </div>
+                  <div class="col-lg-6 d-flex justify-content-end">
+                    <% if post.user == current_user %>
+                    <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?" }, class: "btn btn-danger mt-2 me-2" do %>
+                    <i class="fa-solid fa-trash"></i>
+                    <!-- Delete Post -->
+                    <% end %>
+                    <%= link_to edit_post_path(post), data: { controller: 'bs-modal-form' }, class: "btn btn-warning mt-2 me-2" do %>
+                    <i class="fa-solid fa-pencil"></i>
+                    <!-- Edit Post -->
+                    <% end %>
+                    <% end %>
+                    <%= link_to post_path(post), class: 'btn btn-primary mt-2 me-2' do %>
+                    <i class="fa-solid fa-eye"></i>
+                    <!-- View Post  -->
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
-
           </div>
-          <div>
-            <% if post.image.attached? %>
-            <%= image_tag post.image, class: 'image-container mb-3' %>
-            <% end %>
-          </div>
-          <div class="row">
-            <!-- display the post edit, delete & view buttons -->
-            <div class="col-lg-12 d-flex justify-content-end">
-              <% if post.user == current_user %>
-              <%= link_to post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?" }, class: "btn btn-danger mt-2 me-2" do %>
-              <i class="fa-solid fa-trash"></i>
-              <!-- Delete Post -->
-              <% end %>
-              <%= link_to edit_post_path(post), data: { controller: 'bs-modal-form' }, class: "btn btn-warning mt-2 me-2" do %>
-              <i class="fa-solid fa-pencil"></i>
-              <!-- Edit Post -->
-              <% end %>
-              <% end %>
-              <%= link_to post_path(post), class: 'btn btn-primary mt-2 me-2' do %>
-              <i class="fa-solid fa-eye"></i>
-              <!-- View Post  -->
-              <% end %>
-            </div>
-            <!-- display the post edit, delete & view buttons -->
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
   </div>
-  <!-- Uploded post by user -->
-</div>
-</div>
 </div>
 
 
@@ -125,20 +125,3 @@
     display: block;
   }
 </style>
-
-
-  <!-- <script>
-    $(document).ready(function() {
-      $(".show-button").click(function() {
-        var postContainer = $(this).closest(".card-body");
-        var postDetail = postContainer.find(".post-detail");
-        if (postDetail.hasClass("post-details-collapsed")) {
-          postDetail.removeClass("post-details-collapsed");
-          $(this).text("Show Less");
-        } else {
-          postDetail.addClass("post-details-collapsed");
-          $(this).text("Show More");
-        }
-      });
-    });
-  </script> -->

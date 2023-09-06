@@ -6,15 +6,16 @@ export default class extends Controller {
   connect() {
     console.log('show more connected!!!')
     this.showLess();
-    this.truncateDescription();
+    this.toggleButtonVisibility();
   }
-
+  
   toggleVisibility() {
     if (this.isDescriptionVisible()) {
       this.showLess();
     } else {
       this.showMore();
     }
+    this.toggleButtonVisibility(); // Update button visibility after toggling
   }
 
   showMore() {
@@ -23,20 +24,28 @@ export default class extends Controller {
   }
 
   showLess() {
-    this.descriptionTarget.style.maxHeight = "4em";
+    this.descriptionTarget.style.maxHeight = "4em"; 
     this.toggleButtonTarget.textContent = "Show More";
   }
 
   isDescriptionVisible() {
-    return this.descriptionTarget.style.maxHeight !== "4em";
+      return this.descriptionTarget.style.maxHeight !== "4em";
   }
 
-  truncateDescription() {
-    const maxHeight = "4em";
-    if (this.descriptionTarget.scrollHeight > parseInt(maxHeight)) {
-      this.descriptionTarget.style.maxHeight = maxHeight;
-      this.descriptionTarget.style.overflow = "hidden"; // Add overflow: hidden;
-      this.toggleButtonTarget.style.display = "block";
+  toggleButtonVisibility() {
+    const description = this.descriptionTarget;
+    const toggleButton = this.toggleButtonTarget;
+    
+    // Get the computed height of the description
+    const computedStyle = window.getComputedStyle(description);
+    const descriptionHeight = parseFloat(computedStyle.getPropertyValue("height"));
+    
+    // Show the button if the description is taller than 2 lines
+    if (descriptionHeight > 2 * parseFloat(computedStyle.getPropertyValue("line-height"))) {
+      toggleButton.style.display = "block";
+      this.descriptionTarget.style.overflow = "hidden";
+    } else {
+      toggleButton.style.display = "none";
     }
-  } 
+  }
 }

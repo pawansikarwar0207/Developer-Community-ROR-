@@ -2,7 +2,7 @@ class MembersController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @user = User.includes(:comments, :notifications, :posts, :connections, :work_experiences)
+    @user = User.includes(:comments, :notifications, :posts, :connections, :work_experiences, :likes)
   end
 
   def show

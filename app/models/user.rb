@@ -17,6 +17,11 @@ class User < ApplicationRecord
 
   # For showing the notifications
   has_many :notifications, as: :recipient, dependent: :destroy
+
+  # for posts likes
+  has_many :likes
+  has_many :posts, through: :likes
+
   
   PROFILE_TITLE = [
     'Senior Ruby on Rails Developer',
