@@ -2,7 +2,7 @@
   <div class="row">
     <% @posts.each do |post| %>
       <div class="col-lg-4 mt-3 mb-3">
-        <div class="card text-center shadow rounded-0" style="min-height: 420px;">
+        <div class="card text-center shadow rounded-0" style="min-height: 350px;">
           <div class="card-body">
             <% if post.image.attached? %>
               <%= image_tag post.image, class: 'post_images mb-3' %>

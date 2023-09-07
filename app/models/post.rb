@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   has_many :notifications, through: :user
 
   # for posts likes
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :users, through: :likes
 
   def self.ransackable_attributes(auth_object = nil)

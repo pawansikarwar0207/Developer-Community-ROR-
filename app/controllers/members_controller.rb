@@ -2,7 +2,7 @@ class MembersController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @user = User.includes(:comments, :notifications, :posts, :connections, :work_experiences, :likes)
+    @user = User.preload(:posts, :comments, :likes, :notifications, :recipient, :work_experiences, :connections, image_attachment: :blob)
   end
 
   def show
@@ -75,7 +75,7 @@ class MembersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :about, :contact_number, :email, :username, :city, :state, :country, :pincode, :street_address, :profile_title)
+    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :about, :contact_number, :email, :username, :city, :state, :country, :pincode, :street_address, :profile_title, :image)
   end
 end
 

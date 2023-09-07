@@ -1,9 +1,12 @@
 <div class="container col-lg-10 mx-auto mt-3 bg-light">
   <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-12 mt-3">
-      <div class="card text-center mb-3 rounded-0 shadow">
+      <div class="card text-center mb-3 rounded-0 shadow current_user_profile">
         <div class="card-body">
-          <%= image_tag "user1.avif", style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
+          <% if current_user.image.attached? %>
+            <%= image_tag current_user.image, style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
+          <% end %>
+          <%#= image_tag "user1.avif", style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
           <%= link_to member_path(current_user), style: "text-decoration:none;" do %>
             <h5 class="text-dark"><%= current_user.name %></h5>
           <% end %>
@@ -17,10 +20,13 @@
       <div class="card col-lg-10 col-md-8 col-sm-12 mx-auto mb-3 rounded-0 shadow">
         <div class="card-body">
           <div class="row">
-            <div class="col-2 px-2">
-              <%= image_tag "user1.avif", style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
+            <div class="col-md-1 col-12 mb-2 d-grid">
+              <% if current_user.image.attached? %>
+                <%= image_tag current_user.image, style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
+              <% end %>
+              <%#= image_tag "user1.avif", style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
             </div>
-            <div class="col-10 px-4 pt-1">
+            <div class="col-md-11 col-12 mt-1 mb-3 d-grid">
               <%= link_to new_post_path, class: "d-flex btn btn-outline-light text-dark border py-2 rounded-pill mr-1 pr-5 mt-2", data: { controller: "bs-modal-form" } do %>
               Start a Post
               <% end %>
@@ -36,18 +42,22 @@
                 <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
                   <div class="container">
                     <div class="row">
-                      <div class="col-2 mb-3 d-grid">
-                        <%= image_tag "user1.avif", style: "width: 75px;", class: "mt-2 border border-3 rounded-circle" %>
+                      <div class="col-md-1 col-12 mb-2 d-grid">
+                       <% if post.user.image.attached? %>
+                          <%= image_tag post.user.image, class: "user-image border border-3 rounded-circle" %>
+                        <% else %> 
+                        <%= image_tag 'human.avif', class: "user-image border border-3 rounded-circle" %>
+                        <% end %>
                       </div>
-                      <div class="col-10 mt-3 mb-3 d-grid">
-                        <h5 class="text-dark mx-5"><%= post.user.name %></h5>
-                        <small class="text-muted mx-5"><%= post.user.profile_title %></small>
-                        <small class="text-muted mx-5">Post <%= time_ago_in_words(post.created_at) %> ago</small>
+                      <div class="col-md-11 col-12 mt-3 mb-3 d-grid">
+                        <h5 class="text-dark mx-md-5 mx-2"><%= post.user.name %></h5>
+                        <small class="text-muted mx-md-5 mx-2"><%= truncate(post.user.profile_title, length: 20) %></small>
+                        <small class="text-muted mx-md-5 mx-2">Post <%= time_ago_in_words(post.created_at) %> ago</small>
                       </div>
                     </div>
                   </div>
                 <% end %>
-                <div class="user-info mt-5" data-controller="user-name">
+                <div class="user-info mt-2" data-controller="user-name">
                   <h5 data-user-name-target='name' data-action="click->user-name#getUserName"><%= post.title %> </h5>
                   <div data-controller="show-more">
                     <div data-show-more-target="description">
@@ -73,18 +83,18 @@
                 <div class="row">
                   <div class="col-lg-6">
                     <% if user_signed_in? %>
-                    <% like = current_user.likes.find_by(post: post) %>
-                    <% if like.nil? %>
-                    <%= button_to  likes_path, params: { like: {post_id: post.id}}, method: :post, class:"btn btn-light position-absolute mt-2" do %>
-                    <i class="fa-regular fa-thumbs-up fa-xl", title="Like"></i> 
+                      <% like = post.likes.find { |like| like.user_id == current_user.id } %>
+                      <% if like.nil? %>
+                        <%= button_to likes_path, params: { like: { post_id: post.id } }, method: :post, class: "btn btn-light position-absolute mt-2" do %>
+                          <i class="fa-regular fa-thumbs-up fa-xl" title="Like"></i>
+                        <% end -%>
+                      <% else %>
+                        <%= button_to like_path(like), params: { like: { post_id: post.id } }, method: :delete, class: "btn btn-light position-absolute mt-2" do %>
+                          <i class="fa-regular fa-thumbs-down fa-xl" title="Dislike"></i>
+                        <% end -%>
+                      <% end -%>
                     <% end -%>
-                    <% else %>
-                    <%= button_to like_path(like), params: { like: {post_id: post.id}}, method: :delete, class:"btn btn-light position-absolute mt-2" do %>
-                    <i class="fa-regular fa-thumbs-down fa-xl", title="Dislike"></i>
-                    <% end -%>
-                    <% end -%>
-                    <% end -%>
-                    <span class="position-relative top-0  translate-middle badge rounded-pill bg-danger"><%= post.likes.count%></span>
+                    <span class="position-relative top-0 translate-middle badge rounded-pill bg-danger"><%= post.likes.count %></span>
                   </div>
                   <div class="col-lg-6 d-flex justify-content-end">
                     <% if post.user == current_user %>
@@ -99,7 +109,6 @@
                     <% end %>
                     <%= link_to post_path(post), class: 'btn btn-primary mt-2 me-2' do %>
                     <i class="fa-solid fa-eye"></i>
-                    <!-- View Post  -->
                     <% end %>
                   </div>
                 </div>
@@ -124,5 +133,10 @@
     width: 100%;
     height: auto;
     display: block;
+  }
+  .user-image{
+    width: 70px;
+    overflow: hidden;
+    margin-top: 15px;
   }
 </style>

@@ -19,8 +19,10 @@ class User < ApplicationRecord
   has_many :notifications, as: :recipient, dependent: :destroy
 
   # for posts likes
-  has_many :likes
-  has_many :posts, through: :likes
+  has_many :likes, dependent: :destroy
+  # has_many :posts, through: :likes
+
+  has_one_attached :image
 
   
   PROFILE_TITLE = [

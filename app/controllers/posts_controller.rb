@@ -18,7 +18,7 @@ class PostsController < ApplicationController
 
   def show
     @user = @post.user
-    @comments = @post.comments.includes(:user).order(created_at: :desc)
+    @comments = @post.comments.includes(:user, :rich_text_body).order(created_at: :desc)
     mark_notifications_as_read
   end
 
