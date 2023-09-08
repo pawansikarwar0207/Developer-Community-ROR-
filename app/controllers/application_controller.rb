@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-  before_action :set_notifications, if: :current_user
   before_action :set_query
 
   def set_query
@@ -8,12 +7,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def set_notifications
-    notifications = Notification.includes(:recipient).where(recipient: current_user).newest_first.limit(9)
-    @unread = notifications.unread
-    @read = notifications.read
-  end
 
   def render_turbo_stream(action, target, partial = nil, locals = {})
     respond_to do |format|

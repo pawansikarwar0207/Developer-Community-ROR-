@@ -2,7 +2,7 @@ class MembersController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @user = User.preload(:posts, :comments, :likes, :notifications, :recipient, :work_experiences, :connections, image_attachment: :blob)
+    @user = User.preload(:posts, :comments, :likes, :work_experiences, :connections, image_attachment: :blob)
   end
 
   def show

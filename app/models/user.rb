@@ -15,14 +15,13 @@ class User < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-  # For showing the notifications
-  has_many :notifications, as: :recipient, dependent: :destroy
-
   # for posts likes
   has_many :likes, dependent: :destroy
   # has_many :posts, through: :likes
 
   has_one_attached :image
+
+  has_many :skills
 
   
   PROFILE_TITLE = [

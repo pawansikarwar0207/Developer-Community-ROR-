@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   resources :work_experiences
   resources :connections
+  resources :skills
   
   resources :posts do
     resources :comments

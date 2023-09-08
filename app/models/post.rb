@@ -7,9 +7,6 @@ class Post < ApplicationRecord
 
   has_many :comments, as: :commentable
 
-  # For showing the notifications
-  has_noticed_notifications model_name: 'Notification'
-  has_many :notifications, through: :user
 
   # for posts likes
   has_many :likes, dependent: :destroy
@@ -20,7 +17,7 @@ class Post < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["comments", "image_attachment", "image_blob", "notifications", "user"]
+    ["comments", "image_attachment", "image_blob", "user"]
   end
   
 end

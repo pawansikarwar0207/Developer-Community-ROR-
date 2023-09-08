@@ -8,6 +8,6 @@ class HomeController < ApplicationController
       @users = @q.result(distinct: true).order(created_at: :asc).limit(16)
     end
     @users_with_images = User.where.not(image: nil)
-    @posts = Post.includes(:user, :notifications, :likes, image_attachment: :blob).order(created_at: :desc)
+    @posts = Post.includes(:user, :likes, image_attachment: :blob).order(created_at: :desc)
   end
 end

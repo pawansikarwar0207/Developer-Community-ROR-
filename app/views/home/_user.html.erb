@@ -12,7 +12,7 @@
           <% end %>
           <small class=" text-muted"><%= current_user.profile_title %></small>
           <hr>
-          <p>Connections : <%= current_user.connections.count %></p>
+          <p><%= pluralize(current_user.connections.count, "Connection") %></p>
         </div>
       </div>
     </div>
@@ -52,7 +52,7 @@
                       <div class="col-md-11 col-12 mt-3 mb-3 d-grid">
                         <h5 class="text-dark mx-md-5 mx-2"><%= post.user.name %></h5>
                         <small class="text-muted mx-md-5 mx-2"><%= truncate(post.user.profile_title, length: 20) %></small>
-                        <small class="text-muted mx-md-5 mx-2">Post <%= time_ago_in_words(post.created_at) %> ago</small>
+                        <small class="text-muted mx-md-5 mx-2">Posted <%= time_ago_in_words(post.created_at) %> ago</small>
                       </div>
                     </div>
                   </div>
