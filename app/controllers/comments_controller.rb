@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  
+  before_action :set_comments, only: %i[edit destroy]
   before_action :find_commentable, only: [:create, :destroy, :new, :edit, :update, :show]
 
 
@@ -15,18 +15,12 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     redirect_to @commentable, notice: 'Comment was successfully deleted.'
   end
 
-  def new
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build
-  end
-
   def edit
-    @comment = Comment.find(params[:id])
+   
   end
 
 
@@ -61,6 +55,10 @@ class CommentsController < ApplicationController
     if @commentable.nil?
       redirect_back fallback_location: root_path, alert: 'Commentable not found'
     end
+  end
+
+  def set_comments
+     @comment = Comment.find(params[:id])
   end
 
   def comment_params

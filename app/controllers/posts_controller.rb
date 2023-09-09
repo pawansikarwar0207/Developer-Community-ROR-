@@ -2,7 +2,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit show update destroy]
   
   def index
-  @posts = current_user.posts.includes(:user, :comments, :likes, image_attachment: :blob).order(created_at: :desc)
+    if params[:q].present?
+      @posts = @query.result(distinct: true)
+    else
+      @posts = current_user.posts.includes(:user, :comments, :likes, image_attachment: :blob).order(created_at: :desc)
+    end
   end
 
   def new

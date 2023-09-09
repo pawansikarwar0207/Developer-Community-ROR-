@@ -5,10 +5,6 @@ Rails.application.routes.draw do
     passwords: 'users/passwords'
   }
 
-  get 'search', to: 'search#index'
-  get 'posts/index'
-
-
   root 'home#index'
   get 'member/:id', to: 'members#show', as: :member  
   get 'member/:id/edit', to: 'members#edit', as: :edit_member
@@ -33,6 +29,7 @@ Rails.application.routes.draw do
   resources :work_experiences
   resources :connections
   resources :skills
+  resources :shares, only: [:new, :create,:index]
   
   resources :posts do
     resources :comments

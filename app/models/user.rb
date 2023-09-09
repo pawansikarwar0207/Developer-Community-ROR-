@@ -17,11 +17,22 @@ class User < ApplicationRecord
 
   # for posts likes
   has_many :likes, dependent: :destroy
-  # has_many :posts, through: :likes
 
   has_one_attached :image
 
   has_many :skills
+
+  # for sharing the post
+  has_many :sent_shares, class_name: 'Share', foreign_key: 'sender_id'
+  has_many :received_shares, class_name: 'Share', foreign_key: 'recipient_id'
+
+  scope :with_country, ->(country) { where(country: country) }
+  scope :with_images, -> { where.not(image: nil) }
+
+  # for sharing the post
+  def shared_posts
+    received_shares.map(&:post)
+  end
 
   
   PROFILE_TITLE = [
