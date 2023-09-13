@@ -2,11 +2,9 @@ class CommentsController < ApplicationController
   before_action :set_comments, only: %i[edit destroy]
   before_action :find_commentable, only: [:create, :destroy, :new, :edit, :update, :show]
 
-
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-
     if @comment.save
       redirect_to @commentable, notice: 'Comment was successfully created.'
     else
@@ -20,13 +18,10 @@ class CommentsController < ApplicationController
   end
 
   def edit
-   
   end
-
 
   def update
     @comment = @commentable.comments.find(params[:id])
-
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to post_path(@commentable), notice: 'Comment was successfully updated.' }
@@ -36,12 +31,10 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def show
     @comment = @post.comments.build
     render :edit
   end
-
 
   private
 
@@ -62,5 +55,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:title, :user_id)
   end
-
 end

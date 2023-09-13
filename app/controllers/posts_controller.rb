@@ -23,6 +23,8 @@ class PostsController < ApplicationController
   def show
     @user = @post.user
     @comments = @post.comments.includes(:user).order(created_at: :desc)
+    # # for visiting the post by current user
+    PostVisit.create(user: current_user, post: @post)
   end
 
   def edit
@@ -41,7 +43,6 @@ class PostsController < ApplicationController
       redirect_to root_path
     end
   end
-
 
   private
 

@@ -30,7 +30,6 @@ class ConnectionsController < ApplicationController
             requester.save
           end
         end
-
       end
       format.turbo_stream { render turbo_stream: turbo_stream.replace("connection-status-#{@connection.id}", partial: "connections/update", locals: { connections: @connection }) }
     end

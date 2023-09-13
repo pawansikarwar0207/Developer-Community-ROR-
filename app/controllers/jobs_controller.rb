@@ -1,5 +1,4 @@
 class JobsController < ApplicationController
-
   before_action :set_jobs, only: %i[edit show update destroy]
 
   def index
@@ -17,13 +16,10 @@ class JobsController < ApplicationController
     end
   end
 
-
   def edit
-    
   end
 
   def show
-    
   end
 
   def update

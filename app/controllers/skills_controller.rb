@@ -6,7 +6,6 @@ class SkillsController < ApplicationController
   end
 
   def edit
-
   end
 
   def create

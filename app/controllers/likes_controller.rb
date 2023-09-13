@@ -1,7 +1,6 @@
 class LikesController < ApplicationController
 
   def index
-    # Eager load associated users and posts to avoid N+1 queries
     @likes = current_user.likes.includes(:post, :user)
   end
 
@@ -12,7 +11,6 @@ class LikesController < ApplicationController
     end 
   end
 
-
   def destroy
     @like = current_user.likes.find(params[:id])
     @like.destroy
@@ -22,5 +20,4 @@ class LikesController < ApplicationController
   def like_params
     params.require(:like).permit(:post_id)
   end
-
 end
