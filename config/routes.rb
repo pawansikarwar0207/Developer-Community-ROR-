@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :jobs
+  resources :job_categories
   resources :work_experiences
   resources :connections
   resources :skills
@@ -37,6 +39,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :posts
+    resources :jobs
+    resources :my_jobs
   end
 
   resources :likes, only: [:create, :destroy]

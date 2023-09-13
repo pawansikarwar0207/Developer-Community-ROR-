@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_08_102104) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_11_111507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -88,6 +88,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_102104) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_connections_on_user_id"
+  end
+
+  create_table "job_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "employee_type"
+    t.string "location"
+    t.string "salary"
+    t.string "qualification"
+    t.string "status"
+    t.bigint "job_category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["job_category_id"], name: "index_jobs_on_job_category_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -192,6 +214,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_102104) do
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "users"
   add_foreign_key "connections", "users"
+  add_foreign_key "jobs", "job_categories"
+  add_foreign_key "jobs", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"

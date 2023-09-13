@@ -49,9 +49,7 @@ class CommentsController < ApplicationController
     if params[:post_id]
       @commentable = Post.find(params[:post_id])
     end
-    # Add conditions for other commentable types if needed
-
-    # Handle the case when @commentable is nil
+    
     if @commentable.nil?
       redirect_back fallback_location: root_path, alert: 'Commentable not found'
     end

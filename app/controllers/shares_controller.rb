@@ -1,7 +1,7 @@
 class SharesController < ApplicationController
 
   def index
-    @shared_posts = current_user.shared_posts # Implement this association in your User model
+    @shared_posts = current_user.shared_posts
   end
   
   def new

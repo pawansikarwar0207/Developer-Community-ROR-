@@ -12,6 +12,8 @@
           <small class=" text-muted"><%= current_user.profile_title %></small>
           <hr>
           <p><%= pluralize(current_user.connections.count, "Connection") %></p>
+          <hr>
+          <%= link_to 'My Job', user_my_jobs_path(current_user), style: 'text-decoration:none;'%>  
         </div>
       </div>
     </div>
@@ -95,7 +97,7 @@
                       <span class="position-relative top-0 translate-middle badge rounded-pill bg-danger"><%= @post_likes_count[post.id] || 0 %></span>
                     </div>
                   <div class="col-lg-2">
-                    <%= link_to new_share_path(post_id: post.id), class: "btn btn-light mt-2" do %>
+                    <%= link_to new_share_path(post_id: post.id), class: "btn btn-light mt-2", data: { controller: "bs-modal-form" } do %>
                     <i class="fa-solid fa-paper-plane fa-lg"></i>
                     <% end %>
                   </div>

@@ -22,6 +22,8 @@ class User < ApplicationRecord
 
   has_many :skills
 
+  has_many :jobs
+
   # for sharing the post
   has_many :sent_shares, class_name: 'Share', foreign_key: 'sender_id'
   has_many :received_shares, class_name: 'Share', foreign_key: 'recipient_id'

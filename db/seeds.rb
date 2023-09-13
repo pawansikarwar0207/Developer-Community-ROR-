@@ -36,4 +36,16 @@ ActiveRecord::Base.transaction do
       )
     puts "contact_number #{i+1} created successfully"
   end
+
+
+  job = Job.create(
+    title: "Full Stack ROR Developer",
+    employee_type: "Full time",
+    location: "Indore",
+    salary: "10000",
+    description: "Full stack ROR developer",
+    qualification: "B.E",
+    job_category_id: '1'
+    )
+
 end
