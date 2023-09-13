@@ -4,10 +4,12 @@
       <div class="card-body">
         <div class="row">
           <div class="col-lg-10">
+          <%= link_to job, style: "text-decoration:none; color:black;" do %>
             <strong>Job Title : </strong> <%= job.title %><br>
-            <strong>Description : </strong> <%= truncate(job.description, length: 15) %><br>
+            <strong>Description : </strong> <%= truncate(job.description, length: 30) %><br>
             <strong>Location : </strong> <%= job.location %><br>
             <strong>Job Category : </strong> <%= job.job_category.name %><br>
+          <% end %>
           </div>
           <div class="col-lg-2">
             <div class="dropdown float-end">
