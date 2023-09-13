@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   has_many :comments, as: :commentable
 
   # for sharing the post
-  has_many :shares
+  has_many :shares, dependent: :destroy
 
   # for posts likes
   has_many :likes, dependent: :destroy
@@ -16,7 +16,7 @@ class Post < ApplicationRecord
 
 
   # for visiting the post by current user
-  has_many :post_visits
+  has_many :post_visits, dependent: :destroy
   
   # for visiting the post by current user
   def visited_by?(user)
