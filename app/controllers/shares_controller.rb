@@ -1,9 +1,9 @@
 class SharesController < ApplicationController
 
   def index
-    @shared_posts = current_user.shared_posts
+    @shared_posts = Post.preload(:post_visits, :user).where(id: current_user.shared_posts.map(&:id))
   end
-  
+
   def new
     @share = Share.new
   end

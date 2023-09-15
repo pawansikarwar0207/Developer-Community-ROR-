@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     if params[:q].present?
       @posts = @query.result(distinct: true)
     else
-      @posts = current_user.posts.includes(:user, :comments, :likes, image_attachment: :blob).order(created_at: :desc)
+      @posts = current_user.posts.includes(:user, :comments, :likes, :post_visits, image_attachment: :blob).order(created_at: :desc)
     end
   end
 

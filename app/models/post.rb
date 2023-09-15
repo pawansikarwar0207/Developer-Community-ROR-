@@ -14,16 +14,15 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
 
-
-  # for visiting the post by current user
+   # for visiting the post by current user
   has_many :post_visits, dependent: :destroy
-  
+
   # for visiting the post by current user
   def visited_by?(user)
     post_visits.exists?(user: user)
   end
 
-  scope :with_details, -> { includes(:user, :likes, image_attachment: :blob) }
+  scope :with_details, -> { includes(:user, :likes, :post_visits, image_attachment: :blob) }
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "title", "updated_at", "user_id"]
