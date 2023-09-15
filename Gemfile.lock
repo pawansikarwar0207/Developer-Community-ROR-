@@ -145,6 +145,10 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.8.1)
+      launchy (>= 2.2, < 3)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -292,6 +296,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
+  letter_opener
   noticed (~> 1.6)
   pg (~> 1.1)
   puma (~> 5.0)

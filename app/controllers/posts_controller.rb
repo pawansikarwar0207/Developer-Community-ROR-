@@ -6,6 +6,7 @@ class PostsController < ApplicationController
       @posts = @query.result(distinct: true)
     else
       @posts = current_user.posts.includes(:user, :comments, :likes, :post_visits, image_attachment: :blob).order(created_at: :desc)
+      @post_likes_count = Post.joins(:likes).group('posts.id').count
     end
   end
 

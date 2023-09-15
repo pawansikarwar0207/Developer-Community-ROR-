@@ -1,0 +1,108 @@
+<div class="row mb-3" id="post-list">
+  <% @posts.each do |post| %>
+    <div class="col-lg-10 mx-auto mb-3">
+      <div class="card rounded-0 shadow" style="min-height: 320px;">
+        <div class="card-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-1 col-12 mb-2 d-grid">
+                  <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
+                   <% if post.user.image.attached? %>
+                      <%= image_tag post.user.image, class: "user-image border border-3 rounded-circle" %>
+                    <% else %> 
+                    <%= image_tag 'human.avif', class: "user-image border border-3 rounded-circle" %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="col-md-9 col-12 mt-3 mb-3 d-grid">
+                  <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
+                    <h5 class="text-dark mx-md-5 mx-2"><%= post.user.name %></h5>
+                    <small class="text-muted mx-md-5 mx-2"><%= truncate(post.user.profile_title, length: 25) %></small><br>
+                    <small class="text-muted mx-md-5 mx-2">Posted <%= time_ago_in_words(post.created_at) %> ago</small>
+                  <% end %>
+                </div>
+                <div class="col-md-2 col-12 mt-3 mb-3 d-grid justify-content-end">
+                <div class="dropdown">
+                  <button class="btn btn-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-ellipsis fa-xl mt-3"></i>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <% if current_user == post.user %> 
+                      <li><%= link_to 'Delete', post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?" }, class: "dropdown-item" %></li>
+                      <li><%= link_to 'Edit', edit_post_path(post), data: { controller: 'bs-modal-form' }, class: "dropdown-item" %></li>
+                    <% end %>
+                    <li><%= link_to 'View', post_path(post), class: 'dropdown-item' %></li>
+                  </ul>
+                </div>
+                </div>
+              </div>
+            </div>
+          <div class="user-info mt-2" data-controller="user-name">
+            <h5 data-user-name-target='name' data-action="click->user-name#getUserName"><%= post.title %> </h5>
+            <div data-controller="show-more">
+              <div data-show-more-target="description">
+                <p><%= simple_format(post.description) %></p>
+              </div>
+              <div class="row">
+                 <div class="col-lg-12 d-flex justify-content-end">
+                    <button 
+                      data-action="click->show-more#toggleVisibility" 
+                      data-show-more-target="toggleButton" 
+                      class="btn btn-outline-light text-primary btn-sm mb-3 mt-3">
+                      Show More
+                    </button>
+                 </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <% if post.image.attached? %>
+              <%= image_tag post.image, class: 'image-container mb-3' %>
+            <% end %>
+          </div>
+          <div class="row">
+              <div class="col-lg-1">
+                <% if user_signed_in? %>
+                  <% like = post.likes.find { |like| like.user_id == current_user.id } %>
+                  <% if like.nil? %>
+                    <%= button_to likes_path, params: { like: { post_id: post.id } }, method: :post, class: "btn btn-light position-absolute mt-2" do %>
+                      <i class="fa-regular fa-thumbs-up fa-xl" title="Like"></i>
+                    <% end -%>
+                  <% else %>
+                    <%= button_to like_path(like), params: { like: { post_id: post.id } }, method: :delete, class: "btn btn-light position-absolute mt-2" do %>
+                      <i class="fa-regular fa-thumbs-down fa-xl" title="Dislike"></i>
+                    <% end -%>
+                  <% end -%>
+                <% end -%>
+                <span class="position-relative top-0 translate-middle badge rounded-pill bg-danger"><%= @post_likes_count[post.id] || 0 %></span>
+              </div>
+            <div class="col-lg-1">
+              <%= link_to new_share_path(post_id: post.id), class: "btn btn-light mt-2", data: { controller: "bs-modal-form" } do %>
+              <i class="fa-solid fa-paper-plane fa-lg"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!-- using style for post section -->
+<style>
+  .image-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .user-image{
+    width: 70px;
+    overflow: hidden;
+    margin-top: 15px;
+  }
+</style>

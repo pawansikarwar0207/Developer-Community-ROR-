@@ -13,6 +13,7 @@ class SharesController < ApplicationController
     @share.sender = current_user
 
     if @share.save
+      ShareNotificationMailer.create_notification(@share, current_user.email, current_user.email).deliver_now
       flash[:success] = "Post shared successfully!"
       redirect_to root_path
     else

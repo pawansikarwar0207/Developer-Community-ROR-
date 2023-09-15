@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   }
 
   root 'home#index'
+  get '/home', to: 'home#index', as: :home
+  get '/home/sort', to: 'home#sort', as: :home_sort
+  
   get 'member/:id', to: 'members#show', as: :member  
   get 'member/:id/edit', to: 'members#edit', as: :edit_member
   patch 'member/:id', to: 'members#update', as: :update_member
