@@ -2,7 +2,15 @@ class JobsController < ApplicationController
   before_action :set_jobs, only: %i[edit show update destroy]
 
   def index
-    @jobs = Job.includes(:job_category).order(created_at: :desc)
+    if params[:job_category].present?
+      @jobs = Job.joins(:job_category)
+                 .where('job_categories.name = ?', params[:job_category])
+                 .order(created_at: :desc)
+                 .page(params[:page])
+                 .per(4)
+    else
+      @jobs = Job.includes(:job_category).order(created_at: :desc).page(params[:page]).per(4)
+    end
   end
 
   def new

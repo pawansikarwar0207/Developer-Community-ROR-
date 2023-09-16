@@ -34,17 +34,7 @@
           </div>
         </div>
       </div>
-      <!-- for sorting the content -->
-      <div data-controller="post-sort" class="col-lg-10 mx-auto mb-2 d-flex justify-content-end">
-        <label for="sort_by">Sort by : </label>
-        <select name="sort_by" id="sort_by" data-action="post-sort#update" data-post-sort-target="select">
-          <option value="time_posted" <%= 'selected' if params[:sort_by] == 'time_posted' %>>Newest</option>
-          <option value="time_posted_reverse" <%= 'selected' if params[:sort_by] == 'time_posted_reverse' %>>Oldest</option>
-          <option value="alphabetical" <%= 'selected' if params[:sort_by] == 'alphabetical' %>>A-Z</option>
-          <option value="alphabetical_reverse" <%= 'selected' if params[:sort_by] == 'alphabetical_reverse' %>>Z-A</option>
-        </select>
-      </div>
-       <!-- for sorting the content -->
+      <%= render 'home/post_sort' %>        
       <%= render 'home/posts' %>
     </div>
   </div>
