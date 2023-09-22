@@ -2,12 +2,14 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-  :recoverable, :rememberable, :validatable, :trackable
+         :recoverable, :rememberable, :validatable, :trackable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
 
-  validates :first_name, :last_name, :username, :profile_title, presence: true
+  #validates :first_name, :last_name, :username, :profile_title, presence: true
+  
   validates :email, presence: true, uniqueness: true
 
-  validates :otp_token, presence: true
+  #validates :otp_token, presence: true
 
   has_many :work_experiences, dependent: :destroy
   
@@ -53,6 +55,19 @@ class User < ApplicationRecord
 
   def valid_otp?(otp)
     self.otp == otp
+  end
+
+  # omniauth login using google
+  def self.from_omniauth(access_token)
+    data = access_token.info
+    user = User.where(email: data['email']).first
+    unless user
+      user = User.create(
+       email: data['email'],
+       password: Devise.friendly_token[0,20]
+       )
+    end
+    user
   end
 
   

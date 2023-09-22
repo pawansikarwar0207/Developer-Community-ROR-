@@ -2,8 +2,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
-    passwords: 'users/passwords'
+    passwords: 'users/passwords',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
+  devise_scope :user do
+    get '/otp_verification', to: 'users/sessions#otp_verification', as: :otp_verification
+    post '/verify_otp', to: 'users/sessions#verify_otp', as: :verify_otp
+  end
 
   root 'home#index'
   get '/home', to: 'home#index', as: :home

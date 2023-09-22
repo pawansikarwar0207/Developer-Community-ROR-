@@ -7,30 +7,44 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
-        <li>
-          <%= link_to 'My Profile', member_path(current_user), class:'nav-link active'%>  
-        </li>
-        <li>
-          <%= link_to 'My Post', user_posts_path(current_user), class:'nav-link active'%>  
-        </li>
-        <li>
-          <%= link_to 'My Network', connections_path, class:'nav-link active'%>  
-        </li>
-        <li>
-          <%= link_to 'Job', jobs_path, class:'nav-link active'%>  
-        </li>
-        <li>
-          <%= link_to "Shared Posts", shares_path, class:'nav-link active' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are You Sure to Sign Out ?' }, class:'nav-link active'%>
-          <% else %>
-          <%= link_to 'Sign In', new_user_session_path, class:'nav-link active' %>
-          <% end %>  
-        </li>
-        <li>
-          <%= link_to "Sign Up", new_user_registration_path,class:"nav-link active" %>
-        </li>
+          <li>
+            <%= link_to 'My Profile', member_path(current_user), class:'nav-link active'%>  
+          </li>
+          <li>
+            <%= link_to 'My Post', user_posts_path(current_user), class:'nav-link active'%>  
+          </li>
+          <li>
+            <%= link_to 'My Network', connections_path, class:'nav-link active'%>  
+          </li>
+          <li>
+            <%= link_to 'Job', jobs_path, class:'nav-link active'%>  
+          </li>
+          <li>
+            <%= link_to "Shared Posts", shares_path, class:'nav-link active' %>
+          </li>
+        <% end %>  
+
+        <div class="dropdown mx-2">
+          <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            Sign in Options
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li>
+               <%if user_signed_in?%>
+               <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are You Sure to Sign Out ?' }, class:'dropdown-item'%>
+               <% else %>
+               <%= link_to 'Sign In', new_user_session_path, class:'dropdown-item' %>
+               <% end %>
+             </li>
+             <li>
+              <%= button_to  'Sign with Google', user_google_oauth2_omniauth_authorize_path, method: :post, :data => {turbo: "false"}, class: 'dropdown-item' %>
+            </li>
+            <li>
+              <%= link_to "Sign Up", new_user_registration_path,class:"dropdown-item" %>
+            </li>
+          </ul>
+        </div>
       </ul>
       <div class="d-flex col-lg-4">
         <%= search_form_for(@query, url: posts_path, method: :get, class:'d-flex') do |f| %>

@@ -80,3 +80,7 @@ gem 'ransack'
 gem 'cssbundling-rails'
 gem 'country_select', '~> 8.0'
 gem "noticed", "~> 1.6"
+
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
