@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :username, :profile_title, presence: true
   validates :email, presence: true, uniqueness: true
 
+  validates :otp_token, presence: true
+
   has_many :work_experiences, dependent: :destroy
   
   has_many :connections, dependent: :destroy
@@ -34,6 +36,23 @@ class User < ApplicationRecord
   # for sharing the post
   def shared_posts
     received_shares.map(&:post)
+  end
+
+  # for generate the random otp for 6 digit
+  attr_accessor :otp_token
+
+  def generate_otp
+    self.otp = SecureRandom.random_number(100000..999999).to_s.rjust(6, '0')
+    generate_otp_token # Generate and save the OTP token
+    save
+  end
+
+  def generate_otp_token
+    self.otp_token = SecureRandom.hex(16)
+  end
+
+  def valid_otp?(otp)
+    self.otp == otp
   end
 
   

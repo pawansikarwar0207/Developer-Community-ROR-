@@ -28,8 +28,11 @@
           <%= link_to 'Sign In', new_user_session_path, class:'nav-link active' %>
           <% end %>  
         </li>
+        <li>
+          <%= link_to "Sign Up", new_user_registration_path,class:"nav-link active" %>
+        </li>
       </ul>
-      <div class="d-flex">
+      <div class="d-flex col-lg-4">
         <%= search_form_for(@query, url: posts_path, method: :get, class:'d-flex') do |f| %>
           <%= f.search_field :title_or_description_cont_any,
           placeholder: "Search...",

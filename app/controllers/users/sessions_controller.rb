@@ -1,27 +1,68 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_sign_in_params, only: [:create]
 
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    @user = User.new
+  end
 
-  # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    self.resource = User.find_by(email: params[:user][:email])
+
+    if resource
+      # Generate and save the OTP
+      resource.generate_otp
+      resource.generate_otp_token # Generate a unique OTP token
+      resource.save
+
+      # Send the OTP email with verification link
+      otp_verification_url = otp_verification_url(token: resource.otp_token)
+      UserMailer.send_otp_email(resource, otp_verification_url).deliver_now
+
+      set_flash_message!(:notice, :signed_in)
+      session[:email] = resource.email
+      redirect_to otp_verification_path, notice: "OTP sent to your email."
+    else
+      # Handle the case where the email address was not found
+      flash.now[:alert] = "Email address not found."
+      render :new
+    end
+  end
+
+  def otp_verification
+    @user = User.find_by(email: session[:email])
+  end
+
+  def verify_otp
+    email = params[:user][:email]
+    @user = User.find_by(email: params[:user][:email])
+
+    if @user && @user.valid_otp?(params[:user][:otp]) && @user.valid_password?(params[:user][:password])
+      sign_in(resource_name, @user)
+      set_flash_message!(:notice, :signed_in)
+      
+      # Set the OTP verification flag to true
+      @otp_verified = true
+
+      redirect_to root_path, notice: "Logged in successfully"
+    else
+      flash.now[:alert] = "Incorrect OTP. Please try again."
+      render :otp_verification, locals: { email: @email, user: @user }
+    end
+  end
+
 
   # DELETE /resource/sign_out
   # def destroy
-  #   super
+  #   session[:user_id] = nil
+  #   redirect_to root_path, flash: { success: 'Logged Out' }
   # end
 
-  # protected
+  #protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :otp])
+  end
 end

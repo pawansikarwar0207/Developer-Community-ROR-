@@ -1,0 +1,50 @@
+<section class="vh-100 col-lg-10 mx-auto">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+     <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">OTP Verification</p>
+     <div class="col-md-9 col-lg-6 col-xl-5">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+      class="img-fluid" alt="Sample image">
+    </div>
+    <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <% if flash[:alert].present? %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <%= form_for(@user, url: verify_otp_path, method: :post) do |f| %>
+        <%= f.hidden_field :email, value: @user.email, name: "user[email]" %>
+        <div class="form-outline mb-2">
+          <%= f.label :otp, class: "form-label" %>
+          <%= f.text_field :otp, class: "form-control", placeholder: "Enter OTP", value: '', pattern: "[0-9]{6}" %>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-2" id="password-field" style="display:none;">
+          <%= f.label :password, class:"form-label" %><br />
+          <%= f.password_field :password, autocomplete: "current-password", class:"form-control",
+          placeholder:"Enter password" %>
+        </div>
+
+        <div class="text-center text-lg-start mt-2 pt-2">
+          <%= f.submit "Submit", class: "btn btn-primary", style: "padding-left: 2.5rem; padding-right: 2.5rem;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</section>
+
+<script>
+  const otpInput = document.querySelector('#user_otp');
+  const passwordField = document.querySelector('#password-field');
+
+  otpInput.addEventListener('input', function() {
+    if (this.value.length == 6) {
+      passwordField.style.display = 'block';
+    } else {
+      passwordField.style.display = 'none';
+    }
+  });
+</script>
+
