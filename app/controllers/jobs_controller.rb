@@ -8,6 +8,9 @@ class JobsController < ApplicationController
                  .order(created_at: :desc)
                  .page(params[:page])
                  .per(4)
+      if @jobs.empty?
+        flash.now[:alert] = "No jobs available in the #{params[:job_category]} category."
+      end
     else
       @jobs = Job.includes(:job_category).order(created_at: :desc).page(params[:page]).per(4)
     end

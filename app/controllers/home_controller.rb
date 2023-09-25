@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.includes(:likes, user: [image_attachment: :blob], image_attachment: :blob).order(created_at: :desc)
+    @posts = Post.includes(:likes, :comments, user: [image_attachment: :blob], image_attachment: :blob).order(created_at: :desc)
     @post_likes_count = Post.joins(:likes).group('posts.id').count
+    @post_comments_count = Post.joins(:comments).group('posts.id').count
   end
 
   def sort

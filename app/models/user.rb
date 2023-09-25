@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-  #validates :first_name, :last_name, :username, :profile_title, presence: true
+  validates :first_name, :last_name, presence: true
+
+  # validates :username, :profile_title, presence: true
   
   validates :email, presence: true, uniqueness: true
 
@@ -63,8 +65,10 @@ class User < ApplicationRecord
     user = User.where(email: data['email']).first
     unless user
       user = User.create(
-       email: data['email'],
-       password: Devise.friendly_token[0,20]
+        email: data['email'],
+        password: Devise.friendly_token[0,20],
+        first_name: data['first_name'],
+        last_name: data['last_name'],
        )
     end
     user

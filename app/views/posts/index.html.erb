@@ -1,32 +1,38 @@
 <div class="col-lg-10 mx-auto mt-3">
   <div class="row">
-    <% @posts.each do |post| %>
-      <div class="col-lg-4 mt-3 mb-3">
-        <div class="card text-center shadow rounded-0" style="min-height: 350px;">
-          <div class="card-body">
-            <% if post.image.attached? %>
-              <%= image_tag post.image, class: 'post_images mb-3' %>
-            <% end %>
-            <div class="user-info" data-controller="user-name" >
-              <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= post.title %> </h5>
-              <div data-controller="show-more">
-                <div data-show-more-target="description">
-                  <p><%= simple_format(post.description) %></p>
-                </div>
-                <div class="row">
-                  <div class="col-lg-12 d-flex justify-content-end">
-                    <button 
-                      data-action="click->show-more#toggleVisibility" 
-                      data-show-more-target="toggleButton" 
-                      class="btn btn-outline-light text-primary btn-sm mb-3 mt-3">
-                      Show More
-                    </button>
+    <% if @posts.present? %>
+      <% @posts.each do |post| %>
+        <div class="col-lg-4 mt-3 mb-3">
+          <div class="card text-center shadow rounded-0" style="min-height: 350px;">
+            <div class="card-body">
+              <% if post.image.attached? %>
+                <%= image_tag post.image, class: 'post_images mb-3' %>
+              <% end %>
+              <div class="user-info" data-controller="user-name" >
+                <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= post.title %> </h5>
+                <div data-controller="show-more">
+                  <div data-show-more-target="description">
+                    <p><%= simple_format(post.description) %></p>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-12 d-flex justify-content-end">
+                      <button 
+                        data-action="click->show-more#toggleVisibility" 
+                        data-show-more-target="toggleButton" 
+                        class="btn btn-outline-light text-primary btn-sm mb-3 mt-3">
+                        Show More
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      <% end %>
+    <% else %>
+      <div class="col-lg-12 mt-3">
+        <p class="h3">No posts available.</p>
       </div>
     <% end %>
   </div>

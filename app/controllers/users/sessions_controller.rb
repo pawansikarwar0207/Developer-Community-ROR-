@@ -47,7 +47,7 @@ class Users::SessionsController < Devise::SessionsController
 
       redirect_to root_path, notice: "Logged in successfully"
     else
-      flash[:otp_alert] = "Invalid OTP. Please try again."
+      flash[:alert] = "Invalid OTP. Please try again."
       render :otp_verification, locals: { email: email, user: @user }
     end
   end

@@ -46,14 +46,16 @@
           </ul>
         </div>
       </ul>
-      <div class="d-flex col-lg-4">
-        <%= search_form_for(@query, url: posts_path, method: :get, class:'d-flex') do |f| %>
-          <%= f.search_field :title_or_description_cont_any,
-          placeholder: "Search...",
-          class: "form-control me-2" %>
-          <%= f.submit "Search!", class:"btn btn-outline-success" %>
-        <% end %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="d-flex col-lg-4">
+          <%= search_form_for(@query, url: posts_path, method: :get, class:'d-flex') do |f| %>
+            <%= f.search_field :title_or_description_cont_any,
+            placeholder: "Search...",
+            class: "form-control me-2" %>
+            <%= f.submit "Search!", class:"btn btn-outline-success" %>
+          <% end %>
+        </div>
+      <% end %>
     </div>    
   </div>
 </nav>
