@@ -1,0 +1,56 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/hp/.nvm/v0.8.28/bin/node',
+1 verbose cli   '/home/hp/.nvm/v0.8.28/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'localtunnel' ]
+2 info using npm@1.2.30
+3 info using node@v0.8.28
+4 verbose read json /home/hp/.nvm/v0.8.28/lib/package.json
+5 verbose read json /home/hp/.nvm/v0.8.28/lib/package.json
+6 verbose cache add [ 'localtunnel', null ]
+7 verbose cache add name=undefined spec="localtunnel" args=["localtunnel",null]
+8 verbose parsed url { pathname: 'localtunnel',
+8 verbose parsed url   path: 'localtunnel',
+8 verbose parsed url   href: 'localtunnel' }
+9 silly lockFile a0661bc8-localtunnel localtunnel
+10 verbose lock localtunnel /home/hp/.npm/a0661bc8-localtunnel.lock
+11 silly lockFile a0661bc8-localtunnel localtunnel
+12 silly lockFile a0661bc8-localtunnel localtunnel
+13 verbose addNamed [ 'localtunnel', '' ]
+14 verbose addNamed [ null, '' ]
+15 silly lockFile c752cf78-localtunnel localtunnel@
+16 verbose lock localtunnel@ /home/hp/.npm/c752cf78-localtunnel.lock
+17 silly addNameRange { name: 'localtunnel', range: '', hasData: false }
+18 verbose url raw localtunnel
+19 verbose url resolving [ 'https://registry.npmjs.org/', './localtunnel' ]
+20 verbose url resolved https://registry.npmjs.org/localtunnel
+21 info trying registry request attempt 1 at 17:52:51
+22 http GET https://registry.npmjs.org/localtunnel
+23 info retry will retry, error on last attempt: Error: 139885856126784:error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version:../deps/openssl/openssl/ssl/s23_clnt.c:658:
+24 info trying registry request attempt 2 at 17:53:01
+25 http GET https://registry.npmjs.org/localtunnel
+26 info retry will retry, error on last attempt: Error: 139885856126784:error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version:../deps/openssl/openssl/ssl/s23_clnt.c:658:
+27 info trying registry request attempt 3 at 17:54:02
+28 http GET https://registry.npmjs.org/localtunnel
+29 silly lockFile c752cf78-localtunnel localtunnel@
+30 silly lockFile c752cf78-localtunnel localtunnel@
+31 error Error: 139885856126784:error:1407742E:SSL routines:SSL23_GET_SERVER_HELLO:tlsv1 alert protocol version:../deps/openssl/openssl/ssl/s23_clnt.c:658:
+31 error
+31 error     at CleartextStream._puller (tls.js:670:24)
+31 error     at CleartextStream.CryptoStream._pull (tls.js:604:19)
+31 error     at SecurePair.cycle (tls.js:894:20)
+31 error     at EncryptedStream.CryptoStream.write (tls.js:285:13)
+31 error     at Socket.ondata (stream.js:38:26)
+31 error     at Socket.EventEmitter.emit (events.js:96:17)
+31 error     at TCP.onread (net.js:397:14)
+32 error If you need help, you may report this log at:
+32 error     <http://github.com/isaacs/npm/issues>
+32 error or email it to:
+32 error     <npm-@googlegroups.com>
+33 error System Linux 6.2.0-33-generic
+34 error command "/home/hp/.nvm/v0.8.28/bin/node" "/home/hp/.nvm/v0.8.28/bin/npm" "install" "-g" "localtunnel"
+35 error cwd /home/hp/Desktop/Pawan/Pawan/Developer-Community-ROR-
+36 error node -v v0.8.28
+37 error npm -v 1.2.30
+38 verbose exit [ 1, true ]

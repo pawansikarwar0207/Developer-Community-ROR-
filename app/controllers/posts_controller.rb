@@ -26,6 +26,20 @@ class PostsController < ApplicationController
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     # # for visiting the post by current user
     PostVisit.create(user: current_user, post: @post)
+
+    prepare_meta_tags(
+      title: @post.title,
+      description: @post.description,
+      twitter: {
+        card: @post.title
+      },
+      og: {
+        url: post_path(@post),
+        title: @post.title,
+        image: (ENV['APP_URL'] + rails_blob_path(@post.image)),
+        description: @post.description,
+      }
+    )
   end
 
   def edit
