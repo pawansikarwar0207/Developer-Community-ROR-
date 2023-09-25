@@ -7,12 +7,7 @@
       class="img-fluid" alt="Sample image">
     </div>
     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-      <!-- <%# if flash[:otp_alert] %>
-        <div class="alert alert-danger">
-          <%#= flash[:otp_alert] %>
-        </div>
-      <%# end %> -->
-      <%= form_for(@user, url: verify_otp_path, method: :post) do |f| %>
+      <%= form_for(@user, url: verify_otp_path, method: :post, data: { controller: 'otp-verification' }) do |f| %>
         <%= f.hidden_field :email, value: @user.email, name: "user[email]" %>
         <div class="form-outline mb-2">
           <%= f.label :otp, class: "form-label" %>
