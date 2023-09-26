@@ -19,11 +19,12 @@ export default class extends Controller {
 
   onOtpChange(event) {
     const otpValue = event.target.value;
-    if (otpValue.length === 6) {
+    if (/^\d{6}$/.test(otpValue)) {
       this.showPasswordField();
       // Trigger a Turbo Stream to replace the password field div
       const frame = document.querySelector("[data-turbo-frame='password-frame']");
       TurboStreams.visit(frame.getAttribute("id"));
+      // this.hideErrorMessage(); // Hide the error message if OTP is valid
     } else {
       this.hidePasswordField();
     }

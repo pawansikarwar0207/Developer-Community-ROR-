@@ -26,7 +26,7 @@ class Users::SessionsController < Devise::SessionsController
     else
       # Handle the case where the email address was not found
       flash.now[:alert] = "Email address not found."
-      render :new
+      redirect_to new_user_registration_path, alert: "You must complete your profile before logging in."
     end
   end
 
@@ -47,7 +47,8 @@ class Users::SessionsController < Devise::SessionsController
 
       redirect_to root_path, notice: "Logged in successfully"
     else
-      flash[:alert] = "Invalid OTP. Please try again."
+      @otp_verified = false
+      flash[:alert] = "Invalid OTP. Please enter a valid OTP."
       render :otp_verification, locals: { email: email, user: @user }
     end
   end
