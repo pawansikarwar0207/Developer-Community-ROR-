@@ -83,25 +83,32 @@
             <% end %>
           </div>
           <div class="row">
-              <div class="col-lg-1">
-                <% if user_signed_in? %>
-                  <% like = post.likes.find { |like| like.user_id == current_user.id } %>
-                  <% if like.nil? %>
-                    <%= button_to likes_path, params: { like: { post_id: post.id } }, method: :post, class: "btn btn-light position-absolute mt-2" do %>
-                      <i class="fa-regular fa-thumbs-up fa-xl" title="Like"></i>
-                    <% end -%>
-                  <% else %>
-                    <%= button_to like_path(like), params: { like: { post_id: post.id } }, method: :delete, class: "btn btn-light position-absolute mt-2" do %>
-                      <i class="fa-regular fa-thumbs-down fa-xl" title="Dislike"></i>
-                    <% end -%>
+            <div class="col-lg-1">
+              <% if user_signed_in? %>
+                <% like = post.likes.find { |like| like.user_id == current_user.id } %>
+                <% if like.nil? %>
+                  <%= button_to likes_path, params: { like: { post_id: post.id } }, method: :post, class: "btn btn-light position-absolute mt-2" do %>
+                    <i class="fa-solid fa-thumbs-up fa-xl" title="Like"></i>
+                  <% end -%>
+                <% else %>
+                  <%= button_to like_path(like), params: { like: { post_id: post.id } }, method: :delete, class: "btn btn-light position-absolute mt-2" do %>
+                    <i class="fa-solid fa-thumbs-down fa-xl" title="Dislike"></i>
                   <% end -%>
                 <% end -%>
-                <span class="position-relative top-0 translate-middle badge rounded-pill bg-danger"><%= @post_likes_count[post.id] || 0 %></span>
-              </div>
+              <% end -%>
+              <% if @post_likes_count[post.id].to_i > 0 %>
+                <span class="position-relative top-0 translate-middle badge rounded-pill bg-danger"><%= @post_likes_count[post.id] %></span>
+              <% end %>
+            </div>
             <div class="col-lg-1">
+              <%= link_to new_share_path(post_id: post.id), class: "btn btn-light mt-2", data: { controller: "bs-modal-form" } do %>
+                  <i class="fa-solid fa-paper-plane" title="Share"></i>
+              <% end %>
+            </div>
+            <div class="col-lg-2">
               <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle mt-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Share button
+                <button class="btn btn-light mt-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-share-from-square" title="Share on Social Media"></i>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                   <li>
@@ -109,11 +116,6 @@
                   </li>
                   <li>
                     <a class="dropdown-item" href="https://twitter.com/intent/tweet?url=<%= ENV['APP_URL']%><%= post_path(post)%>&text=<%= post.title %>" target="_blank">Share on Twitter</a>
-                  </li>
-                  <li>
-                    <%= link_to new_share_path(post_id: post.id), class: "dropdown-item", data: { controller: "bs-modal-form" } do %>
-                      Share to user
-                    <% end %>
                   </li>
                 </ul>
               </div>

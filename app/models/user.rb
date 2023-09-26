@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
-  # validates :username, :profile_title, presence: true
+  validates :username, :profile_title, presence: true
   
   validates :email, presence: true, uniqueness: true
 
@@ -69,6 +69,7 @@ class User < ApplicationRecord
         password: Devise.friendly_token[0,20],
         first_name: data['first_name'],
         last_name: data['last_name'],
+        username: data['name'],
        )
     end
     user

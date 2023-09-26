@@ -1,11 +1,13 @@
 <div class="col-lg-10 mx-auto mt-3">
- <div class="col-lg-3">
-  <%= form_tag(jobs_path, method: 'get') do %>
-    <%= label_tag :job_category, 'Job Category:' %>
-    <%= select_tag :job_category, options_for_select(JobCategory.pluck(:name), params[:job_category]), prompt: 'Select Job Category', class: 'form-select mt-2 mb-2' %>
-    <%= submit_tag 'Submit', class: 'btn btn-primary mb-2' %>
+  <% if @jobs.present? %>
+   <div class="col-lg-3">
+    <%= form_tag(jobs_path, method: 'get') do %>
+      <%= label_tag :job_category, 'Job Category:' %>
+      <%= select_tag :job_category, options_for_select(JobCategory.pluck(:name), params[:job_category]), prompt: 'Select Job Category', class: 'form-select mt-2 mb-2' %>
+      <%= submit_tag 'Submit', class: 'btn btn-primary mb-2' %>
+    <% end %>
+   </div>
   <% end %>
-</div>
 
   <% @jobs.each do |job| %>
     <div class="card shadow mb-2">

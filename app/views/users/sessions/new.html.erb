@@ -7,15 +7,23 @@
       class="img-fluid" alt="Sample image">
     </div>
     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-outline mb-2">
-          <%= f.label :email, class: "form-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", name:"user[email]", class: "form-control", placeholder: "Enter a valid email address" %>
+      <div class="text-center text-lg-start mt-2 pt-2">
+        <div class="card mt-2 shadow">
+          <div class="card-body">
+            <%= link_to 'Sign in with OTP', otp_verification_path, class: 'btn btn-primary mt-2' %>
+          </div>
         </div>
-        <div class="text-center text-lg-start mt-2 pt-2">
-          <%= f.submit "Send OTP", class: "btn btn-primary", style: "padding-left: 2.5rem; padding-right: 2.5rem;" %>
+        <div class="card mt-2 shadow">
+          <div class="card-body">
+            <%= button_to 'Sign with Google', user_google_oauth2_omniauth_authorize_path, method: :post, data: { turbo: 'false' }, class: 'btn btn-primary mt-2' %>
+          </div>
         </div>
-      <% end %>
+        <div class="card mt-2 shadow">
+          <div class="card-body">
+            <%= link_to "Sign In with User ID", session_id_path, class: "btn btn-primary mt-2", style: "padding-left: 2.5rem; padding-right: 2.5rem;" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

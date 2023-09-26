@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get '/otp_verification', to: 'users/sessions#otp_verification', as: :otp_verification
+    get '/session_id', to: 'users/sessions#session_id', as: :session_id
     post '/verify_otp', to: 'users/sessions#verify_otp', as: :verify_otp
   end
+
+
 
   root 'home#index'
   get '/home', to: 'home#index', as: :home
