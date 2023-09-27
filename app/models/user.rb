@@ -11,8 +11,6 @@ class User < ApplicationRecord
   
   validates :email, presence: true, uniqueness: true
 
-  #validates :otp_token, presence: true
-
   has_many :work_experiences, dependent: :destroy
   
   has_many :connections, dependent: :destroy

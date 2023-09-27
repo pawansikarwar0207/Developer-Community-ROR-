@@ -4,71 +4,42 @@ class Users::SessionsController < Devise::SessionsController
   before_action :configure_sign_in_params, only: [:create]
 
   def session_id
-    @user = User.new
+    @user = User.find(params[:id])
   end
 
-  # def create
-  #   self.resource = User.find_by(email: params[:user][:email])
+  def generate_otp
+    email = params[:email]
+    @user = User.find_by(email: email)
 
-  #   if resource
-  #     # Generate and save the OTP
-  #     resource.generate_otp
-  #     resource.generate_otp_token # Generate a unique OTP token
-  #     resource.save
+    if @user
+      @user.generate_otp # Generate and save the OTP
+      @user.generate_otp_token # Generate and save the OTP token
+      @user.save
 
-  #     # Send the OTP email with verification link
-  #     otp_verification_url = otp_verification_url(token: resource.otp_token)
-  #     UserMailer.send_otp_email(resource, otp_verification_url).deliver_now
+      otp_verification_url = session_id_url(id: @user.id)
+      UserMailer.send_otp_email(@user, @user.otp, otp_verification_url).deliver_now
 
-  #     set_flash_message!(:notice, :signed_in)
-  #     session[:email] = resource.email
-  #     redirect_to otp_verification_path, notice: "OTP sent to your email."
-  #   else
-  #     # Handle the case where the email address was not found
-  #     flash.now[:alert] = "Email address not found."
-  #     redirect_to new_user_registration_path, alert: "You must complete your profile before logging in."
-  #   end
-  # end
-
-  def otp_verification
-    @email = session[:email]
-    @user = User.find_by(email: @email)
+      flash.now[:notice] = "OTP sent to your email." # Update the flash message here
+    else
+      flash.now[:alert] = 'User not found, You must complete your profile before logging in'
+    end
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def verify_otp
-    email = session[:email]
-    @user = User.find_by(email: email)
+    user = User.find_by(id: params[:id])
 
-    if resource
-      # Generate and save the OTP
-      resource.generate_otp
-      resource.generate_otp_token # Generate a unique OTP token
-      resource.save
-
-      # Send the OTP email with verification link
-      otp_verification_url = otp_verification_url(token: resource.otp_token)
-      UserMailer.send_otp_email(resource, otp_verification_url).deliver_now
-
-      set_flash_message!(:notice, :signed_in)
-      session[:email] = resource.email
-      redirect_to otp_verification_path, notice: "OTP sent to your email."
+    if user && user.valid_otp?(params[:otp])
+      sign_in(user) # Assuming you're using Devise or another authentication gem
+      flash[:notice] = "Signed in successfully."
+      redirect_to root_path # You can redirect to the desired path after successful sign-in
     else
-      # Handle the case where the email address was not found
-      flash.now[:alert] = "Email address not found."
-      redirect_to new_user_registration_path, alert: "You must complete your profile before logging in."
-    end
-
-    if @user && @user.valid_otp?(params[:user][:otp]) 
-      sign_in(resource_name, @user)
-      set_flash_message!(:notice, :signed_in)
-      
-      # Set the OTP verification flag to true
-      @otp_verified = true
-
-      redirect_to root_path, notice: "Logged in successfully"
-    else
-      flash[:alert] = "Invalid OTP. Please enter a valid OTP."
-      render :otp_verification, locals: { email: email, user: @user }
+      flash[:alert] = "Invalid OTP. Please try again."
+      @user = user
+      redirect_to new_user_session_path
     end
   end
 
