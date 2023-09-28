@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
+  validates :image, presence: true
 
   has_many :comments, as: :commentable
 
