@@ -22,29 +22,29 @@
                   <% end %>
                 </div>
                 <div class="col-md-2 col-12 mt-3 mb-3 d-grid justify-content-end">
-                <div class="dropdown">
-                  <button class="btn btn-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa-solid fa-ellipsis fa-xl mt-3"></i>
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <% if current_user == post.user %> 
-                      <li><%= link_to 'Delete', post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?" }, class: "dropdown-item" %></li>
-                      <li><%= link_to 'Edit', edit_post_path(post), data: { controller: 'bs-modal-form' }, class: "dropdown-item" %></li>
-                    <% end %>
-                    <li><%= link_to 'View', post_path(post), class: 'dropdown-item' %></li>
-                    <li>
-                      <button
-                        data-controller="copy-url"
-                        data-copy-url-target="copyButton"
-                        data-copy-url-post-id="<%= post.id %>"
-                        data-action="click->copy-url#copyUrl"
-                        class="dropdown-item"
-                        >
-                          Copy URL
-                      </button>
-                    </li>
-                  </ul>
-                </div>
+                  <div class="dropdown">
+                    <button class="btn btn-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-ellipsis fa-xl mt-3"></i>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                      <% if current_user == post.user %> 
+                        <li><%= link_to 'Delete', post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?" }, class: "dropdown-item" %></li>
+                        <li><%= link_to 'Edit', edit_post_path(post), data: { controller: 'bs-modal-form' }, class: "dropdown-item" %></li>
+                      <% end %>
+                      <li><%= link_to 'View', post_path(post), class: 'dropdown-item' %></li>
+                      <li>
+                        <button
+                          data-controller="copy-url"
+                          data-copy-url-target="copyButton"
+                          data-copy-url-post-id="<%= post.id %>"
+                          data-action="click->copy-url#copyUrl"
+                          class="dropdown-item"
+                          >
+                            Copy URL
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
