@@ -5,7 +5,11 @@ class PostsController < ApplicationController
     if params[:q].present?
       @posts = @query.result(distinct: true)
     else
-      @posts = current_user.posts.includes(:user, :comments, :likes, :post_visits, image_attachment: :blob).order(created_at: :desc)
+     @original_posts = current_user.posts.includes(:user, :comments, :likes, :post_visits, image_attachment: :blob)
+      @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, :post_visits, image_attachment: :blob]).map(&:post)
+
+      @posts = (@original_posts + @reposted_posts).uniq.sort_by(&:created_at).reverse
+
       @post_likes_count = Post.joins(:likes).group('posts.id').count
     end
   end

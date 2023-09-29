@@ -16,4 +16,12 @@ class Job < ApplicationRecord
 
   QUALIFICATION = [ 'Graduation', 'Post Graduation', '12th Standard' ]
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "description", "employee_type", "id", "job_category_id", "location", "qualification", "salary", "status", "title", "updated_at", "user_id"]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    ["job_category", "user"]
+  end
+
 end

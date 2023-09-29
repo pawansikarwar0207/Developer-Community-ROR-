@@ -2,6 +2,9 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  # for repost the post
+  has_many :reposts, dependent: :destroy
+
   validates :title, presence: true
   validates :description, presence: true
   validates :image, presence: true

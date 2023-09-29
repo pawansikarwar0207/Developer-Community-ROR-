@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_22_072941) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_29_083713) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -146,6 +146,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_072941) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "reposts", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_reposts_on_post_id"
+    t.index ["user_id"], name: "index_reposts_on_user_id"
+  end
+
   create_table "rooms", force: :cascade do |t|
     t.string "name"
     t.boolean "is_private", default: false
@@ -233,6 +242,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_072941) do
   add_foreign_key "post_visits", "posts"
   add_foreign_key "post_visits", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "reposts", "posts"
+  add_foreign_key "reposts", "users"
   add_foreign_key "shares", "posts"
   add_foreign_key "skills", "users"
   add_foreign_key "work_experiences", "users"

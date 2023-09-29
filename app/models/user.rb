@@ -17,6 +17,9 @@ class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
 
+  # for repost the post
+  has_many :reposts, dependent: :destroy
+
   has_many :comments, as: :commentable
 
   # for posts likes
@@ -27,6 +30,15 @@ class User < ApplicationRecord
   has_many :skills
 
   has_many :jobs
+
+  # for repost the post
+  def has_reposted?(post)
+    reposts.exists?(post: post)
+  end
+
+  def repost_for(post)
+    reposts.find_by(post: post)
+  end
 
   # for sharing the post
   has_many :sent_shares, class_name: 'Share', foreign_key: 'sender_id'

@@ -126,6 +126,20 @@
                 </ul>
               </div>
             </div>
+            <div class="col-lg-1">
+              <% if user_signed_in? %>
+                <% if current_user.has_reposted?(post) %>
+                  <%= link_to [post, current_user.repost_for(post)], method: :delete, class: 'btn btn-light mt-2', title: "Remove Repost" do %>
+                    <i class="fa-solid fa-repeat"></i>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_reposts_path(post), method: :post, class: 'btn btn-light mt-2', title: "Repost" do %>
+                  <i class="fa-solid fa-repeat"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+
+            </div>
           </div>
         </div>
       </div>

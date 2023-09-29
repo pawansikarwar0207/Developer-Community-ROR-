@@ -3,13 +3,24 @@
     <% if @posts.present? %>
       <% @posts.each do |post| %>
         <div class="col-lg-4 mt-3 mb-3">
-          <div class="card text-center shadow rounded-0" style="min-height: 350px;">
+          <div class="card text-center shadow rounded-0" style="min-height: 480px;">
+            <!-- show the text that this post has been repost -->
+            <% if current_user.has_reposted?(post) %>
+              <span class="text-danger d-flex justify-content-end me-2 mt-1">Repost</span>
+            <% end %>
             <div class="card-body">
               <% if post.image.attached? %>
-                <%= image_tag post.image, class: 'post_images mb-3' %>
+                <% if post.image.content_type.include?("image") %>
+                  <%= image_tag post.image, class: 'post_images mb-3' %>
+                <% else %>
+                  <%= video_tag rails_blob_path(post.image), autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video", controls: true, type: 'video/mp4', style: "max-width: 100%; height: 320px;" do %>
+                    Your browser does not support the video tag.
+                  <% end %>
+                <% end %>
               <% end %>
               <div class="user-info" data-controller="user-name" >
                 <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= post.title %> </h5>
+                <p>Posted By : <%= post.user.name %></p>
                 <div data-controller="show-more">
                   <div data-show-more-target="description">
                     <p><%= simple_format(post.description) %></p>

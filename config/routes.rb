@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
+  get 'reposts/create'
+  get 'reposts/destroy'
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     passwords: 'users/passwords',
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
+
+  # for repost the post
+  resources :posts do
+    resources :reposts, only: [:create, :destroy]
+  end
 
   devise_scope :user do
     get '/generate_otp', to: 'users/sessions#generate_otp', as: :generate_otp
