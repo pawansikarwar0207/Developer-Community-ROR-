@@ -81,9 +81,11 @@
                 <% if post.image.content_type.include?("image") %>
                   <%= image_tag post.image, class: 'image-container mb-3' %>
                 <% else %>
-                  <%= video_tag rails_blob_path(post.image), autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video", controls: true, type: 'video/mp4', style: "max-width: 100%; height: 400px;" do %>
+                 <div class="bg-dark text-center">
+                   <%= video_tag rails_blob_path(post.image), autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video", controls: true, type: 'video/mp4', style: "max-width: 100%; height: 400px;" do %>
                     Your browser does not support the video tag.
                   <% end %>
+                 </div> 
                 <% end %>
               <% end %>
             <% end %>
@@ -111,7 +113,7 @@
                   <i class="fa-solid fa-paper-plane" title="Share"></i>
               <% end %>
             </div>
-            <div class="col-lg-2">
+            <div class="col-lg-1">
               <div class="dropdown">
                 <button class="btn btn-light mt-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa-solid fa-share-from-square" title="Share on Social Media"></i>

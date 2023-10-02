@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  get "/autocomplete", to: "posts#autocomplete", as: :autocomplete
+
   # for repost the post
   resources :posts do
     resources :reposts, only: [:create, :destroy]

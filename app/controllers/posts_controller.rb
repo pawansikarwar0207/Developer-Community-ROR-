@@ -6,30 +6,31 @@ class PostsController < ApplicationController
       @posts = @query.result(distinct: true)
     else
      @original_posts = current_user.posts.includes(:user, :comments, :likes, :post_visits, image_attachment: :blob)
-      @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, :post_visits, image_attachment: :blob]).map(&:post)
+     @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, :post_visits, image_attachment: :blob]).map(&:post)
 
-      @posts = (@original_posts + @reposted_posts).uniq.sort_by(&:created_at).reverse
+     @posts = (@original_posts + @reposted_posts).uniq.sort_by(&:created_at).reverse
 
-      @post_likes_count = Post.joins(:likes).group('posts.id').count
-    end
+     @post_likes_count = Post.joins(:likes).group('posts.id').count
+     @post_comments_count = Post.joins(:comments).group('posts.id').count
+   end
+ end
+
+ def new
+  @post = Post.new
+end
+
+def create
+  @post = Post.create(post_params)
+  if @post.save
+    redirect_to root_path
+  else
+    render :new
   end
+end
 
-  def new
-    @post = Post.new
-  end
-
-  def create
-    @post = Post.create(post_params)
-    if @post.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
-
-  def show
-    @user = @post.user
-    @comments = @post.comments.includes(:user).order(created_at: :desc)
+def show
+  @user = @post.user
+  @comments = @post.comments.includes(:user).order(created_at: :desc)
     # # for visiting the post by current user
     PostVisit.create(user: current_user, post: @post)
 
@@ -45,7 +46,7 @@ class PostsController < ApplicationController
         image: (ENV['APP_URL'] + rails_blob_path(@post.image)),
         description: @post.description,
       }
-    )
+      )
   end
 
   def edit
@@ -63,6 +64,13 @@ class PostsController < ApplicationController
     if @post.destroy
       redirect_to root_path
     end
+  end
+
+  def autocomplete
+    query = params[:q]
+    # Implement your autocomplete logic here and return a JSON response
+    suggestions = Post.where("title LIKE ?", "%#{query}%").pluck(:title)
+    render json: suggestions
   end
 
   private

@@ -13,9 +13,11 @@
                 <% if post.image.content_type.include?("image") %>
                   <%= image_tag post.image, class: 'post_images mb-3' %>
                 <% else %>
-                  <%= video_tag rails_blob_path(post.image), autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video", controls: true, type: 'video/mp4', style: "max-width: 100%; height: 320px;" do %>
-                    Your browser does not support the video tag.
-                  <% end %>
+                 <div class="bg-dark text-center">
+                    <%= video_tag rails_blob_path(post.image), autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video", controls: true, type: 'video/mp4', style: "max-width: 100%; height: 320px;" do %>
+                      Your browser does not support the video tag.
+                    <% end %>
+                 </div>
                 <% end %>
               <% end %>
               <div class="user-info" data-controller="user-name" >

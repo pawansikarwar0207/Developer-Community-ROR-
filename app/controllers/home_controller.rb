@@ -23,6 +23,7 @@ class HomeController < ApplicationController
 
     @posts = Post.includes(common_includes).order(sort_order[:order_column] => sort_order[:order_direction])
     @post_likes_count = Post.joins(:likes).group('posts.id').count
+    @post_comments_count = Post.joins(:comments).group('posts.id').count
 
     respond_to do |format|
       format.html { render 'index' } # Render the index view with sorted posts
