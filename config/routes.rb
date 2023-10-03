@@ -62,6 +62,13 @@ Rails.application.routes.draw do
     resources :my_jobs
   end
 
+  resources :members, controllers: 'members' do
+    member do
+      post :follow
+      delete :unfollow
+    end
+  end
+
   resources :likes, only: [:create, :destroy]
 
 end

@@ -14,18 +14,27 @@
                     <% end %>
                   <% end %>
                 </div>
-                <div class="col-md-9 col-12 mt-3 mb-3 d-grid">
+                <div class="col-md-9 col-12 mt-2 mb-3 d-grid">
                   <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
                     <h5 class="text-dark mx-md-5 mx-2"><%= post.user.name %></h5>
                     <small class="text-muted mx-md-5 mx-2"><%= truncate(post.user.profile_title, length: 25) %></small><br>
                     <small class="text-muted mx-md-5 mx-2">Posted <%= time_ago_in_words(post.created_at) %> ago</small>
                   <% end %>
                 </div>
-                <div class="col-md-2 col-12 mt-3 mb-3 d-grid justify-content-end">
+                <div class="col-md-1 col-12 mt-2 mb-3 d-grid justify-content-end">
+                  <% if current_user != post.user %>
+                    <% if current_user.following?(post.user) %>
+                      <%= link_to 'unfollow', unfollow_member_path(post.user), method: :delete, class: 'text-danger', style: "text-decoration:none;" %>
+                      <% else %>
+                      <%= link_to 'follow', follow_member_path(post.user), method: :post, class: "text-primary", style: 'text-decoration:none;' %>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div class="col-md-1 col-12 mt-1 mb-3 d-grid justify-content-end">
                   <div class="dropdown">
-                    <button class="btn btn-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a href="#" class="text-decoration-none text-reset" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                       <i class="fa-solid fa-ellipsis fa-xl mt-3"></i>
-                    </button>
+                    </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <% if current_user == post.user %> 
                         <li><%= link_to 'Delete', post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?" }, class: "dropdown-item" %></li>
@@ -67,7 +76,7 @@
                    </div>
                 </div>
                 <div class="col-lg-12 mb-1 d-flex justify-content-end">
-                  <%= link_to post_path(post) do %>
+                  <%= link_to post_path(post), style: "text-decoration:none;" do %>
                     <% if post.comments.count > 0 %>
                       <p><%= pluralize(post.comments.count, "Comment") %></p>
                     <% end %>
@@ -90,8 +99,8 @@
               <% end %>
             <% end %>
           </div>
-          <div class="row">
-            <div class="col-lg-1">
+          <div class="row mt-3">
+            <div class="col-lg-1 col-md-2 col-3">
               <% if user_signed_in? %>
                 <% like = post.likes.find { |like| like.user_id == current_user.id } %>
                 <% if like.nil? %>
@@ -108,12 +117,12 @@
                 <span class="position-relative top-0 translate-middle badge rounded-pill bg-danger"><%= @post_likes_count[post.id] %></span>
               <% end %>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-1 col-md-2 col-3">
               <%= link_to new_share_path(post_id: post.id), class: "btn btn-light mt-2", data: { controller: "bs-modal-form" } do %>
                   <i class="fa-solid fa-paper-plane" title="Share"></i>
               <% end %>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-1 col-md-2 col-3">
               <div class="dropdown">
                 <button class="btn btn-light mt-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa-solid fa-share-from-square" title="Share on Social Media"></i>
@@ -128,7 +137,7 @@
                 </ul>
               </div>
             </div>
-            <div class="col-lg-1">
+            <div class="col-lg-1 col-md-2 col-3">
               <% if user_signed_in? %>
                 <% if current_user.has_reposted?(post) %>
                   <%= link_to [post, current_user.repost_for(post)], method: :delete, class: 'btn btn-light mt-2', title: "Remove Repost" do %>
@@ -140,7 +149,6 @@
                   <% end %>
                 <% end %>
               <% end %>
-
             </div>
           </div>
         </div>
