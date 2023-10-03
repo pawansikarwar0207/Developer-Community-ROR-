@@ -2,8 +2,6 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  searchkick text_middle: [:title, :description]
-
   # for repost the post
   has_many :reposts, dependent: :destroy
 
