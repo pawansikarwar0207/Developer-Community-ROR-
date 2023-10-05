@@ -7,33 +7,57 @@ export default class extends Controller {
 
   connect() {
     console.log('autocomplete connected!!!')
-    this.hideResults();
+    // this.hideResults();
     this.inputTarget.addEventListener("input", this.search.bind(this));
+    this.resultsTarget.addEventListener("click", this.handleResultClick.bind(this));
   }
 
   search(){
     const query = this.inputTarget.value;
-    fetch(`/autocomplete?q=${query}`)
+    const url = `/posts/autocomplete?q=${query}`;
+    fetch(url, {
+      method: "GET", // Make sure it's a GET request for autocomplete.
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": document.querySelector("meta[name='csrf-token']").content,
+      },
+    })
     .then((response) => response.json())
     .then((data) => {
       this.displayResults(data);
     });
   }
 
-  displayResults(data){
-    console.log('displayResults called')
-    this.resultsTarget.innerHTML = "";
-    data.forEach((result) => {
-      const resultElement = document.createElement("div");
-      resultElement.textContent = result;
-      resultElement.addEventListener("click", () => {
-        this.selectResult(result);
-      });
-      this.resultsTarget.appendChild(resultElement);
-    });
+  handleResultClick(event) {
+    if (event.target.tagName === "LI") {
+      const selectedTitle = event.target.textContent;
+      this.inputTarget.value = selectedTitle;
+      this.resultsTarget.innerHTML = ""; // Clear the results
 
-    // Show the results container
-    this.showResults();
+      // Trigger a search for posts when an item is selected
+      this.searchPosts(selectedTitle);
+    }
+  }
+
+  searchPosts(title) {
+    // Make an AJAX request to search for posts with the selected title
+    fetch(`/posts/search?title=${title}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the search results as needed
+        console.log(data);
+      });
+  }
+
+  displayResults(results){
+    this.resultsTarget.innerHTML = "";
+
+    results.forEach((post) => {
+      this.resultsTarget.classList.add("show");
+      const listItem = document.createElement("li");
+      listItem.textContent = post.title;
+      this.resultsTarget.appendChild(listItem);
+    });
   }
 
   selectResult(result) {
@@ -44,13 +68,13 @@ export default class extends Controller {
     this.hideResults();
   }
 
-  showResults() {
-    this.resultsTarget.classList.add("show"); // Add a CSS class to show the dropdown
-  }
+  // showResults() {
+  //   this.resultsTarget.classList.add("show"); // Add a CSS class to show the dropdown
+  // }
 
-    hideResults() {
-    this.resultsTarget.classList.remove("show"); // Remove the CSS class to hide the dropdown
-  }
+  // hideResults() {
+  //   this.resultsTarget.classList.remove("show"); // Remove the CSS class to hide the dropdown
+  // }
 
 
 }

@@ -1,8 +1,14 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.includes(:likes, :comments, user: [image_attachment: :blob], image_attachment: :blob).order(created_at: :desc)
+    @posts = Post.includes(:likes, :comments, :reposts, user: [image_attachment: :blob], image_attachment: :blob).order(created_at: :desc)
     @post_likes_count = Post.joins(:likes).group('posts.id').count
-    @post_comments_count = Post.joins(:comments).group('posts.id').count
+    comment_counts = Comment.where(commentable_id: @posts.map(&:id), 
+                     commentable_type: 'Post')
+                     .group(:commentable_id)
+                     .count
+
+    # Now, you can create a hash where keys are post IDs and values are comment counts
+    @post_comment_counts = comment_counts.transform_keys(&:to_i)
   end
 
   def sort
@@ -23,8 +29,9 @@ class HomeController < ApplicationController
 
     @posts = Post.includes(common_includes).order(sort_order[:order_column] => sort_order[:order_direction])
     @post_likes_count = Post.joins(:likes).group('posts.id').count
-    @post_comments_count = Post.joins(:comments).group('posts.id').count
-
+    # @post_comments_count = Post.joins(:comments).group('posts.id').count
+    @post_comment_counts = comment_counts.transform_keys(&:to_i)
+    
     respond_to do |format|
       format.html { render 'index' } # Render the index view with sorted posts
       format.turbo_stream

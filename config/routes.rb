@@ -8,11 +8,12 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  get "/autocomplete", to: "posts#autocomplete", as: :autocomplete
+  post 'search', to: 'search#index', as: 'search'
+  post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
 
-  # for repost the post
   resources :posts do
     resources :reposts, only: [:create, :destroy]
+    resources :comments
   end
 
   devise_scope :user do
@@ -51,10 +52,6 @@ Rails.application.routes.draw do
   resources :connections
   resources :skills
   resources :shares, only: [:new, :create,:index]
-  
-  resources :posts do
-    resources :comments
-  end
 
   resources :users do
     resources :posts
@@ -66,9 +63,17 @@ Rails.application.routes.draw do
     member do
       post :follow
       delete :unfollow
+      get :followers
     end
   end
 
   resources :likes, only: [:create, :destroy]
+
+  resources :followers, only: [:show] do
+    member do
+      get :show_followers
+    end
+  end
+
 
 end

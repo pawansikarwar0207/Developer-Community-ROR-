@@ -2,7 +2,7 @@ class MembersController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @user = User.preload(:posts, :comments, :likes, :work_experiences, :connections, image_attachment: :blob)
+    @user = User.preload(:posts, :comments, :likes, :relationships, :work_experiences, :connections, image_attachment: :blob)
   end
 
   def show
@@ -82,6 +82,12 @@ class MembersController < ApplicationController
     @user = User.find(params[:id])
     current_user.unfollow(@user)
     redirect_to root_path
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.includes([image_attachment: :blob, active_relationships: :followed])
+
   end
 
   private

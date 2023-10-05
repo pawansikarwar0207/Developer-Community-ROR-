@@ -12,6 +12,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   has_many :work_experiences, dependent: :destroy
+
+  has_many :hidden_posts
   
   has_many :connections, dependent: :destroy
   
@@ -47,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def following?(user)
-    following.include?(user)
+    following.where(id: user.id).exists?
   end
 
   # for repost the post

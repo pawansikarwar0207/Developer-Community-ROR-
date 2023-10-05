@@ -2,6 +2,7 @@ class RepostsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    @reposts = Repost.includes(:user, :post)
     post = Post.find(params[:post_id])
 
     if post.user != current_user

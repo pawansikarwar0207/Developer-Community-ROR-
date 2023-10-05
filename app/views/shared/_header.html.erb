@@ -28,38 +28,24 @@
         <% end %>  
       </ul>
       <% if user_signed_in? %>
-        <div class="d-flex col-lg-4">
-          <%= search_form_for(@query, url: posts_path, method: :get, class:'d-flex') do |f| %>
-            <%= f.search_field :title_or_description_cont_any,
-                  data: 
-                  {autocomplete_source: Post.pluck(:title)},
-                   placeholder: "Search...",
-                   class: "form-control me-2",
-                    autocomplete: "off",
-                   data: { controller: "autocomplete", target: "autocomplete.input autocomplete.results" } %>
-            <div data-autocomplete-target="results" class="autocomplete-results"></div>
-            <%= f.submit "Search!", class: "btn btn-outline-success" %>
-          <% end %>
-        </div>
+       <div class="d-flex col-lg-3" >
+        <%= render partial: "search/form", locals: { results: [] } %>
+      </div>
       <% end %>
     </div>    
   </div>
 </nav>
 
 <style>
-  .autocomplete-results {
-    display: none;
+  #autocomplete-results {
+    display: block;
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 10px;
+    top: 85%;
+    width: fit-content;
+    z-index: 99;
+    padding: 7px;
     background-color: white;
     border: 1px solid black;
-  }
-
-  .autocomplete-results.show {
-    display: block;
   }
 
 </style>

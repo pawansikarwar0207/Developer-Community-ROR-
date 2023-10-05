@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  has_many :hidden_posts
+
   # for repost the post
   has_many :reposts, dependent: :destroy
 
@@ -26,7 +28,7 @@ class Post < ApplicationRecord
     post_visits.exists?(user: user)
   end
 
-  scope :with_details, -> { includes(:user, :likes, :post_visits, image_attachment: :blob) }
+  scope :with_details, -> { includes(:user, :likes, :reposts, :post_visits, image_attachment: :blob) }
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "title", "updated_at", "user_id"]
