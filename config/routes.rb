@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     member do
       post :follow
       delete :unfollow
-      get :followers
+      get :followers_and_following
     end
   end
 

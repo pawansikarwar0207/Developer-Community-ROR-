@@ -84,11 +84,27 @@ class MembersController < ApplicationController
     redirect_to root_path
   end
 
-  def followers
+  def followers_and_following
     @user = User.find(params[:id])
-    @followers = @user.followers.includes([image_attachment: :blob, active_relationships: :followed])
-
+    @followers = @user.followers.eager_load([image_attachment: :blob, active_relationships: :follower])
+    @following = @user.following.eager_load(image_attachment: :blob)
   end
+
+
+  # def followers
+  #   @user = User.find(params[:id])
+  #   @followers = @user.followers.includes([:image_attachment, active_relationships: :follower])
+  # end
+
+  # def following
+  #   @user = User.find(params[:id])
+  #   @following = @user.following.includes(:image_attachment)
+  # end
+
+  # def following_list
+  #   @user = User.find(params[:id])
+  #   @following = @user.following.includes(:image_attachment)
+  # end
 
   private
 
