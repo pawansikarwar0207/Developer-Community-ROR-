@@ -2,14 +2,14 @@
 <div class="modal-body">
   <div class="row">
     <% if @work_experience.errors.any? %>
-    <div class="error-area" style="color: red;">
-      <h3><%= pluralize(@work_experience.errors.count, 'error') %> prohibited your work experience form being saved. </h3>
-      <ul>
-        <% @work_experience.errors.each do |error| %>
-        <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+      <div class="error-area" style="color: red;">
+        <h3><%= pluralize(@work_experience.errors.count, 'error') %> prohibited your work experience form being saved. </h3>
+        <ul>
+          <% @work_experience.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
 
     <div class="col-lg-12">

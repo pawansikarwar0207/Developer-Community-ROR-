@@ -2,7 +2,7 @@ class MembersController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @user = User.preload(:posts, :comments, :likes, :relationships, :work_experiences, :connections, image_attachment: :blob)
+    @user = User.eager_load(:posts, :reposts, :comments, :likes, :relationships, :work_experiences, :connections, image_attachment: :blob)
   end
 
   def show
@@ -86,8 +86,8 @@ class MembersController < ApplicationController
 
   def followers_and_following
     @user = User.find(params[:id])
-    @followers = @user.followers.eager_load([image_attachment: :blob, active_relationships: :follower])
-    @following = @user.following.eager_load(image_attachment: :blob)
+    @followers = @user.followers.includes([image_attachment: :blob, active_relationships: :follower])
+    @following = @user.following.includes(image_attachment: :blob)
   end
 
 

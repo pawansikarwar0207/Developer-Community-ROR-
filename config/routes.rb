@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  
   get 'reposts/create'
   get 'reposts/destroy'
+  
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -10,6 +12,8 @@ Rails.application.routes.draw do
 
   post 'search', to: 'search#index', as: 'search'
   post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
+
+  resources :events
 
   resources :posts do
     resources :reposts, only: [:create, :destroy]
@@ -57,6 +61,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :jobs
     resources :my_jobs
+    resources :my_events
   end
 
   resources :members, controllers: 'members' do

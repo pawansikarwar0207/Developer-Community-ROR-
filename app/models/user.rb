@@ -12,12 +12,12 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   has_many :work_experiences, dependent: :destroy
-
-  has_many :hidden_posts
   
   has_many :connections, dependent: :destroy
   
   has_many :posts, dependent: :destroy
+
+  has_many :events, dependent: :destroy
 
   # for repost the post
   has_many :reposts, dependent: :destroy
@@ -54,11 +54,11 @@ class User < ApplicationRecord
 
   # for repost the post
   def has_reposted?(post)
-    reposts.exists?(post: post)
+    reposts.exists?(post_id: post.id)
   end
 
   def repost_for(post)
-    reposts.find_by(post: post)
+    reposts.find_by(post_id: post.id)
   end
 
   # for sharing the post

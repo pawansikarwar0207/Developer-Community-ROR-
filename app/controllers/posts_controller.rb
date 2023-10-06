@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit show update destroy]
   
   def index
-    @original_posts = current_user.posts.includes(:user, :comments, :likes, :reposts, :post_visits, image_attachment: :blob)
+    @original_posts = current_user.posts.includes(:user, :likes, :reposts, :post_visits, image_attachment: :blob)
    @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, :post_visits, image_attachment: :blob]).map(&:post)
 
    @posts = (@original_posts + @reposted_posts).uniq.sort_by(&:created_at).reverse
@@ -65,21 +65,6 @@ class PostsController < ApplicationController
   def destroy
     if @post.destroy
       redirect_to root_path
-    end
-  end
-
-  def autocomplete
-    query = params[:q]
-    # Implement your autocomplete logic here and return a JSON response
-    @posts = Post.where("title LIKE ?", "%#{query}%")
-    render json: @posts
-  end
-
-  def search
-    title = params[:title]
-    @posts = Post.where("title LIKE ?", "%#{title}%")
-    respond_to do |format|
-      format.js
     end
   end
 
