@@ -1,14 +1,12 @@
-<div id="calendar" class="fc-event">
+<div id="calendar">
 </div>
 
 <script>
-	document.addEventListener('DOMContentLoaded', function () {
-	  var calendarEl = document.getElementById('calendar');
-	  var calendar = new FullCalendar.Calendar(calendarEl, {
-	    initialView: 'dayGridMonth',
-	    events: '/events/calendar_events', // Route to fetch events from Rails
-	  });
-	  calendar.render();
-	});
-
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  });
 </script>
