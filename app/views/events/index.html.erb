@@ -3,7 +3,7 @@
     <% if @events.present? %>
       <h1>Events</h1>
         <% @events.each do |event| %>
-          <div class="col-lg-4">
+          <div class="col-lg-4 mb-2">
             <div class="card shadow" style="min-height: 430px;">
               <div class="card-body">
                 <small class="text-primary">Event ID : <%= event.id %></small>

@@ -19,3 +19,8 @@ import { Application } from "@hotwired/stimulus";
 import ("trix")
 import ("@rails/actiontext")
 
+import '@fullcalendar/core/main.css';
+import '@fullcalendar/daygrid/main.css';
+import '@fullcalendar/list/main.css';
+
+

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   post 'search', to: 'search#index', as: 'search'
   post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
 
-  resources :events
+  resources :events do
+    collection do
+      get 'calendar_events'
+    end
+  end
 
   resources :posts do
     resources :reposts, only: [:create, :destroy]

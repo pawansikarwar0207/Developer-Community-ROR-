@@ -38,6 +38,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def calendar_events
+    @events = Event.all
+    render json: @events.map { |event| event.to_calendar_event }
+  end
+
   private
 
   def set_event
@@ -47,5 +52,6 @@ class EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:event_type, :event_name, :start_date, :end_date, :start_time, :end_time, :description, :user_id, :image)
   end
+
 
 end
