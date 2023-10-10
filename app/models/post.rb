@@ -2,6 +2,13 @@ class Post < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
+  include Notificable
+
+  def user_ids
+    # User.where.not(id: self.user_id).ids
+    User.all.ids
+  end
+
   has_many :hidden_posts
 
   # for repost the post

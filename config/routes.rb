@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  resources :notifications, only: [ :index ]
+
   post 'search', to: 'search#index', as: 'search'
   post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
 

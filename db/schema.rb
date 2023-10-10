@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_06_071745) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_10_081631) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -142,6 +142,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_071745) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "viewed", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_type", "item_id"], name: "index_notifications_on_item"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
+
   create_table "post_visits", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
@@ -261,6 +272,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_071745) do
   add_foreign_key "jobs", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "post_visits", "posts"
   add_foreign_key "post_visits", "users"
   add_foreign_key "posts", "users"

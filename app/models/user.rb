@@ -5,6 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
+
+  has_many :notifications
+  
+  def unviewed_notifications_count
+    self.notifications.unviewed.count
+  end
+
   validates :first_name, :last_name, presence: true
 
   validates :username, :profile_title, presence: true
