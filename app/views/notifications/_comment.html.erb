@@ -1,4 +1,7 @@
 <p class="text-dark">
   <%= notification.item.user.name %> just <b>commented on :</b>
-  <%= link_to notification.item.commentable.title, notification.item, class: "text-decoration-underline font-weight-bold" %>
+  <% if notification.item.commentable.is_a?(Post) %>
+    <%= link_to notification.item.commentable.title, notification.item.commentable, style: "text-decoration:none;" %>
+    <%= link_to "Mark as Read", notification, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to mark this notification as read?" }, class: "text-danger" %>
+  <% end %>
 </p>

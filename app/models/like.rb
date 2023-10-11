@@ -4,4 +4,10 @@ class Like < ApplicationRecord
 
   include Notificable
 
+  def user_ids
+    # User.where.not(id: self.user_id).ids
+    User.all.ids
+  end
+
+
 end
