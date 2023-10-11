@@ -1,0 +1,9 @@
+<div class="col-lg-10 mx-auto mt-3">
+  <h3>Hidden Posts</h3>
+  <% @hidden_posts.each do |post| %>
+    <div class="card shadow mb-2">
+      <%= render "posts/hidden", post: post %>
+    </div>
+  <% end %>
+</div>
+

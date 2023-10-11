@@ -12,6 +12,16 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index, :destroy] 
 
+  # for hide & unhide the posts
+  resources :posts do
+    member do
+      post 'hide'
+      post 'undo_hide'
+      post 'toggle_hide'
+    end
+  end
+
+  get 'hidden_posts', to: 'posts#hidden'
 
   post 'search', to: 'search#index', as: 'search'
   post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'

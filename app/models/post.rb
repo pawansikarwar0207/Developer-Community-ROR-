@@ -4,10 +4,22 @@ class Post < ApplicationRecord
 
   include Notificable
 
+  # for notification
   def user_ids
     # User.where.not(id: self.user_id).ids
     User.all.ids
   end
+
+  # for hide & unhide the post
+  def hide
+    update(hidden: true)
+  end
+
+  def unhide
+    update(hidden: false)
+  end
+
+  scope :hidden_posts, -> { where(hidden: true) }
 
   has_many :hidden_posts
 

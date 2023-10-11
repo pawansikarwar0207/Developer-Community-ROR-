@@ -15,6 +15,8 @@
           <hr>
           <%= link_to 'My Job', user_my_jobs_path(current_user), style: 'text-decoration:none;'%> 
           <hr>
+          <%= link_to 'My Post', user_posts_path(current_user), style: 'text-decoration:none;'%> 
+          <hr>
           <%= link_to "Followers", followers_and_following_member_path(current_user), style: 'text-decoration:none;' %> 
           <hr>
           <%= link_to "Events", user_my_events_path(current_user), style: 'text-decoration:none;'  %>

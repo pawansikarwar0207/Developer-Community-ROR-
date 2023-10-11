@@ -8,10 +8,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <% if user_signed_in? %>
           <li>
-            <%= link_to 'My Profile', member_path(current_user), class:'nav-link active'%>  
-          </li>
-          <li>
-            <%= link_to 'My Post', user_posts_path(current_user), class:'nav-link active'%>  
+            <%#= link_to 'My Profile', member_path(current_user), class:'nav-link active'%>  
           </li>
           <li>
             <%= link_to 'My Network', connections_path, class:'nav-link active'%>  
@@ -26,6 +23,12 @@
             <%= link_to "Events", events_path, class: 'nav-link active' %>
           </li>
           <li>
+            <%= link_to "Hidden Posts", hidden_posts_path, class: "nav-link active" %>
+          </li>
+          <li>
+            <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are You Sure to Sign Out ?' }, class: 'nav-link active' %>
+          </li>
+          <li>
             <%= link_to notifications_path, class: "btn btn-primary position-relative" do %>
                 <i class="fa-solid fa-bell fa-lg"></i>
                 <% if current_user.unviewed_notifications_count > 0 %>
@@ -35,10 +38,6 @@
                   </span>
                <% end %>   
             <% end %>
-
-          </li>
-          <li>
-            <%= link_to 'Sign Out', destroy_user_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are You Sure to Sign Out ?' }, class: 'nav-link active' %>
           </li>
         <% end %>  
       </ul>

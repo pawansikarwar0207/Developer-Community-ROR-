@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[edit show update destroy]
+  before_action :set_post, only: %i[edit show update destroy toggle_hide undo_hide hide]
   
   def index
     @original_posts = current_user.posts.includes(:user, :likes, :reposts, :post_visits, image_attachment: :blob)
@@ -67,6 +67,30 @@ class PostsController < ApplicationController
       redirect_to root_path
     end
   end
+
+  # for hide & unhide the post
+  def hide
+    @post.update(hidden: true)
+    redirect_to root_path, notice: 'Post is hidden'
+  end
+
+  def undo_hide
+    @post.update(hidden: false)
+    redirect_to root_path, notice: 'Post is unhidden'
+  end
+
+  def toggle_hide
+    @post.update(hidden: !@post.hidden)
+
+    respond_to do |format|
+      format.json { render json: { hidden: @post.hidden } }
+    end
+  end
+
+  def hidden
+    @hidden_posts = Post.hidden_posts
+  end
+
 
   private
 
