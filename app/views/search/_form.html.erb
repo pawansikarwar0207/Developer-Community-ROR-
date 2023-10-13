@@ -9,11 +9,8 @@
             action: "blur->search#hideSuggestions",
         },
         class: "form-control",
-        placeholder: "Search...", 
+        placeholder: "Search...",
         autocomplete: "off" %>
-    <div class="absolute">
-      <%#= form.submit "Search", class: "btn btn-success btn-sm" %>
-    </div>
     <div id="suggestions" class="absolute"
         data-search-target="suggestions" data-action="mousedown->search#childClicked">
       <%= render partial: "search/suggestions", locals: { results: results } %>

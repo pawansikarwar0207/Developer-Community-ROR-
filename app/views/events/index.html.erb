@@ -14,7 +14,7 @@
                 <p><b>End Date :</b> <%= event.end_date %></p> 
                 <p><b>End Time :</b> <%= event.end_time %></p>
                 <p><b>Description :</b> <%= truncate(event.description, length: 30) %></p>  
-                <%= link_to "View", event_path(event), data: { controller: 'bs-modal-form' }, class: "btn btn-primary mt-3 mb-3" %>
+                <%= link_to "View", event_path(event), class: "btn btn-primary mt-3 mb-3" %>
               </div>
             </div>
           </div>    

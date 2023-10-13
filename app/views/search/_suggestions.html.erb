@@ -1,9 +1,24 @@
 <% if results.any? %>
-  <div class="absolute w-full overflow-y-auto max-h-60 bg-white rounded-lg shadow-lg">
-    <% results.each do |post| %>
-      <div class="p-2 border-b border-gray-300 hover:bg-gray-100">
-        <%= link_to post.title, post, class: "text-blue-500", style: "text-decoration:none;" %>
+  <div class="position-absolute overflow-auto max-height: 200px; bg-white rounded shadow" id="search">
+    <% results.each do |result| %>
+      <div class="p-2 border-bottom">
+        <% if result.is_a?(User) %>
+          <%= link_to "#{result.first_name} #{result.last_name}", member_path(result), class: "text-primary", style: "text-decoration:none;" %>
+        <% elsif result.is_a?(Post) %>
+          <%= link_to result.title, post_path(result), class: "text-primary", style: "text-decoration:none;" %>
+        <% elsif result.is_a?(Job) %>
+          <%= link_to result.title, job_path(result), class: "text-primary", style: "text-decoration:none;" %>
+        <% elsif result.is_a?(Event) %>
+          <%= link_to result.event_name, event_path(result), class: "text-primary", style: "text-decoration:none;" %>
+        <% end %>
       </div>
     <% end %>
   </div>
 <% end %>
+
+<style>
+  #search{
+    z-index: 99;
+    height: 300px;
+  }
+</style>
