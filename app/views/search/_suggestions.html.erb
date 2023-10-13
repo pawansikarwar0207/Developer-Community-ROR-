@@ -3,7 +3,7 @@
     <% results.each do |result| %>
       <div class="p-2 border-bottom">
         <% if result.is_a?(User) %>
-          <%= link_to "#{result.first_name} #{result.last_name}", member_path(result), class: "text-primary", style: "text-decoration:none;" %>
+          <%= link_to "#{result.first_name} #{result.last_name}", search_results_path(user_id: result.id), class: "text-primary", style: "text-decoration:none;" %>
         <% elsif result.is_a?(Post) %>
           <%= link_to result.title, post_path(result), class: "text-primary", style: "text-decoration:none;" %>
         <% elsif result.is_a?(Job) %>

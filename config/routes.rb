@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   post 'search', to: 'search#index', as: 'search'
   post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
+  get '/search_results', to: 'search#results', as: 'search_results'
 
   resources :events do
     collection do

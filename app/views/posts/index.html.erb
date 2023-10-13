@@ -21,8 +21,10 @@
                 <% end %>
               <% end %>
               <div class="user-info" data-controller="user-name" >
-                <h5 data-user-name-target='name' data-action="click->user-name#getUserName" ><%= post.title %> </h5>
-                <p>Posted By : <%= post.user.name %></p>
+                <%= link_to post_path(post), style: 'text-decoration:none;' do %>
+                  <h5><%= post.title %> </h5>
+                  <p>Posted By : <%= post.user.name %></p>
+                <% end %>
                 <div data-controller="show-more">
                   <div data-show-more-target="description">
                     <p><%= simple_format(post.description) %></p>

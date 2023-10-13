@@ -12,6 +12,21 @@ class SearchController < ApplicationController
     end
   end
 
+  def results
+    @user = User.find(params[:user_id])
+    @posts = Post.where(user_id: @user.id)
+     @mutual_connections = current_user.mutually_connected_ids(@user)
+     @post_likes_count = Post.joins(:likes).group('posts.id').count
+    comment_counts = Comment.where(commentable_id: @posts.map(&:id), 
+                     commentable_type: 'Post')
+                     .group(:commentable_id)
+                     .count
+
+    # Now, you can create a hash where keys are post IDs and values are comment counts
+    @post_comment_counts = comment_counts.transform_keys(&:to_i)
+    @people_i_follow_count = @user.following.count # Set the count of followings here
+  end
+
   private
 
   def search_results
