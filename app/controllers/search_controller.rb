@@ -15,8 +15,8 @@ class SearchController < ApplicationController
   def results
     @user = User.find(params[:user_id])
     @posts = Post.where(user_id: @user.id)
-     @mutual_connections = current_user.mutually_connected_ids(@user)
-     @post_likes_count = Post.joins(:likes).group('posts.id').count
+    @mutual_connections = current_user.mutually_connected_ids(@user)
+    @post_likes_count = Post.joins(:likes).group('posts.id').count
     comment_counts = Comment.where(commentable_id: @posts.map(&:id), 
                      commentable_type: 'Post')
                      .group(:commentable_id)
