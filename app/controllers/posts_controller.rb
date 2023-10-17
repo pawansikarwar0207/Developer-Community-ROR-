@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit show update destroy toggle_hide undo_hide hide]
   
   def index
-    @original_posts = current_user.posts.includes(:user, :likes, :reposts, :post_visits, image_attachment: :blob)
-   @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, :post_visits, image_attachment: :blob]).map(&:post)
+    @original_posts = current_user.posts.includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob)
+   @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, :post_visits, images_attachments: :blob]).map(&:post)
 
    @posts = (@original_posts + @reposted_posts).uniq.sort_by(&:created_at).reverse
 
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
         og: {
           url: post_path(@post),
           title: @post.title,
-          image: (ENV['APP_URL'] + rails_blob_path(@post.image)),
+          # image: (ENV['APP_URL'] + rails_blob_path(@post.images)),
           description: @post.description,
         }
         )
@@ -99,7 +99,9 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :user_id, :image)
+    params.require(:post).permit(:title, :description, :user_id, images: [])
   end
+
+
 
 end

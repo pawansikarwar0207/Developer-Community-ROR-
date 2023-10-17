@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
 
   include Notificable
 
@@ -28,7 +28,7 @@ class Post < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :image, presence: true
+  #validates :images, presence: true
 
   has_many :comments, as: :commentable
 
@@ -47,14 +47,14 @@ class Post < ApplicationRecord
     post_visits.exists?(user: user)
   end
 
-  scope :with_details, -> { includes(:user, :likes, :reposts, :post_visits, image_attachment: :blob) }
+  scope :with_details, -> { includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob) }
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "title", "updated_at", "user_id"]
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["comments", "image_attachment", "image_blob", "user"]
+    ["comments", "images_attachment", "image_blob", "user"]
   end
   
 end

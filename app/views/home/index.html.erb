@@ -3,8 +3,8 @@
     <div class="col-lg-3 col-md-4 col-sm-12 mt-3">
       <div class="card text-center mb-3 rounded-0 shadow current_user_profile">
         <div class="card-body">
-          <% if current_user.image.attached? %>
-            <%= image_tag current_user.image, style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
+          <% if current_user.images.attached? %>
+            <%= image_tag current_user.images, style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
           <% end %>
           <%= link_to member_path(current_user), style: "text-decoration:none;" do %>
             <h5 class="text-dark"><%= current_user.name %></h5>
@@ -30,8 +30,8 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-1 col-12 mb-2 d-grid">
-              <% if current_user.image.attached? %>
-                <%= image_tag current_user.image, style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
+              <% if current_user.images.attached? %>
+                <%= image_tag current_user.images, style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
               <% end %>
             </div>
             <div class="col-md-11 col-12 mt-1 mb-3 d-grid">

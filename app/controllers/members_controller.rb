@@ -2,7 +2,7 @@ class MembersController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @user = User.eager_load(:posts, :reposts, :comments, :likes, :relationships, :work_experiences, :connections, image_attachment: :blob)
+    @user = User.eager_load(:posts, :reposts, :comments, :likes, :relationships, :work_experiences, :connections, images_attachment: :blob)
   end
 
   def show
@@ -86,30 +86,30 @@ class MembersController < ApplicationController
 
   def followers_and_following
     @user = User.find(params[:id])
-    @followers = @user.followers.includes([image_attachment: :blob, active_relationships: :follower])
-    @following = @user.following.includes(image_attachment: :blob)
+    @followers = @user.followers.includes([images_attachments: :blob, active_relationships: :follower])
+    @following = @user.following.includes(images_attachments: :blob)
   end
 
 
   # def followers
   #   @user = User.find(params[:id])
-  #   @followers = @user.followers.includes([:image_attachment, active_relationships: :follower])
+  #   @followers = @user.followers.includes([:images_attachment, active_relationships: :follower])
   # end
 
   # def following
   #   @user = User.find(params[:id])
-  #   @following = @user.following.includes(:image_attachment)
+  #   @following = @user.following.includes(:images_attachment)
   # end
 
   # def following_list
   #   @user = User.find(params[:id])
-  #   @following = @user.following.includes(:image_attachment)
+  #   @following = @user.following.includes(:images_attachment)
   # end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :about, :contact_number, :email, :username, :city, :state, :country, :pincode, :street_address, :profile_title, :image)
+    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :about, :contact_number, :email, :username, :city, :state, :country, :pincode, :street_address, :profile_title, image:[])
   end
 end
 

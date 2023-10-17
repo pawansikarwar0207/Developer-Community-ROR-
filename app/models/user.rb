@@ -34,7 +34,7 @@ class User < ApplicationRecord
   # for posts likes
   has_many :likes, dependent: :destroy
 
-  has_one_attached :image
+  has_many_attached :images
 
   has_many :skills
 

@@ -10,8 +10,8 @@
         <div class="col-lg-3">
           <div class="card mt-3">
             <div class="card-body">
-              <% if connection.requested.image.attached? %>
-              <%= image_tag connection.requested.image, style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
+              <% if connection.requested.images.attached? %>
+              <%= image_tag connection.requested.images, style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
               <% else %>
               <%= image_tag "human.avif", style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
               <% end %>
@@ -50,8 +50,8 @@
           <div class="col-lg-3">
             <div class="card mt-3">
               <div class="card-body">
-                <% if connection.received.image.attached? %>
-                <%= image_tag connection.received.image, style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
+                <% if connection.received.images.attached? %>
+                <%= image_tag connection.received.images, style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
                 <% else %>
                 <%= image_tag "human.avif", style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
                 <% end %>
