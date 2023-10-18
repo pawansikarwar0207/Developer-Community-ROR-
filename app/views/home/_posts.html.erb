@@ -9,7 +9,7 @@
                   <div class="col-md-1 col-12 mb-2 d-grid">
                     <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
                      <% if post.user.images.attached? %>
-                        <%= image_tag post.user.images, class: "user-image border border-3 rounded-circle" %>
+                        <%= image_tag post.user.images.first, class: "user-image border border-3 rounded-circle" %>
                       <% else %> 
                       <%= image_tag 'human.avif', class: "user-image border border-3 rounded-circle" %>
                       <% end %>
@@ -102,7 +102,9 @@
                 <% if post.images.attached? %>
                   <% post.images.each do |image| %>
                     <% if image.content_type.include?("image") %>
-                      <%= image_tag image, class: 'post_images me-2 mb-3 mt-3', style: 'width: 300px; height: 200px;' %>
+                      <a href="<%= rails_blob_path(image) %>" class="post_images me-2 mb-3 mt-3" data-turbolinks="false" data-mfp-title="<%= post.title %>">
+                        <%= image_tag image, style: 'width: 300px; height: 250px;', class: 'mt-2 mb-2 border border-4' %>
+                      </a>
                     <% else %>
                       <div class="bg-dark text-center">
                         <%= video_tag rails_blob_path(image), autoplay: :autoplay, loop: :loop, muted: :muted, class: "home_video", controls: true, type: 'video/mp4', style: "max-width: 100%; height: 320px;" do %>
@@ -191,3 +193,21 @@
     margin-top: 15px;
   }
 </style>
+
+
+<script>
+  $(document).ready(function() {
+  $('.post_images').magnificPopup({
+    type: 'image',
+    gallery: {
+      enabled: true
+    },
+    mainClass: 'mfp-with-zoom',
+      zoom: {
+        enabled: true,
+        duration: 300,
+        easing: 'ease-in-out'
+      }
+  });
+});
+</script>

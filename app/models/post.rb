@@ -1,6 +1,28 @@
 class Post < ApplicationRecord
   belongs_to :user
+
+  validates :title, presence: true
+  validates :description, presence: true
+  #validates :images, presence: true
+  
   has_many_attached :images
+
+  has_many :hidden_posts
+
+  # for repost the post
+  has_many :reposts, dependent: :destroy
+
+  has_many :comments, as: :commentable
+
+  # for sharing the post
+  has_many :shares, dependent: :destroy
+
+  # for posts likes
+  has_many :likes, dependent: :destroy
+  has_many :users, through: :likes
+
+   # for visiting the post by current user
+  has_many :post_visits, dependent: :destroy
 
   include Notificable
 
@@ -21,26 +43,6 @@ class Post < ApplicationRecord
 
   scope :hidden_posts, -> { where(hidden: true) }
 
-  has_many :hidden_posts
-
-  # for repost the post
-  has_many :reposts, dependent: :destroy
-
-  validates :title, presence: true
-  validates :description, presence: true
-  #validates :images, presence: true
-
-  has_many :comments, as: :commentable
-
-  # for sharing the post
-  has_many :shares, dependent: :destroy
-
-  # for posts likes
-  has_many :likes, dependent: :destroy
-  has_many :users, through: :likes
-
-   # for visiting the post by current user
-  has_many :post_visits, dependent: :destroy
 
   # for visiting the post by current user
   def visited_by?(user)

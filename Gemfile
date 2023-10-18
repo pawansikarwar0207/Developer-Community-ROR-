@@ -91,3 +91,4 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+

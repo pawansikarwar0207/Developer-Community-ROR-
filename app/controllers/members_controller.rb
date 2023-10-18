@@ -109,8 +109,9 @@ class MembersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :about, :contact_number, :email, :username, :city, :state, :country, :pincode, :street_address, :profile_title, image:[])
+    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :about, :contact_number, :email, :username, :city, :state, :country, :pincode, :street_address, :profile_title, images: [])
   end
+
 end
 
 
