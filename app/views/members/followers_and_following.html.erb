@@ -17,7 +17,7 @@
             <div class="row">
               <div class="col-lg-2">
                 <% if follower.images.attached? %>
-                  <%= image_tag follower.images, class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
+                  <%#= image_tag follower.images.first.url, class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
                 <% else %>
                   <%= image_tag 'human.avif', class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
                 <% end %>
@@ -56,7 +56,7 @@
               <div class="row">
                 <div class="col-lg-2">
                   <% if followed.images.attached? %>
-                    <%= image_tag followed.images, class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
+                    <%#= image_tag followed.images, class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
                   <% else %>
                     <%= image_tag 'human.avif', class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
                   <% end %>

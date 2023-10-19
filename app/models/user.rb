@@ -29,6 +29,9 @@ class User < ApplicationRecord
   has_many :work_experiences, dependent: :destroy
   has_many :notifications
   has_many :pages
+
+  has_many :follows
+  has_many :followed_pages, through: :follows, source: :page, class_name: 'Page'
   
   def unviewed_notifications_count
     self.notifications.unviewed.count

@@ -1,32 +1,34 @@
 <div class="col-lg-10 mx-auto mt-3">
   <%= link_to 'New Page', new_page_path, class: 'btn btn-outline-primary mb-2' %>
   <% @pages.each do |page| %>
-    <div class="card shadow mt-2">
+    <div class="card shadow mt-2" style="min-height:-100px;">
       <div class="card-body">
-        <%= link_to page_path(page), style: 'text-decoration:none; color: black;' do %>
-          <div class="row">
-            <div class="col-lg-1">
+        <div class="row">
+          <div class="col-lg-2">
+            <%= link_to page_path(page) do %>
               <% if page.image.attached? %>
                 <%= image_tag page.image, class: 'w-100' %>
-              <% end %>        
-            </div>
-            <div class="col-lg-6">
-              <h3><%= page.title %></h3>
-              <small><%= page.content %></small><br>
-              <small class="text-muted"><%= page.industry %></small><br>
-            </div>
-            <div class="col-lg-2 justify-content-end">
-              <% if current_user.following?(page) %>
-                <%= link_to 'Unfollow', unfollow_page_path(page), method: :delete, class: 'btn btn-danger btn-sm rounded-pill' %>
-              <% else %>
-                <%= link_to 'Follow', follow_page_path(page), method: :post, class: 'btn btn-primary btn-sm rounded-pill' %>
               <% end %>
-
-            </div>
+            <% end %>
           </div>
-        <% end %>
-        <%#= link_to 'View', page_path(page), class: 'btn btn-outline-primary mt-3 ' %>
+          <div class="col-lg-8">
+            <%= link_to page_path(page), style: 'text-decoration:none; color: black;' do %>
+              <h4><%= page.title %></h4>
+              <small><%= page.content %></small><br>
+              <small class="text-muted"><%= page.industry %> , </small>
+              <small class="text-muted"><%= page.organization_size %></small><br>
+              <small class="text-primary">Followers: <%= page.followers.count %></small>
+            <% end %>
+          </div>
+          <div class="col-lg-2 justify-content-end">
+            <% if current_user.following?(page) %>
+              <%= link_to "Unfollow", unfollow_page_path(page), method: :delete, class: 'btn btn-danger btn-sm mt-2' %>
+            <% else %>
+              <%= link_to "Follow", follow_page_path(page), method: :post, class: 'btn btn-primary btn-sm mt-2' %>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>  
+    </div>
   <% end %>
 </div>

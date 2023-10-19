@@ -2,6 +2,14 @@ Rails.application.routes.draw do
   
   resources :pages
 
+  resources :pages, controller: 'pages' do
+    member do
+      post :follow
+      delete :unfollow
+    end
+  end
+
+
   get 'reposts/create'
   get 'reposts/destroy'
   

@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :set_page, only: %i[edit show update destroy]
 
   def index
-    @pages = Page.includes(:user).order(created_at: :desc)  
+    @pages = Page.includes(:user, image_attachment: :blob ).order(created_at: :desc) 
   end
 
   def new
@@ -36,6 +36,18 @@ class PagesController < ApplicationController
     if @page.destroy
       redirect_to pages_path
     end
+  end
+
+  def follow
+    @page = Page.find(params[:id])
+    current_user.follow(@page)
+    redirect_to pages_path
+  end
+
+  def unfollow
+    @page = Page.find(params[:id])
+    current_user.unfollow(@page)
+    redirect_to pages_path
   end
 
   private
