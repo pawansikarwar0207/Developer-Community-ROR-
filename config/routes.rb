@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :pages
+
   get 'reposts/create'
   get 'reposts/destroy'
   
@@ -80,6 +82,7 @@ Rails.application.routes.draw do
     resources :jobs
     resources :my_jobs
     resources :my_events
+    resources :pages
   end
 
   resources :members, controllers: 'members' do

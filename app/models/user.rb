@@ -5,47 +5,53 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
-
-  has_many :notifications
-  
-  def unviewed_notifications_count
-    self.notifications.unviewed.count
-  end
-
   validates :first_name, :last_name, presence: true
-
   validates :username, :profile_title, presence: true
-  
   validates :email, presence: true, uniqueness: true
 
-  has_many :work_experiences, dependent: :destroy
-  
-  has_many :connections, dependent: :destroy
-  
-  has_many :posts, dependent: :destroy
+  scope :with_country, ->(country) { where(country: country) }
+  scope :with_images, -> { where.not(image: nil) }
 
+  has_many :connections, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :events, dependent: :destroy
 
   # for repost the post
   has_many :reposts, dependent: :destroy
-
   has_many :comments, as: :commentable
 
   # for posts likes
   has_many :likes, dependent: :destroy
 
   has_many_attached :images
-
   has_many :skills
-
   has_many :jobs
+  has_many :work_experiences, dependent: :destroy
+  has_many :notifications
+  has_many :pages
+  
+  def unviewed_notifications_count
+    self.notifications.unviewed.count
+  end
 
   # for follow & unfollow
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id",        dependent: :destroy
+  has_many :active_relationships, 
+            class_name: "Relationship", 
+            foreign_key: "follower_id",
+            dependent: :destroy
+  
   has_many :following, through: :active_relationships, source: :followed
 
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id",        dependent: :destroy
+  has_many :passive_relationships, 
+            class_name: "Relationship", 
+            foreign_key: "followed_id",        
+            dependent: :destroy
+
   has_many :followers, through: :passive_relationships, source: :follower
+
+  # for sharing the post
+  has_many :sent_shares, class_name: 'Share', foreign_key: 'sender_id'
+  has_many :received_shares, class_name: 'Share', foreign_key: 'recipient_id'
 
   def follow(user)
     active_relationships.create(followed_id: user.id)
@@ -67,13 +73,6 @@ class User < ApplicationRecord
   def repost_for(post)
     reposts.find_by(post_id: post.id)
   end
-
-  # for sharing the post
-  has_many :sent_shares, class_name: 'Share', foreign_key: 'sender_id'
-  has_many :received_shares, class_name: 'Share', foreign_key: 'recipient_id'
-
-  scope :with_country, ->(country) { where(country: country) }
-  scope :with_images, -> { where.not(image: nil) }
 
   # for sharing the post
   def shared_posts

@@ -102,6 +102,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :description, :user_id, images: [])
   end
 
-
-
 end

@@ -1,0 +1,32 @@
+<div class="col-lg-10 mx-auto mt-3">
+  <%= link_to 'New Page', new_page_path, class: 'btn btn-outline-primary mb-2' %>
+  <% @pages.each do |page| %>
+    <div class="card shadow mt-2">
+      <div class="card-body">
+        <%= link_to page_path(page), style: 'text-decoration:none; color: black;' do %>
+          <div class="row">
+            <div class="col-lg-1">
+              <% if page.image.attached? %>
+                <%= image_tag page.image, class: 'w-100' %>
+              <% end %>        
+            </div>
+            <div class="col-lg-6">
+              <h3><%= page.title %></h3>
+              <small><%= page.content %></small><br>
+              <small class="text-muted"><%= page.industry %></small><br>
+            </div>
+            <div class="col-lg-2 justify-content-end">
+              <% if current_user.following?(page) %>
+                <%= link_to 'Unfollow', unfollow_page_path(page), method: :delete, class: 'btn btn-danger btn-sm rounded-pill' %>
+              <% else %>
+                <%= link_to 'Follow', follow_page_path(page), method: :post, class: 'btn btn-primary btn-sm rounded-pill' %>
+              <% end %>
+
+            </div>
+          </div>
+        <% end %>
+        <%#= link_to 'View', page_path(page), class: 'btn btn-outline-primary mt-3 ' %>
+      </div>
+    </div>  
+  <% end %>
+</div>

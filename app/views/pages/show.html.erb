@@ -1,0 +1,48 @@
+<div class="col-lg-8 mx-auto mt-3">
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-lg-2">
+          <% if @page.image.attached? %>
+            <%= image_tag @page.image, class: 'w-100' %>
+          <% end %>
+        </div>
+        <div class="col-lg-8">
+          <h3><%= @page.title %></h3>
+          <small><%= @page.content %></small><br>
+          <small class="text-muted"><%= @page.industry %> , </small>
+          <small class="text-muted"><%= @page.organization_size %></small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card shadow mt-2">
+    <div class="card-body">
+      <h3>About</h3>
+      <div data-controller="show-more">
+        <div data-show-more-target="description">
+          <p><%= simple_format(@page.about) %></p>
+        </div>
+        <div class="row">
+          <button 
+            data-action="click->show-more#toggleVisibility" 
+            data-show-more-target="toggleButton" 
+            class="btn btn-light fw-bold w-100 btn-sm mt-3">
+            Show More
+          </button>
+        </div>
+      </div>
+      <b class="text-primary">Website :</b>
+      <p class="mt-1"><%= @page.website %></p>
+
+      <b class="text-primary">Industry :</b>
+      <p class="mt-1"><%= @page.industry %></p>        
+
+      <b class="text-primary">Company Size :</b>
+      <p class="mt-1"><%= @page.organization_size %></p>
+
+      <b class="text-primary">Company Type :</b>
+      <p class="mt-1"><%= @page.organization_type %></p>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_11_065440) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_18_110808) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -153,6 +153,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_065440) do
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
+  create_table "pages", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "industry"
+    t.string "website"
+    t.string "organization_size"
+    t.string "organization_type"
+    t.bigint "user_id", null: false
+    t.text "about"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pages_on_user_id"
+  end
+
   create_table "post_visits", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
@@ -274,6 +288,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_11_065440) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "notifications", "users"
+  add_foreign_key "pages", "users"
   add_foreign_key "post_visits", "posts"
   add_foreign_key "post_visits", "users"
   add_foreign_key "posts", "users"

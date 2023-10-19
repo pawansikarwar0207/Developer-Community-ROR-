@@ -1,9 +1,13 @@
 class Post < ApplicationRecord
   belongs_to :user
+  belongs_to :page
 
   validates :title, presence: true
   validates :description, presence: true
   #validates :images, presence: true
+
+  scope :hidden_posts, -> { where(hidden: true) }
+  scope :with_details, -> { includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob) }
   
   has_many_attached :images
 
@@ -41,15 +45,10 @@ class Post < ApplicationRecord
     update(hidden: false)
   end
 
-  scope :hidden_posts, -> { where(hidden: true) }
-
-
   # for visiting the post by current user
   def visited_by?(user)
     post_visits.exists?(user: user)
   end
-
-  scope :with_details, -> { includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob) }
 
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "description", "id", "title", "updated_at", "user_id"]
