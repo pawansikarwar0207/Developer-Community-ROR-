@@ -23,19 +23,14 @@ class User < ApplicationRecord
   # for posts likes
   has_many :likes, dependent: :destroy
 
-  has_many_attached :images
+  has_one_attached :image
   has_many :skills
   has_many :jobs
   has_many :work_experiences, dependent: :destroy
-  has_many :notifications
   has_many :pages
 
   has_many :follows
   has_many :followed_pages, through: :follows, source: :page, class_name: 'Page'
-  
-  def unviewed_notifications_count
-    self.notifications.unviewed.count
-  end
 
   # for follow & unfollow
   has_many :active_relationships, 

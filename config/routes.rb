@@ -20,8 +20,6 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
-  resources :notifications, only: [:index, :destroy] 
-
   # for hide & unhide the posts
   resources :posts do
     member do

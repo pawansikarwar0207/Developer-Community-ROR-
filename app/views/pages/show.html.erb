@@ -10,7 +10,10 @@
             <h5><%= @page.title %></h5>
             <small><%= @page.content %></small><br>
             <small class="text-muted"><%= @page.industry %></small><br>
-            <small class="text-muted"><%= @page.organization_size %></small>
+            <small class="text-muted"><%= @page.organization_size %></small><br>
+            <small class="text-primary">Followers: <%=@page.follows.count %>
+              | <%= @page.user.following?(current_user) %>
+            </small>
           </div>
           <div class="mt-2">
             <% if current_user.following?(@page) %>

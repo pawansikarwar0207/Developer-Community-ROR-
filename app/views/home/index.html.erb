@@ -3,8 +3,8 @@
     <div class="col-lg-3 col-md-4 col-sm-12 mt-3">
       <div class="card text-center mb-3 shadow current_user_profile">
         <div class="card-body">
-          <% if current_user.images.attached? %>
-            <%= image_tag current_user.images.first, style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
+          <% if current_user.image.attached? %>
+            <%= image_tag current_user.image, style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
           <% else %> 
             <%= image_tag 'human.avif', class: "border border-3 rounded-circle mb-3 mt-3", style: "width: 130px; max-width:100%;" %>
           <% end %>
@@ -34,8 +34,8 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-1 col-12 mb-2 d-grid">
-              <% if current_user.images.attached? %>
-                <%= image_tag current_user.images.first, style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
+              <% if current_user.image.attached? %>
+                <%= image_tag current_user.image, style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
               <% else %> 
                 <%= image_tag 'human.avif', style: "width: 50px;", class: "mt-2 border border-3 rounded-circle" %>
               <% end %>

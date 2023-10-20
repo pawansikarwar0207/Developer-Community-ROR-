@@ -90,26 +90,10 @@ class MembersController < ApplicationController
     @following = @user.following.includes(images_attachments: :blob)
   end
 
-
-  # def followers
-  #   @user = User.find(params[:id])
-  #   @followers = @user.followers.includes([:images_attachment, active_relationships: :follower])
-  # end
-
-  # def following
-  #   @user = User.find(params[:id])
-  #   @following = @user.following.includes(:images_attachment)
-  # end
-
-  # def following_list
-  #   @user = User.find(params[:id])
-  #   @following = @user.following.includes(:images_attachment)
-  # end
-
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :about, :contact_number, :email, :username, :city, :state, :country, :pincode, :street_address, :profile_title, images: [])
+    params.require(:user).permit(:first_name, :last_name, :date_of_birth, :about, :contact_number, :email, :username, :city, :state, :country, :pincode, :street_address, :profile_title, :image)
   end
 
 end

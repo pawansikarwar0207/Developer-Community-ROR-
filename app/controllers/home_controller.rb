@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.includes(:likes, :comments, :reposts, :notifications, user: [images_attachments: :blob], images_attachments: :blob).order(created_at: :desc)
+    @posts = Post.includes(:likes, :comments, :reposts, user: [image_attachment: :blob], images_attachments: :blob).order(created_at: :desc)
     @post_likes_count = Post.joins(:likes).group('posts.id').count
     comment_counts = Comment.where(commentable_id: @posts.map(&:id), 
                      commentable_type: 'Post')
@@ -12,7 +12,7 @@ class HomeController < ApplicationController
   end
 
   def sort
-    common_includes = [:likes, user: [images_attachments: :blob], images_attachments: :blob]
+    common_includes = [:likes, user: [image_attachment: :blob], images_attachments: :blob]
 
     sort_order = case params[:sort_by]
     when 'alphabetical'
