@@ -16,8 +16,8 @@
             <div class="card mb-2 shadow">
             <div class="row">
               <div class="col-lg-2">
-                <% if follower.images.attached? %>
-                  <%#= image_tag follower.images.first.url, class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
+                <% if follower.image.attached? %>
+                  <%= image_tag follower.image, class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
                 <% else %>
                   <%= image_tag 'human.avif', class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
                 <% end %>
@@ -55,8 +55,8 @@
              <div class="card mb-2 shadow">
               <div class="row">
                 <div class="col-lg-2">
-                  <% if followed.images.attached? %>
-                    <%#= image_tag followed.images, class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
+                  <% if followed.image.attached? %>
+                    <%= image_tag followed.image, class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
                   <% else %>
                     <%= image_tag 'human.avif', class: "user-image", style: "width:120px; height: 90%; margin: 5px;" %>
                   <% end %>

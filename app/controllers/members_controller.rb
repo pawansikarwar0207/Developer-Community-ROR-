@@ -86,8 +86,8 @@ class MembersController < ApplicationController
 
   def followers_and_following
     @user = User.find(params[:id])
-    @followers = @user.followers.includes([images_attachments: :blob, active_relationships: :follower])
-    @following = @user.following.includes(images_attachments: :blob)
+    @followers = @user.followers.includes([image_attachment: :blob, active_relationships: :follower])
+    @following = @user.following.includes(image_attachment: :blob)
   end
 
   private
