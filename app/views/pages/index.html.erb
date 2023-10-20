@@ -4,14 +4,14 @@
     <div class="card shadow mt-2" style="min-height:-100px;">
       <div class="card-body">
         <div class="row">
-          <div class="col-lg-2">
+          <div class="col-lg-1 mb-2">
             <%= link_to page_path(page) do %>
               <% if page.image.attached? %>
-                <%= image_tag page.image, class: 'w-100' %>
+                <%= image_tag page.image, style: 'width: 100px; max-width:100%;', class: 'rounded-circle'%>
               <% end %>
             <% end %>
           </div>
-          <div class="col-lg-8">
+          <div class="col-lg-9">
             <%= link_to page_path(page), style: 'text-decoration:none; color: black;' do %>
               <h4><%= page.title %></h4>
               <small><%= page.content %></small><br>

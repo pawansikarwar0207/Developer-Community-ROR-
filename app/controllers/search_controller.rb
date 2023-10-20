@@ -33,7 +33,8 @@ class SearchController < ApplicationController
     User.where("first_name LIKE ? OR last_name LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%") +
     Post.where("title LIKE ? OR description LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%") + 
     Job.where("title LIKE ? OR description LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%") + 
-    Event.where("event_name LIKE ? OR description LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    Event.where("event_name LIKE ? OR description LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%") + 
+    Page.where("title LIKE ? OR content LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
   end
 
 end

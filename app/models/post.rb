@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  belongs_to :page
+  belongs_to :page, optional: true
 
   validates :title, presence: true
   validates :description, presence: true

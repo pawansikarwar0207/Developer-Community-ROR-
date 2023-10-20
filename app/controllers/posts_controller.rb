@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[edit show update destroy toggle_hide undo_hide hide]
+  before_action :set_post, only: %i[edit show update destroy]
   
   def index
     @original_posts = current_user.posts.includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob)
@@ -70,16 +70,19 @@ class PostsController < ApplicationController
 
   # for hide & unhide the post
   def hide
+    @post = Post.find(params[:id])
     @post.update(hidden: true)
     redirect_to root_path, notice: 'Post is hidden'
   end
 
   def undo_hide
+    @post = Post.find(params[:id])
     @post.update(hidden: false)
     redirect_to root_path, notice: 'Post is unhidden'
   end
 
   def toggle_hide
+    @post = Post.find(params[:id])
     @post.update(hidden: !@post.hidden)
 
     respond_to do |format|
@@ -99,7 +102,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :user_id, images: [])
+    params.require(:post).permit(:title, :description, :user_id, :page_id, images: [])
   end
 
 end

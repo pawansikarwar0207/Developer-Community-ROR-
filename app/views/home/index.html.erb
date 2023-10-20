@@ -1,7 +1,7 @@
 <div class="container col-lg-10 mx-auto mt-3 bg-light my-container">
   <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-12 mt-3">
-      <div class="card text-center mb-3 rounded-0 shadow current_user_profile">
+      <div class="card text-center mb-3 shadow current_user_profile">
         <div class="card-body">
           <% if current_user.images.attached? %>
             <%= image_tag current_user.images.first, style: "width: 130px; max-width:100%;", class: 'border border-3 rounded-circle mb-3 mt-3' %>
@@ -29,8 +29,8 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-9 col-md-8 col-sm-12 mt-3">
-      <div class="card col-lg-10 col-md-8 col-sm-12 mx-auto mb-2 rounded-0 shadow">
+    <div class="col-lg-9 col-md-8 col-sm-12 mt-2">
+      <div class="card mt-2 mb-2 shadow">
         <div class="card-body">
           <div class="row">
             <div class="col-md-1 col-12 mb-2 d-grid">

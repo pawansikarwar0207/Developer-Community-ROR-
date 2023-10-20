@@ -1,8 +1,8 @@
 <div class="row mb-3" id="post-list">
   <% @posts.each do |post| %>
-    <% unless post.hidden %>
-      <div class="col-lg-10 mx-auto mb-3">
-        <div class="card rounded-0 shadow" style="min-height: 320px;">
+    <% unless post.hidden || post.page_id.present? %>
+      <div>
+        <div class="card mb-2 shadow" style="min-height: 320px;">
           <div class="card-body">
               <div class="container">
                 <div class="row">
@@ -103,7 +103,7 @@
                   <% post.images.each do |image| %>
                     <% if image.content_type.include?("image") %>
                       <a href="<%= rails_blob_path(image) %>" class="post_images me-2 mb-3 mt-3" data-turbolinks="false" data-mfp-title="<%= post.title %>">
-                        <%= image_tag image, style: 'width: 300px; height: 250px;', class: 'mt-2 mb-2 border border-4' %>
+                        <%= image_tag image, style: 'width: 370px; height: 280px; max-width: 100%;', class: 'mt-2 mb-2 border border-4' %>
                       </a>
                     <% else %>
                       <div class="bg-dark text-center">

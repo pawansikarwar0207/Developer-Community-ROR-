@@ -22,6 +22,13 @@ class PagesController < ApplicationController
   end
 
   def show
+    @posts = @page.posts
+    @post_likes_count = Post.joins(:likes).group('posts.id').count
+    comment_counts = Comment.where(commentable_id: @posts.map(&:id), 
+                     commentable_type: 'Post')
+                     .group(:commentable_id)
+                     .count
+    @post_comment_counts = comment_counts.transform_keys(&:to_i)
   end
 
   def update

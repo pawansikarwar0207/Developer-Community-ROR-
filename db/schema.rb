@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_102656) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_20_051627) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -192,6 +192,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_102656) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "hidden"
+    t.bigint "page_id"
+    t.index ["page_id"], name: "index_posts_on_page_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -302,6 +304,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_102656) do
   add_foreign_key "pages", "users"
   add_foreign_key "post_visits", "posts"
   add_foreign_key "post_visits", "users"
+  add_foreign_key "posts", "pages"
   add_foreign_key "posts", "users"
   add_foreign_key "reposts", "posts"
   add_foreign_key "reposts", "users"

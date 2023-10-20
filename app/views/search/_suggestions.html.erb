@@ -10,6 +10,8 @@
           <%= link_to result.title, job_path(result), class: "text-primary", style: "text-decoration:none;" %>
         <% elsif result.is_a?(Event) %>
           <%= link_to result.event_name, event_path(result), class: "text-primary", style: "text-decoration:none;" %>
+        <% elsif result.is_a?(Page) %>
+          <%= link_to result.title, page_path(result), class: "text-primary", style: "text-decoration:none;" %>
         <% end %>
       </div>
     <% end %>

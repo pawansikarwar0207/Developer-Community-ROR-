@@ -1,6 +1,7 @@
 class Page < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  has_many :posts
 
   has_many :follows
   has_many :followers, through: :follows, source: :user, class_name: 'User'
