@@ -1,17 +1,11 @@
 Rails.application.routes.draw do
   
-  resources :pages
-
   resources :pages, controller: 'pages' do
     member do
       post :follow
       delete :unfollow
     end
   end
-
-
-  get 'reposts/create'
-  get 'reposts/destroy'
   
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -20,6 +14,13 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  devise_scope :user do
+    get '/generate_otp', to: 'users/sessions#generate_otp', as: :generate_otp
+    get '/session_id/:id', to: 'users/sessions#session_id', as: :session_id
+    post '/verify_otp', to: 'users/sessions#verify_otp', as: :verify_otp
+  end
+
+
   # for hide & unhide the posts
   resources :posts do
     member do
@@ -27,6 +28,8 @@ Rails.application.routes.draw do
       post 'undo_hide'
       post 'toggle_hide'
     end
+    resources :reposts, only: [:create, :destroy]
+    resources :comments
   end
 
   get 'hidden_posts', to: 'posts#hidden'
@@ -39,17 +42,6 @@ Rails.application.routes.draw do
     collection do
       get 'calendar_events'
     end
-  end
-
-  resources :posts do
-    resources :reposts, only: [:create, :destroy]
-    resources :comments
-  end
-
-  devise_scope :user do
-    get '/generate_otp', to: 'users/sessions#generate_otp', as: :generate_otp
-    get '/session_id/:id', to: 'users/sessions#session_id', as: :session_id
-    post '/verify_otp', to: 'users/sessions#verify_otp', as: :verify_otp
   end
 
   root 'home#index'
@@ -70,12 +62,6 @@ Rails.application.routes.draw do
 
   get 'member-connections/:id', to: 'members#connections', as: 'member_connections'
 
-  resources :members do
-    collection do
-      get :fetch_country_states
-    end
-  end
-
   resources :jobs
   resources :job_categories
   resources :work_experiences
@@ -86,9 +72,8 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts
     resources :jobs
-    resources :my_jobs
-    resources :my_events
-    resources :pages
+    resources :my_jobs, only: [:index]
+    resources :my_events, only: [:index]
   end
 
   resources :members, controllers: 'members' do
@@ -96,6 +81,9 @@ Rails.application.routes.draw do
       post :follow
       delete :unfollow
       get :followers_and_following
+    end
+    collection do
+      get :fetch_country_states
     end
   end
 

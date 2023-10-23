@@ -40,8 +40,12 @@ class EventsController < ApplicationController
 
   def calendar_events
     @events = Event.all
-    render json: @events.map { |event| event.to_calendar_event }
+    respond_to do |format|
+      format.html
+      format.json { render json: @events.map { |event| event.to_calendar_event } }
+    end
   end
+
 
   private
 
