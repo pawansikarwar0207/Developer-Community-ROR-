@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       delete :unfollow
     end
   end
+
+  resources :notifications, only: [:index, :destroy]
   
   devise_for :users, controllers: {
     sessions: 'users/sessions',

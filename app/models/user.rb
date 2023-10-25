@@ -51,6 +51,12 @@ class User < ApplicationRecord
   has_many :sent_shares, class_name: 'Share', foreign_key: 'sender_id'
   has_many :received_shares, class_name: 'Share', foreign_key: 'recipient_id'
 
+  has_many :notifications
+  
+  def unviewed_notifications_count
+    self.notifications.unviewed.count
+  end
+
   def follow(user)
     active_relationships.create(followed_id: user.id)
   end
