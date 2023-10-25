@@ -25,7 +25,6 @@ class PagesController < ApplicationController
     @page = Page.includes(posts: [:user, { likes: :user }, { comments: :user }]).find(params[:id])
 
     @follow_count = @page.follows.count
-    @is_following = current_user.following?(@page)
 
     # Load associated users for likes and comments
     @users_for_likes = User.where(id: @page.posts.joins(:likes).pluck('likes.user_id').uniq)
