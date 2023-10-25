@@ -10,12 +10,10 @@ class Post < ApplicationRecord
   scope :with_details, -> { includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob) }
   
   has_many_attached :images
-
   has_many :hidden_posts
 
   # for repost the post
   has_many :reposts, dependent: :destroy
-
   has_many :comments, as: :commentable
 
   # for sharing the post

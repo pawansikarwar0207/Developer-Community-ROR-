@@ -1,10 +1,4 @@
 class WorkExperience < ApplicationRecord
-
-  EMPLOYMENT_TYPE = ['Full-time', 'Part-time', 'Self-Employeed', 'Freelance', 'Trainee', 'Internship']
-
-  LOCATION_TYPE = ['On-site', 'Hybrid', 'Remote']
-
-
   belongs_to :user
 
   validates :company, :start_date, :job_title, :location, presence: true
@@ -14,6 +8,9 @@ class WorkExperience < ApplicationRecord
   validate :work_experiences_last_date
   validate :presence_of_end_date
   validate :end_date_greater_than_start_date, if: :currently_not_working_here?
+
+  EMPLOYMENT_TYPE = ['Full-time', 'Part-time', 'Self-Employeed', 'Freelance', 'Trainee', 'Internship']
+  LOCATION_TYPE = ['On-site', 'Hybrid', 'Remote']
 
   def work_experiences_last_date
     if end_date.present? && currently_working_here

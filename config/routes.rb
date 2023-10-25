@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
-  
-  resources :pages, controller: 'pages' do
-    member do
-      post :follow
-      delete :unfollow
-    end
-  end
 
-  resources :notifications, only: [:index, :destroy]
+  root 'home#index'
   
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -22,7 +15,15 @@ Rails.application.routes.draw do
     post '/verify_otp', to: 'users/sessions#verify_otp', as: :verify_otp
   end
 
+  resources :pages, controller: 'pages' do
+    member do
+      post :follow
+      delete :unfollow
+    end
+  end
 
+  resources :notifications, only: [:index, :destroy]
+  
   # for hide & unhide the posts
   resources :posts do
     member do
@@ -45,8 +46,7 @@ Rails.application.routes.draw do
       get 'calendar_events'
     end
   end
-
-  root 'home#index'
+  
   get '/home', to: 'home#index', as: :home
   get '/home/sort', to: 'home#sort', as: :home_sort
   
@@ -96,6 +96,4 @@ Rails.application.routes.draw do
       get :show_followers
     end
   end
-
-
 end

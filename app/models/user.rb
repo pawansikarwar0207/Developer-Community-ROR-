@@ -38,13 +38,13 @@ class User < ApplicationRecord
             foreign_key: "follower_id",
             dependent: :destroy
   
-  has_many :following, through: :active_relationships, source: :followed
 
   has_many :passive_relationships, 
             class_name: "Relationship", 
             foreign_key: "followed_id",        
             dependent: :destroy
 
+  has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
   # for sharing the post
@@ -107,7 +107,7 @@ class User < ApplicationRecord
     unless user
       user = User.create(
         email: data['email'],
-        password: Devise.friendly_token[0,20],
+        password: 'password' ,
         first_name: data['first_name'],
         last_name: data['last_name'],
         username: data['name'],
