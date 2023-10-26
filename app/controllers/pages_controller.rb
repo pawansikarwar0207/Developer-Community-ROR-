@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def index
     @pages = Page.includes(:user, :follows, image_attachment: :blob ).order(created_at: :desc) 
+    @page_followers_count = Page.joins(:follows).group('pages.id').count
   end
 
   def new

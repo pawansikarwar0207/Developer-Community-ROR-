@@ -26,7 +26,7 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many :skills
   has_many :jobs
-  has_many :work_experiences, dependent: :destroy
+  has_many :work_experiences, class_name: 'WorkExperience', dependent: :destroy
   has_many :pages
 
   has_many :follows

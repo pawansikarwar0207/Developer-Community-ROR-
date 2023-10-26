@@ -13,7 +13,7 @@ class SearchController < ApplicationController
   end
 
   def results
-    @user = User.includes(following: { posts: [:comments, :likes] }, posts: [:comments, :likes], images_attachments: :blob).find(params[:user_id])
+    @user = User.includes(following: { posts: [:comments, :likes] }, posts: [:comments, :likes], image_attachment: :blob).find(params[:user_id])
     @posts = @user.posts
     @mutual_connections = current_user.mutually_connected_ids(@user)
     @post_likes_count = @posts.joins(:likes).group('posts.id').count
