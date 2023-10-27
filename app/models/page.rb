@@ -1,14 +1,15 @@
 class Page < ApplicationRecord
   belongs_to :user
+  
   has_one_attached :image
   has_many :posts
 
-  has_many :follows
-  has_many :followers, through: :follows, source: :user, class_name: 'User'
+  has_many :follows, as: :followed, dependent: :destroy
+  has_many :followers, through: :follows, source: :user
 
-  def followers_count
-    self.followers.count
-  end
+  # def followers_count
+  #   self.followers.count
+  # end
 
   ORGANIZATION_TYPE = [ 'Public company', 'Self-Employeed','Gove. Agency','Nonprofit','Sole Proprietorship','Private held','Partnership']
 

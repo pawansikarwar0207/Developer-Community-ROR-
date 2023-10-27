@@ -9,6 +9,12 @@ class HomeController < ApplicationController
 
     # Now, you can create a hash where keys are post IDs and values are comment counts
     @post_comment_counts = comment_counts.transform_keys(&:to_i)
+    
+    # for showing the total connected user ids count of current user
+    connected_user_ids = current_user.connected_user_ids
+    unique_connected_user_ids = connected_user_ids.uniq
+    @total_connections = unique_connected_user_ids.count
+
   end
 
   def sort
@@ -44,5 +50,15 @@ class HomeController < ApplicationController
       format.turbo_stream
     end
   end
+
+  # def connections
+  #   @user = User.find(params[:id])
+  #   total_users = if params[:mutual_connections].present?
+  #     User.where(id: current_user.mutually_connected_ids(@user))
+  #   else
+  #     User.where(id: @user.connected_user_ids)
+  #   end
+  # end
+
 
 end

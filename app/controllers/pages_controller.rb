@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def index
     @pages = Page.includes(:user, :follows, image_attachment: :blob ).order(created_at: :desc) 
-    @page_followers_count = Page.joins(:follows).group('pages.id').count
+    #@page_followers_count = Page.joins(:follows).group('pages.id').count
   end
 
   def new
@@ -56,13 +56,13 @@ class PagesController < ApplicationController
 
   def follow
     @page = Page.find(params[:id])
-    current_user.follow(@page)
+    current_user.pages << @page
     redirect_to pages_path
   end
 
   def unfollow
     @page = Page.find(params[:id])
-    current_user.unfollow(@page)
+    current_user.pages.delete(@page)
     redirect_to pages_path
   end
 

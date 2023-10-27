@@ -1,4 +1,8 @@
 class Post < ApplicationRecord
+
+  scope :hidden_posts, -> { where(hidden: true) }
+  scope :with_details, -> { includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob) }
+
   belongs_to :user
   belongs_to :page, optional: true
 
@@ -6,9 +10,6 @@ class Post < ApplicationRecord
   validates :description, presence: true
   #validates :images, presence: true
 
-  scope :hidden_posts, -> { where(hidden: true) }
-  scope :with_details, -> { includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob) }
-  
   has_many_attached :images
   has_many :hidden_posts
 

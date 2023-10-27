@@ -5,12 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
+  scope :with_country, ->(country) { where(country: country) }
+  scope :with_images, -> { where.not(image: nil) }
+  
   validates :first_name, :last_name, presence: true
   validates :username, :profile_title, presence: true
   validates :email, presence: true, uniqueness: true
-
-  scope :with_country, ->(country) { where(country: country) }
-  scope :with_images, -> { where.not(image: nil) }
 
   has_many :connections, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -30,7 +30,7 @@ class User < ApplicationRecord
   has_many :pages
 
   has_many :follows
-  has_many :followed_pages, through: :follows, source: :page, class_name: 'Page'
+  has_many :pages, through: :follows, source: :followed, source_type: 'Page'
 
   # for follow & unfollow
   has_many :active_relationships, 
@@ -52,6 +52,10 @@ class User < ApplicationRecord
   has_many :received_shares, class_name: 'Share', foreign_key: 'recipient_id'
 
   has_many :notifications
+
+  def following?(page)
+    page.followers.include?(self)
+  end
   
   def unviewed_notifications_count
     self.notifications.unviewed.count

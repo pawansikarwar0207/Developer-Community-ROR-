@@ -7,7 +7,7 @@
             <div class="card text-center shadow rounded-0" style="min-height: 350px;">
               <div class="card-body">
                 <% if post.images.attached? %>
-                  <%= image_tag post.images, class: 'post_images mb-3' %>
+                  <%= image_tag post.images.first, class: 'post_images mb-3' %>
                 <% end %>
                 <div class="user-info" data-controller="user-name" >
                   <h5 data-user-name-target='name' data-action="click->user-name#getUserName" >Posted by : <%= post.user.name %></h5>

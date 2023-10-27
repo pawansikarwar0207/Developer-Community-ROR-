@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_25_070616) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_26_121333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -106,10 +106,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_070616) do
 
   create_table "follows", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "page_id", null: false
+    t.string "followed_type"
+    t.bigint "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["page_id"], name: "index_follows_on_page_id"
+    t.index ["followed_type", "followed_id"], name: "index_follows_on_followed"
     t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
@@ -294,7 +295,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_25_070616) do
   add_foreign_key "comments", "users"
   add_foreign_key "connections", "users"
   add_foreign_key "events", "users"
-  add_foreign_key "follows", "pages"
   add_foreign_key "follows", "users"
   add_foreign_key "jobs", "job_categories"
   add_foreign_key "jobs", "users"

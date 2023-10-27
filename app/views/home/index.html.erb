@@ -1,4 +1,4 @@
-<div class="container col-lg-10 mx-auto mt-3 bg-light my-container">
+<div class="container col-lg-10 mx-auto mt-3 my-container">
   <div class="row">
     <div class="col-lg-3 col-md-4 col-sm-12 mt-3">
       <div class="card text-center mb-3 shadow current_user_profile">
@@ -13,19 +13,23 @@
           <% end %>
           <small class=" text-muted"><%= current_user.profile_title %></small>
           <hr>
-          <p><%= pluralize(current_user.connections.count, "Connection") %></p>
+          <p>
+            <% if @total_connections.present? %>
+              <div id="connection-count">
+                <%= link_to pluralize(@total_connections, 'connection'), member_connections_path(current_user), style: "text-decoration:none;" %>
+              </div>
+              <% end %>
+          </p>
           <hr>
           <%= link_to 'My Job', user_my_jobs_path(current_user), style: 'text-decoration:none;'%> 
           <hr>
           <%= link_to 'My Post', user_posts_path(current_user), style: 'text-decoration:none;'%> 
           <hr>
-          <%= link_to "Followers", followers_and_following_member_path(current_user), style: 'text-decoration:none;' %> 
+          <%= link_to "My Followers", followers_and_following_member_path(current_user), style: 'text-decoration:none;' %> 
           <hr>
-          <%= link_to "Events", user_my_events_path(current_user), style: 'text-decoration:none;'  %>
+          <%= link_to "My Events", user_my_events_path(current_user), style: 'text-decoration:none;'  %>
           <hr>
           <%= link_to 'View Calendar', calendar_events_events_path, style: 'text-decoration:none;' %>
-          <hr>
-          <%#= link_to 'Create New Page', user_pages_path(current_user), style: 'text-decoration:none;' %>
         </div>
       </div>
     </div>

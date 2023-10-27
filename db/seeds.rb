@@ -46,6 +46,22 @@ ActiveRecord::Base.transaction do
     description: "Full stack ROR developer",
     qualification: "B.E",
     job_category_id: '1'
-    )
+  )
+
+  job_categories = [
+    'Software Development',
+    'Marketing',
+    'Sales',
+    'Finance',
+    'Human Resources',
+    'Customer Service',
+    'Engineering',
+    'Design',
+    'Business Development'
+  ]
+
+  job_categories.each do |category_name|
+    JobCategory.create(name: category_name)
+  end
 
 end
