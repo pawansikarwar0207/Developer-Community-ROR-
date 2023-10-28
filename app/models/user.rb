@@ -52,13 +52,9 @@ class User < ApplicationRecord
   has_many :received_shares, class_name: 'Share', foreign_key: 'recipient_id'
 
   has_many :notifications
-
-  def following?(page)
-    page.followers.include?(self)
-  end
   
   def unviewed_notifications_count
-    self.notifications.unviewed.count
+    self.notifications.present? ? self.notifications.unviewed.count : 0
   end
 
   def follow(user)
@@ -69,8 +65,8 @@ class User < ApplicationRecord
     active_relationships.find_by(followed_id: user.id).destroy
   end
 
-  def following?(user)
-    following.where(id: user.id).exists?
+  def following?(page)
+    page.followers.include?(self)
   end
 
   # for repost the post

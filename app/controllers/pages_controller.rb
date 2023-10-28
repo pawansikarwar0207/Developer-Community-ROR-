@@ -57,13 +57,17 @@ class PagesController < ApplicationController
   def follow
     @page = Page.find(params[:id])
     current_user.pages << @page
-    redirect_to pages_path
+    respond_to do |format|
+      format.js
+    end
   end
 
   def unfollow
     @page = Page.find(params[:id])
     current_user.pages.delete(@page)
-    redirect_to pages_path
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

@@ -11,10 +11,7 @@ class HomeController < ApplicationController
     @post_comment_counts = comment_counts.transform_keys(&:to_i)
     
     # for showing the total connected user ids count of current user
-    connected_user_ids = current_user.connected_user_ids
-    unique_connected_user_ids = connected_user_ids.uniq
-    @total_connections = unique_connected_user_ids.count
-
+    @total_connections = Connection.where('user_id = ? OR connected_user_id = ?', current_user.id, current_user.id).where(status: 'accepted')
   end
 
   def sort
