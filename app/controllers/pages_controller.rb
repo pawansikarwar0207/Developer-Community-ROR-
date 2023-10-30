@@ -2,8 +2,7 @@ class PagesController < ApplicationController
   before_action :set_page, only: %i[edit update destroy]
 
   def index
-    @pages = Page.includes(:user, :follows, image_attachment: :blob ).order(created_at: :desc) 
-    #@page_followers_count = Page.joins(:follows).group('pages.id').count
+    @pages = Page.includes(:user, :follows, :followers, image_attachment: :blob ).order(created_at: :desc)
   end
 
   def new
