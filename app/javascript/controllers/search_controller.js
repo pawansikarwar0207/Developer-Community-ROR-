@@ -55,6 +55,7 @@ export default class extends Controller {
 
   hideSuggestions() {
     if (!this.childWasClicked) {
+      this.suggestionsTarget.innerHTML = ''; // Clear the suggestions
       this.suggestionsTarget.classList.add("hidden");
     }
     this.childWasClicked = false;

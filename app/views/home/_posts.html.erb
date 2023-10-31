@@ -117,76 +117,78 @@
               <% end %>
             </div>
             <!-- for display the names of users who liked & repost a post and show the count of remaining users into the modal popup -->
-            <div class="row border border-2 mt-2 mb-2">
-              <div class="col-lg-6 mt-2 mb-2">
-                <% likes = post.likes.includes(:user) %>
-                <% if likes.present? %>
-                  <% first_user = likes.first.user %>
-                  <% other_users = likes[1..] %>
-                  <div>
-                    <span>
-                      <b>Liked by</b>
-                      <%= link_to first_user.name, member_path(first_user), style: 'text-decoration:none;' %>
-                      <% if other_users.present? %>
-                        and
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#likeModal-<%= post.id %>"><%= other_users.size %> others</a>
-                        <!-- Modal -->
-                        <div class="modal fade" id="likeModal-<%= post.id %>" tabindex="-1" aria-labelledby="likeModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="likeModalLabel-<%= post.id %>">Other Users Who Liked This Post</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <% other_users.each do |like| %>
-                                  <% user = like.user %>
-                                  <p><%= link_to user.name, member_path(user), style: 'text-decoration:none;' %></p>
-                                <% end %>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      <% end %>
-                    </span>
-                  </div>
-                <% end %>
-              </div>
-              <div class="col-lg-6 mt-2 mb-2 text-end">
-                <% reposts = post.reposts.includes(:user) %>
-                <% if reposts.present? %>
-                  <% first_user = reposts.first.user %>
-                  <% other_users = reposts[1..] %>
-                  <div>
-                    <span>
-                      <b>Repostd by</b>
-                      <%= link_to first_user.name, member_path(first_user), style: 'text-decoration:none;' %>
-                      <% if other_users.present? %>
-                        and
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#repostModal-<%= post.id %>"><%= other_users.size %> others</a>
-                        <!-- Modal -->
-                        <div class="modal fade" id="repostModal-<%= post.id %>" tabindex="-1" aria-labelledby="repostModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="repostModalLabel-<%= post.id %>">Other Users Who Repostd This Post</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">
-                                <% other_users.each do |repost| %>
-                                  <% user = repost.user %>
-                                  <p><%= link_to user.name, member_path(user), style: 'text-decoration:none;' %></p>
-                                <% end %>
+            <% if post.likes.present? || post.reposts.present? %>
+              <div class="row border border-2 mt-2 mb-2">
+                <div class="col-lg-6 mt-2 mb-2">
+                  <% likes = post.likes.includes(:user) %>
+                  <% if likes.present? %>
+                    <% first_user = likes.first.user %>
+                    <% other_users = likes[1..] %>
+                    <div>
+                      <span>
+                        <b>Liked by</b>
+                        <%= link_to first_user.name, member_path(first_user), style: 'text-decoration:none;' %>
+                        <% if other_users.present? %>
+                          and
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#likeModal-<%= post.id %>"><%= other_users.size %> others</a>
+                          <!-- Modal -->
+                          <div class="modal fade" id="likeModal-<%= post.id %>" tabindex="-1" aria-labelledby="likeModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="likeModalLabel-<%= post.id %>">Other Users Who Liked This Post</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <% other_users.each do |like| %>
+                                    <% user = like.user %>
+                                    <p><%= link_to user.name, member_path(user), style: 'text-decoration:none;' %></p>
+                                  <% end %>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      <% end %>
-                    </span>
-                  </div>
-                <% end %>
+                        <% end %>
+                      </span>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="col-lg-6 mt-2 mb-2 text-end">
+                  <% reposts = post.reposts.includes(:user) %>
+                  <% if reposts.present? %>
+                    <% first_user = reposts.first.user %>
+                    <% other_users = reposts[1..] %>
+                    <div>
+                      <span>
+                        <b>Repostd by</b>
+                        <%= link_to first_user.name, member_path(first_user), style: 'text-decoration:none;' %>
+                        <% if other_users.present? %>
+                          and
+                          <a href="#" data-bs-toggle="modal" data-bs-target="#repostModal-<%= post.id %>"><%= other_users.size %> others</a>
+                          <!-- Modal -->
+                          <div class="modal fade" id="repostModal-<%= post.id %>" tabindex="-1" aria-labelledby="repostModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="repostModalLabel-<%= post.id %>">Other Users Who Repostd This Post</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <% other_users.each do |repost| %>
+                                    <% user = repost.user %>
+                                    <p><%= link_to user.name, member_path(user), style: 'text-decoration:none;' %></p>
+                                  <% end %>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <% end %>
+                      </span>
+                    </div>
+                  <% end %>
+                </div>
               </div>
-            </div>
+            <% end %>
             <div class="row mt-3">
               <div class="col-lg-1 col-md-2 col-3">
                 <% if user_signed_in? %>

@@ -13,6 +13,7 @@
       <p><strong>Qualification : </strong> <%= @job.qualification %></p>
       <p><strong>Job Category : </strong> <%= @job.job_category.name %></p>
       <p><strong>Status : </strong> <%= @job.status %></p>
+      <p><strong>Posted : </strong> <%= @job.created_at.strftime('%Y-%m-%d') %></p>
       <%= link_to 'Back to Jobs', jobs_path, class:"btn btn-primary" %>
       <% if current_user && current_user.id == @job.user_id %>
         <%= link_to 'Edit Job', edit_job_path(@job), class: "btn btn-primary" %>
