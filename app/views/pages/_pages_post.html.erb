@@ -70,13 +70,6 @@
                     <% end %>
                   <% end %>
                 </div>
-                <div class="col-lg-12 mb-1 d-flex justify-content-end">
-                  <%# if (@post_comment_counts[post.id] || 0) > 0 %>
-                    <%#= link_to post_path(post), style: "text-decoration:none;" do %>
-                      <%#= pluralize(@post_comment_counts[post.id], "Comment") %>
-                    <%# end %>
-                  <%# end %>
-                </div>
               </div>
           </div>
           <div>
@@ -96,6 +89,43 @@
               <% end %>
             <% end %>
           </div>
+          <!-- for display the names of users who liked a post and show the count of remaining users separately -->
+            <div class="mt-2">
+              <% likes = post.likes.includes(:user) %>
+              <% if likes.present? %>
+                <hr>
+                <% first_user = likes.first.user %>
+                <% other_users = likes[1..] %>
+                <div>
+                  <span>
+                    <b>Liked by</b>
+                    <%= link_to first_user.name, member_path(first_user), style: 'text-decoration:none;' %>
+                    <% if other_users.present? %>
+                      and
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#likeModal-<%= post.id %>"><%= other_users.size %> others</a>
+                      <!-- Modal -->
+                      <div class="modal fade" id="likeModal-<%= post.id %>" tabindex="-1" aria-labelledby="likeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="likeModalLabel-<%= post.id %>">Other Users Who Liked This Post</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <% other_users.each do |like| %>
+                                <% user = like.user %>
+                                <p><%= link_to user.name, member_path(user), style: 'text-decoration:none;' %></p>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </span>
+                </div>
+                <hr>
+              <% end %>
+            </div>
           <div class="row mt-3">
             <div class="col-lg-1 col-md-2 col-3">
               <% if user_signed_in? %>
