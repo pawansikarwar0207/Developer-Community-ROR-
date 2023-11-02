@@ -37,6 +37,7 @@ class PagesController < ApplicationController
                      .group(:commentable_id)
                      .count
     @post_comment_counts = comment_counts.transform_keys(&:to_i)
+    @jobs = @page.jobs
   end
 
   def update

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_26_121333) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_02_094847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -132,7 +132,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_121333) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "page_id"
     t.index ["job_category_id"], name: "index_jobs_on_job_category_id"
+    t.index ["page_id"], name: "index_jobs_on_page_id"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
@@ -297,6 +299,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_26_121333) do
   add_foreign_key "events", "users"
   add_foreign_key "follows", "users"
   add_foreign_key "jobs", "job_categories"
+  add_foreign_key "jobs", "pages"
   add_foreign_key "jobs", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
