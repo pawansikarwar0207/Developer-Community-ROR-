@@ -10,5 +10,3 @@ pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/inde
 pin "@rails/ujs", to: "https://ga.jspm.io/npm:@rails/ujs@7.0.7-2/lib/assets/compiled/rails-ujs.js"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
-pin "picmo", to: "https://ga.jspm.io/npm:picmo@5.8.5/dist/index.js"
-pin "@picmo/popup-picker", to: "https://ga.jspm.io/npm:@picmo/popup-picker@5.8.5/dist/index.js"
