@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
     resources :reposts, only: [:create, :destroy]
     resources :comments
+    resources :user_reactions, only: [:create, :destroy]
   end
 
   get 'hidden_posts', to: 'posts#hidden'

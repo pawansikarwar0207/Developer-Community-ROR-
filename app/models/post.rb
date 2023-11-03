@@ -13,6 +13,9 @@ class Post < ApplicationRecord
   has_many_attached :images
   has_many :hidden_posts
 
+  # for user reactions
+  has_many :user_reactions, as: :reactable
+
   # for repost the post
   has_many :reposts, dependent: :destroy
   has_many :comments, as: :commentable
@@ -55,6 +58,10 @@ class Post < ApplicationRecord
 
   def self.ransackable_associations(auth_object = nil)
     ["comments", "images_attachment", "image_blob", "user"]
+  end
+
+  def user_reactions_count(reaction_type)
+    user_reactions.where(reaction_type: reaction_type).count
   end
   
 end
