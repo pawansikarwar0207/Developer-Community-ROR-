@@ -14,11 +14,11 @@
           <small class=" text-muted"><%= current_user.profile_title %></small>
           <hr>
           <p>
-            <% if @total_connections.present? %>
+            <%# if @total_connections.present? %>
               <div id="connection-count">
                 <%= link_to pluralize(@total_connections.count, 'connection'), member_connections_path(current_user), style: "text-decoration:none;" %>
               </div>
-              <% end %>
+            <%# end %>
           </p>
           <hr>
           <%= link_to 'My Job', user_my_jobs_path(current_user), style: 'text-decoration:none;'%> 

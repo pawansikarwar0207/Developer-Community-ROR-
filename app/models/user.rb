@@ -9,7 +9,8 @@ class User < ApplicationRecord
   scope :with_images, -> { where.not(image: nil) }
   
   validates :first_name, :last_name, presence: true
-  validates :username, :profile_title, presence: true
+  validates :username, presence: true
+  validates :profile_title, presence: true, if: -> { profile_title.present? }
   validates :email, presence: true, uniqueness: true
 
   has_many :connections, dependent: :destroy

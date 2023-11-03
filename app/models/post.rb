@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
   scope :hidden_posts, -> { where(hidden: true) }
-  scope :with_details, -> { includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob) }
+  scope :with_details, -> { includes(:user, :likes, :reposts, images_attachments: :blob) }
 
   belongs_to :user
   belongs_to :page, optional: true
@@ -27,9 +27,6 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :users, through: :likes
 
-   # for visiting the post by current user
-  has_many :post_visits, dependent: :destroy
-
   include Notificable
 
   # for notification
@@ -45,11 +42,6 @@ class Post < ApplicationRecord
 
   def unhide
     update(hidden: false)
-  end
-
-  # for visiting the post by current user
-  def visited_by?(user)
-    post_visits.exists?(user: user)
   end
 
   def self.ransackable_attributes(auth_object = nil)
