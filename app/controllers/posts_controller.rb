@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit show update destroy]
   
   def index
-    @original_posts = current_user.posts.includes(:user, :likes, :reposts, :post_visits, images_attachments: :blob)
-   @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, :post_visits, images_attachments: :blob]).map(&:post)
+    @original_posts = current_user.posts.includes(:user, :likes, :reposts,  images_attachments: :blob)
+   @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, images_attachments: :blob]).map(&:post)
 
    @posts = (@original_posts + @reposted_posts).uniq.sort_by(&:created_at).reverse
 
@@ -32,23 +32,6 @@ class PostsController < ApplicationController
   def show
     @user = @post.user
     @comments = @post.comments.includes(:user).order(created_at: :desc)
-    
-      # # for visiting the post by current user
-      PostVisit.create(user: current_user, post: @post)
-
-      prepare_meta_tags(
-        title: @post.title,
-        description: @post.description,
-        twitter: {
-          card: @post.title
-        },
-        og: {
-          url: post_path(@post),
-          title: @post.title,
-          # image: (ENV['APP_URL'] + rails_blob_path(@post.images)),
-          description: @post.description,
-        }
-        )
   end
 
   def edit
@@ -102,7 +85,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, :user_id, :page_id, images: [])
+    params.require(:post).permit(:title, :description, :user_id, :page_id, :group_id, images: [])
   end
 
 end

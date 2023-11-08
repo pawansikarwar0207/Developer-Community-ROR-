@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :groups
+
   resources :notifications, only: [:index, :destroy]
   
   # for hide & unhide the posts

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_03_105744) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_07_112927) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -96,6 +96,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_105744) do
     t.index ["user_id"], name: "index_follows_on_user_id"
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "industry"
+    t.string "location"
+    t.string "group_type"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
+
+  create_table "groups_users", id: false, force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.index ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id"
+    t.index ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id"
+  end
+
   create_table "job_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -169,6 +188,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_105744) do
     t.datetime "updated_at", null: false
     t.boolean "hidden"
     t.bigint "page_id"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_posts_on_group_id"
     t.index ["page_id"], name: "index_posts_on_page_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -279,6 +300,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_105744) do
   add_foreign_key "connections", "users"
   add_foreign_key "events", "users"
   add_foreign_key "follows", "users"
+  add_foreign_key "groups", "users"
   add_foreign_key "jobs", "job_categories"
   add_foreign_key "jobs", "pages"
   add_foreign_key "jobs", "users"
@@ -286,6 +308,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_105744) do
   add_foreign_key "likes", "users"
   add_foreign_key "notifications", "users"
   add_foreign_key "pages", "users"
+  add_foreign_key "posts", "groups"
   add_foreign_key "posts", "pages"
   add_foreign_key "posts", "users"
   add_foreign_key "reposts", "posts"

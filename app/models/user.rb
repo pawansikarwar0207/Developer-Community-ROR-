@@ -12,7 +12,8 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :profile_title, presence: true, if: -> { profile_title.present? }
   validates :email, presence: true, uniqueness: true
-
+  
+  has_many :groups
   has_many :connections, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :events, dependent: :destroy
