@@ -22,7 +22,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :groups
+  resources :groups do
+    member do
+      post 'follow'
+      delete 'unfollow'
+      get 'followers', to: 'groups#followers', as: 'group_followers'
+    end
+  end
 
   resources :notifications, only: [:index, :destroy]
   

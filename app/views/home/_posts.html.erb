@@ -9,9 +9,9 @@
                   <div class="col-md-1 col-12 mb-2 d-grid">
                     <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
                      <% if post.user.image.attached? %>
-                        <%= image_tag post.user.image, class: "user-image border border-3 rounded-circle" %>
+                        <%= image_tag post.user.image, class: "user-image border border-1 rounded-circle" %>
                       <% else %> 
-                      <%= image_tag 'human.avif', class: "user-image border border-3 rounded-circle" %>
+                      <%= image_tag 'human.avif', class: "user-image border border-1 rounded-circle" %>
                       <% end %>
                     <% end %>
                   </div>
@@ -103,7 +103,7 @@
                   <% post.images.each do |image| %>
                     <% if image.content_type.include?("image") %>
                       <a href="<%= rails_blob_path(image) %>" class="post_images me-2 mb-3 mt-3" data-turbolinks="false" data-mfp-title="<%= post.title %>">
-                        <%= image_tag image, style: 'width: 370px; height: 280px; max-width: 100%;', class: 'mt-2 mb-2 border border-4' %>
+                        <%= image_tag image, style: 'width: 370px; height: 280px; max-width: 100%;', class: 'mt-2 mb-2 border border-1' %>
                       </a>
                     <% else %>
                       <div class="bg-dark text-center">

@@ -6,7 +6,7 @@
           <% if current_user.image.attached? %>
             <%= image_tag current_user.image, style: "width: 80px; max-width:100%;", class: 'border border-1 rounded-circle mb-3 mt-3' %>
           <% else %> 
-            <%= image_tag 'human.avif', class: "border border-3 rounded-circle mb-3 mt-3", style: "width: 130px; max-width:100%;" %>
+            <%= image_tag 'human.avif', class: "border border-1 rounded-circle mb-3 mt-3", style: "width: 130px; max-width:100%;" %>
           <% end %>
           <%= link_to member_path(current_user), style: "text-decoration:none;" do %>
             <h5 class="text-dark"><%= current_user.name %></h5>
@@ -14,6 +14,19 @@
           <% if @group.user == current_user %>
             <small class="text-muted">Joined on : <%= @group.created_at.strftime('%b %Y') %></small>
           <% end %>
+          <% if current_user.groups.include?(@group) %>
+            <%= button_to "Unfollow", unfollow_group_path(@group), method: :delete, class: 'btn btn-danger btn-sm mt-2 mb-2' %>
+          <% else %>
+            <%= button_to "Follow", follow_group_path(@group), method: :post, class: 'btn btn-primary btn-sm mt-2 mb-2' %>
+          <% end %>
+          <% if @group.users.count > 0 %>
+            <small class="text-primary mt-3">
+              <%= link_to group_followers_group_path(@group), style: 'text-decoration:none;' do %>
+                <%= pluralize(@group.users.count, 'Follower') %>
+              <% end %>
+              </small>
+          <% end %>
+
         </div>
       </div>
       <div class="card mb-3 shadow">

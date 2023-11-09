@@ -11,9 +11,9 @@
           <div class="card mt-3">
             <div class="card-body">
               <% if connection.requested.image.attached? %>
-              <%= image_tag connection.requested.image, style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
+              <%= image_tag connection.requested.image, style: "width: 150px; ", class: 'mb-3 border border-1 rounded-circle' %>
               <% else %>
-              <%= image_tag "human.avif", style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
+              <%= image_tag "human.avif", style: "width: 150px; ", class: 'mb-3 border border-1 rounded-circle' %>
               <% end %>
               <div style="min-height:100px;">
                 <%= link_to member_path(connection.requested), class: 'text-primary', style: "text-decoration:none;", target: "_blank" do %>
@@ -51,9 +51,9 @@
             <div class="card mt-3">
               <div class="card-body">
                 <% if connection.received.image.attached? %>
-                <%= image_tag connection.received.image, style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
+                <%= image_tag connection.received.image, style: "width: 150px; ", class: 'mb-3 border border-1 rounded-circle' %>
                 <% else %>
-                <%= image_tag "human.avif", style: "width: 150px; ", class: 'mb-3 border border-3 rounded-circle' %>
+                <%= image_tag "human.avif", style: "width: 150px; ", class: 'mb-3 border border-1 rounded-circle' %>
                 <% end %>
                 <div style="min-height:100px;">
                   <%= link_to member_path(connection.received), class: 'text-primary', style: "text-decoration:none;", target: "_blank" do %>

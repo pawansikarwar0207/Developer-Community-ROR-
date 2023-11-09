@@ -8,9 +8,9 @@
               <div class="col-md-1 col-12 mb-2 d-grid">
                 <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
                  <% if post.user.image.attached? %>
-                    <%= image_tag post.user.image, class: "user-image border border-3 rounded-circle" %>
+                    <%= image_tag post.user.image, class: "user-image border border-1 rounded-circle" %>
                   <% else %> 
-                  <%= image_tag 'human.avif', class: "user-image border border-3 rounded-circle" %>
+                  <%= image_tag 'human.avif', class: "user-image border border-1 rounded-circle" %>
                   <% end %>
                 <% end %>
               </div>

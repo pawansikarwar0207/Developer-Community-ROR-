@@ -1,8 +1,8 @@
 class GroupsController < ApplicationController
-  before_action :set_groups, only: %i[edit show update destroy]
+  before_action :set_groups, only: %i[edit show update destroy follow unfollow followers]
 
   def index
-    @groups = Group.all.order(created_at: :desc)
+    @groups = Group.includes(:user).order(created_at: :desc)
   end
 
   def new
@@ -23,9 +23,7 @@ class GroupsController < ApplicationController
 
   def show
     @groups = Group.all
-    @group = Group.includes(posts: [:user, { likes: :user }, { comments: :user }]).find(params[:id])
-
-    #@follow_count = @group.follows.count
+    @group = Group.includes(posts: [{ user: { likes: :user } }, { comments: :user }, { user_reactions: :user }, { images_attachments: :blob }]).find(params[:id])
 
     # Load associated users for likes and comments
     @users_for_likes = User.where(id: @group.posts.joins(:likes).pluck('likes.user_id').uniq)
@@ -52,6 +50,20 @@ class GroupsController < ApplicationController
     if @group.destroy
       redirect_to groups_path, alert: "Group was deleted!"
     end
+  end
+
+  def follow
+    current_user.groups << @group unless current_user.groups.include?(@group)
+    redirect_to @group, notice: 'You have followed the group.'
+  end
+
+  def unfollow
+    current_user.groups.delete(@group) if current_user.groups.include?(@group)
+    redirect_to @group, alert: 'You have unfollowed the group.'
+  end
+
+  def followers
+    @followers = @group.users
   end
 
   private

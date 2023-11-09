@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.includes(:likes, :comments, user: [:reposts, :follows, :notifications, image_attachment: :blob], images_attachments: :blob).order(created_at: :desc)
+    @posts = Post.includes(:likes, :comments, :reposts, :user_reactions, user: [:reposts, :groups, :user_reactions, :follows, :notifications, image_attachment: :blob], images_attachments: :blob).order(created_at: :desc)
     @post_likes_count = Post.joins(:likes).group('posts.id').count
     comment_counts = Comment.where(commentable_id: @posts.map(&:id), 
                      commentable_type: 'Post')
@@ -12,6 +12,7 @@ class HomeController < ApplicationController
     
     # for showing the total connected user ids count of current user
     @total_connections = Connection.where('user_id = ? OR connected_user_id = ?', current_user.id, current_user.id).where(status: 'accepted')
+    @groups = Group.all
   end
 
   def sort
