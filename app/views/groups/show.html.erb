@@ -15,9 +15,9 @@
             <small class="text-muted">Joined on : <%= @group.created_at.strftime('%b %Y') %></small>
           <% end %>
           <% if current_user.groups.include?(@group) %>
-            <%= button_to "Unfollow", unfollow_group_path(@group), method: :delete, class: 'btn btn-danger btn-sm mt-2 mb-2' %>
+            <%= button_to "Unfollow Group", unfollow_group_path(@group), method: :delete, class: 'btn btn-danger btn-sm mt-2 mb-2' %>
           <% else %>
-            <%= button_to "Follow", follow_group_path(@group), method: :post, class: 'btn btn-primary btn-sm mt-2 mb-2' %>
+            <%= button_to "Follow Group", follow_group_path(@group), method: :post, class: 'btn btn-primary btn-sm mt-2 mb-2' %>
           <% end %>
           <% if @group.users.count > 0 %>
             <small class="text-primary mt-3">
@@ -37,10 +37,21 @@
               <small class="text-dark"><%= group.name %></small>
             <% end %>
           <% end %>
+          <hr>
+          <div class="row">
+            <div class="col-lg-10">
+              <%= link_to "Events", user_my_events_path(current_user), style: 'text-decoration:none;'  %>
+            </div>
+            <div class="col-lg-2">
+              <%= link_to new_event_path, data: { controller: 'bs-modal-form' } do %>
+                <i class="fa-solid fa-plus"></i>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-9 col-md-8 col-sm-12 mt-2">
+    <div class="col-lg-7 col-md-8 col-sm-12 mt-2">
       <div class="card shadow mt-2 mb-2">
         <div class="card-body">
           <div class="row">
@@ -93,5 +104,50 @@
       <%= render 'home/post_sort' %>        
       <%= render 'groups/group_posts' %>
     </div>
+    <div class="col-lg-2 mt-3">
+      <div class="card shadow text-center admin-card">
+        <div class="card-body">
+          <h5 class="mb-3 admin-heading">Group Admin</h5>
+          <% if @group.user.present? %>
+            <%= link_to member_path(@group.user), style: "text-decoration:none;" do %>
+              <% if @group.user.image.attached? %>
+                <%= image_tag @group.user.image, class: "admin-image mb-2 border border-1 rounded-circle", style: 'width:50px;' %>
+              <% else %> 
+                <%= image_tag 'human.avif', class: "admin-image mb-2 border border-1 rounded-circle", style: 'width:50px;' %>
+              <% end %>
+              <h6 class="text-dark admin-name"><%= @group.user.name %></h6>
+              <small class="text-muted admin-title"><%= @group.user.profile_title %></small>
+            <% end %>
+          <% else %>
+            <p>No admin found for this group</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+<style>
+  .admin-card {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    .admin-heading {
+      font-size: 20px;
+    }
+
+    .admin-image {
+      width: 50px;
+      height: 50px;
+    }
+
+    .admin-name {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .admin-title {
+      font-size: 12px;
+    }
+
+</style>
