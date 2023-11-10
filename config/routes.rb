@@ -15,6 +15,10 @@ Rails.application.routes.draw do
     post '/verify_otp', to: 'users/sessions#verify_otp', as: :verify_otp
   end
 
+  get "password", to: "passwords#edit", as: :edit_password
+  patch "password", to: "passwords#update"
+
+  
   resources :pages, controller: 'pages' do
     member do
       post :follow
