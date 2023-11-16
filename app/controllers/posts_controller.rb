@@ -2,18 +2,18 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[edit show update destroy]
   
   def index
-    @original_posts = current_user.posts.includes(:user, :likes, :reposts,  images_attachments: :blob)
-   @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, images_attachments: :blob]).map(&:post)
+    @original_posts = current_user.posts.includes(:user, :user_reactions, :likes, :reposts,  images_attachments: :blob)
+    @reposted_posts = current_user.reposts.includes(post: [:user, :comments, :likes, images_attachments: :blob]).map(&:post)
 
-   @posts = (@original_posts + @reposted_posts).uniq.sort_by(&:created_at).reverse
+    @posts = (@original_posts + @reposted_posts).uniq.sort_by(&:created_at).reverse
 
-   @post_likes_count = Post.joins(:likes).group('posts.id').count
+    @post_likes_count = Post.joins(:likes).group('posts.id').count
 
-   comment_counts = Comment.where(commentable_id: @posts.map(&:id), 
+    comment_counts = Comment.where(commentable_id: @posts.map(&:id), 
     commentable_type: 'Post').group(:commentable_id).count
 
-  # Now, you can create a hash where keys are post IDs and values are comment counts
-  @post_comment_counts = comment_counts.transform_keys(&:to_i)
+    # Now, you can create a hash where keys are post IDs and values are comment counts
+    @post_comment_counts = comment_counts.transform_keys(&:to_i)
   end
 
   def new

@@ -9,10 +9,20 @@ class HomeController < ApplicationController
 
     # Now, you can create a hash where keys are post IDs and values are comment counts
     @post_comment_counts = comment_counts.transform_keys(&:to_i)
+
+
+    user_reaction_counts = UserReaction.where(reactable_id: @posts.map(&:id), 
+                     reactable_type: 'Post')
+                     .group(:reactable_id)
+                     .count
+
+    # Now, you can create a hash where keys are post IDs and values are comment counts
+    @post_user_reaction_counts = user_reaction_counts.transform_keys(&:to_i)
     
     # for showing the total connected user ids count of current user
     @total_connections = Connection.where('user_id = ? OR connected_user_id = ?', current_user.id, current_user.id).where(status: 'accepted')
     @groups = Group.all
+    @reposts = Repost.where(post_id: @posts.map(&:id)).group_by(&:post_id)
   end
 
   def sort

@@ -42,8 +42,9 @@ Rails.application.routes.draw do
       post 'hide'
       post 'undo_hide'
       post 'toggle_hide'
+      post 'repost_with_thought', to: 'reposts#repost_with_thought', as: 'repost_thought'
     end
-    resources :reposts, only: [:create, :destroy]
+    resources :reposts
     resources :comments
     resources :user_reactions, only: [:create, :destroy]
   end
