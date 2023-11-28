@@ -27,6 +27,8 @@
           <hr>
           <%= link_to "My Followers", followers_and_following_member_path(current_user), style: 'text-decoration:none;' %> 
           <hr>
+          <%= link_to "My Article", user_my_article_index_path(current_user), style: 'text-decoration:none;' %> 
+          <hr>
           <%= link_to "My Events", user_my_events_path(current_user), style: 'text-decoration:none;'  %>
           <hr>
           <%= link_to 'View Calendar', calendar_events_events_path, style: 'text-decoration:none;' %>
@@ -58,11 +60,19 @@
               <%= link_to new_post_path, class: "d-flex btn btn-outline-light text-dark border py-2 rounded-pill mr-1 pr-5 mt-2", data: { controller: "bs-modal-form" } do %>
               Start a Post
               <% end %>
-              <div class="mt-3">
-                <%= link_to new_event_path, data: { controller: 'bs-modal-form' }, style: "text-decoration:none;" do %>
-                  <i class="fa-regular fa-calendar-days me-1 text-dark"></i>
-                Add Event
-              <% end %>
+              <div class="row mt-3">
+                <div class="col-lg-2">
+                  <%= link_to new_event_path, data: { controller: 'bs-modal-form' }, style: "text-decoration:none;" do %>
+                    <i class="fa-regular fa-calendar-days me-1 text-dark"></i>
+                    Add Event
+                  <% end %>
+                </div>
+                <div class="col-lg-3">
+                  <%= link_to new_article_path, data: { controller: 'bs-modal-form' }, style: "text-decoration:none;" do %>
+                    <i class="fa-solid fa-newspaper me-1 text-dark"></i>
+                    Write Article
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

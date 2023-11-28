@@ -78,6 +78,7 @@ Rails.application.routes.draw do
 
   get 'member-connections/:id', to: 'members#connections', as: 'member_connections'
 
+  resources :articles  
   resources :jobs
   resources :job_categories
   resources :work_experiences
@@ -90,6 +91,7 @@ Rails.application.routes.draw do
     resources :jobs
     resources :my_jobs, only: [:index]
     resources :my_events, only: [:index]
+    resources :my_article, only: [:index]
   end
 
   resources :members, controllers: 'members' do
