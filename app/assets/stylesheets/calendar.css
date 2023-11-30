@@ -1,0 +1,46 @@
+/* Change the background color of the calendar container */
+#calendar {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Style the calendar's header */
+.fc-header-toolbar {
+  background-color: #333;
+  color: #fff;
+}
+
+/* Style the calendar buttons in the header */
+.fc-button {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #333;
+}
+
+.fc-button:hover {
+  background-color: #555;
+}
+
+/* Style the event title */
+.fc-event-title {
+  font-weight: bold;
+}
+
+/* Style events based on their status */
+.fc-event {
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.fc-event .fc-bg {
+  background-color: #007bff; /* Background color for active events */
+  border: 1px solid #0056b3;
+  color: #fff;
+}
+
+.fc-event .fc-time {
+  color: #007bff;
+}

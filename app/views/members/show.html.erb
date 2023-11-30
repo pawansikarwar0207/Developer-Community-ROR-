@@ -58,6 +58,8 @@
             <%= render 'work_experiences/work_experience', work_experience: work_experience %>
           <% end %>
         </ul>
+      <% else %>
+        <p class="h5 mt-3 border border-1 rounded p-2">No work experience is present</p>
       <% end %>
     </div>
   </div>
@@ -80,14 +82,16 @@
             </div>
           </div>
           <% if @user.skills.present? %>
-          <div class="col-lg-4">
-            <div class="d-flex justify-content-end">
-              <%= link_to "javascript:void(0)" do %>
-                <i class="fa-solid fa-pencil"></i>
-                Edit Skills
-              <% end %>
+            <div class="col-lg-4">
+              <div class="d-flex justify-content-end">
+                <%= link_to "javascript:void(0)" do %>
+                  <i class="fa-solid fa-pencil"></i>
+                  Edit Skills
+                <% end %>
+              </div>
             </div>
-          </div>
+          <% else %>
+            <p class="h5 mt-3 border border-1 rounded p-2">No skill is present</p>
           <% end %>
         </div>
       <% end %>

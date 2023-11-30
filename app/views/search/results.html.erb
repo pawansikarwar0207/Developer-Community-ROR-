@@ -203,46 +203,19 @@
   </div>
 </div>
 
-<style>
-  .image-container {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  }
-  .image-container img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .user-image{
-    width: 70px;
-    overflow: hidden;
-    margin-top: 15px;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .show-more, .show-less {
-    cursor: pointer;
-    color: blue;
-  }
-</style>
-
 <script>
   $(document).ready(function() {
-  $('.post_images').magnificPopup({
-    type: 'image',
-    gallery: {
-      enabled: true
-    },
-    mainClass: 'mfp-with-zoom',
+    $('.post_images').magnificPopup({
+      type: 'image',
+      gallery: {
+        enabled: true
+      },
+      mainClass: 'mfp-with-zoom',
       zoom: {
         enabled: true,
         duration: 300,
         easing: 'ease-in-out'
       }
+    });
   });
-});
 </script>

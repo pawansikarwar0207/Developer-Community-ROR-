@@ -69,17 +69,17 @@ ActiveRecord::Base.transaction do
       title: 'First Article', 
       content: 'Content of the first article.', 
       user_id: 1
-    )
+  )
   Article.create(
       title: 'Second Article', 
       content: 'Content of the second article.', 
       user_id: 2
-    )
+  )
   Article.create(
       title: 'Third Article', 
       content: 'Content of the third article.', 
       user_id: 50
-    )
+  )
 
   # Create dummy events associated with users
   Event.create(
