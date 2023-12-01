@@ -21,7 +21,7 @@ class HomeController < ApplicationController
     
     # for showing the total connected user ids count of current user
     @total_connections = Connection.where('user_id = ? OR connected_user_id = ?', current_user.id, current_user.id).where(status: 'accepted')
-    @groups = Group.all
+    @groups = Group.includes(:user)
     @reposts = Repost.where(post_id: @posts.map(&:id)).group_by(&:post_id)
   end
 
@@ -40,6 +40,8 @@ class HomeController < ApplicationController
     else
       { order_column: :created_at, order_direction: :desc }
     end
+
+    @groups = Group.includes(:user)
 
     @posts = Post.includes(common_includes).order(sort_order[:order_column] => sort_order[:order_direction])
     @post_likes_count = Post.joins(:likes).group('posts.id').count

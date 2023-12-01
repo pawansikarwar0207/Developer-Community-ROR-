@@ -33,8 +33,6 @@ Rails.application.routes.draw do
       get 'followers', to: 'groups#followers', as: 'group_followers'
     end
   end
-
-  resources :notifications, only: [:index, :destroy]
   
   # for hide & unhide the posts
   resources :posts do
@@ -49,17 +47,17 @@ Rails.application.routes.draw do
     resources :user_reactions, only: [:create, :destroy]
   end
 
-  get 'hidden_posts', to: 'posts#hidden'
-
-  post 'search', to: 'search#index', as: 'search'
-  post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
-  get '/search_results', to: 'search#results', as: 'search_results'
-
   resources :events do
     collection do
       get 'calendar_events'
     end
   end
+
+  get 'hidden_posts', to: 'posts#hidden'
+
+  post 'search', to: 'search#index', as: 'search'
+  post 'search/suggestions', to: 'search#suggestions', as: 'search_suggestions'
+  get '/search_results', to: 'search#results', as: 'search_results'
   
   get '/home', to: 'home#index', as: :home
   get '/home/sort', to: 'home#sort', as: :home_sort
@@ -85,6 +83,8 @@ Rails.application.routes.draw do
   resources :connections
   resources :skills
   resources :shares, only: [:new, :create,:index]
+  resources :likes, only: [:create, :destroy]
+  resources :notifications, only: [:index, :destroy]
 
   resources :users do
     resources :posts
@@ -104,8 +104,6 @@ Rails.application.routes.draw do
       get :fetch_country_states
     end
   end
-
-  resources :likes, only: [:create, :destroy]
 
   resources :followers, only: [:show] do
     member do

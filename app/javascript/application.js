@@ -19,3 +19,7 @@ import { Application } from "@hotwired/stimulus";
 import ("trix")
 import ("@rails/actiontext")
 
+// for fullcalendar
+import 'moment'
+import { Calendar } from '@fullcalendar/core';
+
