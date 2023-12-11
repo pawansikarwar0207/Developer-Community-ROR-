@@ -88,8 +88,3 @@ gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 gem 'meta-tags'
 gem 'dotenv-rails', groups: [:development, :test]
-
-
-gem 'fullcalendar-rails'
-gem 'momentjs-rails'
-

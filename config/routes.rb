@@ -49,9 +49,11 @@ Rails.application.routes.draw do
 
   resources :events do
     collection do
-      get 'calendar_events'
+      get 'calendar', to: 'events#calendar'
+      post 'calendar_events', to: 'events#create_calendar_event'
     end
   end
+
 
   get 'hidden_posts', to: 'posts#hidden'
 

@@ -10,3 +10,6 @@ pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.8/lib/inde
 pin "@rails/ujs", to: "https://ga.jspm.io/npm:@rails/ujs@7.0.7-2/lib/assets/compiled/rails-ujs.js"
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.js"
+pin "@fullcalendar/core", to: "https://cdn.skypack.dev/@fullcalendar/core"
+pin "@fullcalendar/daygrid", to: "https://cdn.skypack.dev/@fullcalendar/daygrid"
+pin "@fullcalendar/timegrid", to: "https://cdn.skypack.dev/@fullcalendar/timegrid"

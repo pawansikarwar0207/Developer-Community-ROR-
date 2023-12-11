@@ -15,13 +15,17 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(event_params)
     if @event.save
-      redirect_to events_path, notice: 'Event was successfully created.'
+      render json: { event: @event }, status: :created
     else
-      render :new
+      render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def show
+    respond_to do |format|
+      format.html # Render HTML format
+      format.json { render json: @event } # Render JSON format
+    end
   end
 
   def update
@@ -38,14 +42,32 @@ class EventsController < ApplicationController
     end
   end
 
-  def calendar_events
-    @events = Event.all
+  def calendar
+    @events = Event.all.map do |event|
+      {
+        id: event.id,
+        title: event.event_name,
+        start: event.start_date,
+        end: event.end_date,
+        # Add other properties as needed
+      }
+    end
+
     respond_to do |format|
       format.html
-      format.json { render json: @events.map { |event| event.to_calendar_event } }
+      format.json { render json: @events }
     end
   end
 
+
+  def create_calendar_event
+    @event = current_user.events.build(event_params)
+    if @event.save
+      render json: { message: 'Event created successfully' }, status: :created
+    else
+      render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
 
   private
 
