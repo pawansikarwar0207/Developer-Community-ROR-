@@ -63,11 +63,12 @@ class EventsController < ApplicationController
   def create_calendar_event
     @event = current_user.events.build(event_params)
     if @event.save
-      render json: { message: 'Event created successfully' }, status: :created
+      render json: { event: @event, message: 'Event created successfully' }, status: :created
     else
       render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
 
   private
 
