@@ -61,6 +61,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_111159) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "user_id"
+    t.string "creator"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "title"
@@ -157,13 +166,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_111159) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.string "message"
-    t.string "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.string "item_type", null: false
     t.bigint "item_id", null: false
@@ -218,13 +220,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_111159) do
     t.text "thought"
     t.index ["post_id"], name: "index_reposts_on_post_id"
     t.index ["user_id"], name: "index_reposts_on_user_id"
-  end
-
-  create_table "rooms", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_private", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "shares", force: :cascade do |t|
