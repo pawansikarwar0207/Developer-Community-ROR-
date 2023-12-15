@@ -18,7 +18,7 @@ module DevCommunity
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    config.hosts << "e8b4-1-23-192-160.ngrok-free.app"
+      config.hosts << "127.0.0.1"
     # config.after_initialize do
     #   Selenium::WebDriver::Chrome.driver_path = '/path/to/chromedriver'
     # end
