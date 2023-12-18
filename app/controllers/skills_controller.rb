@@ -24,7 +24,7 @@ class SkillsController < ApplicationController
         'shared/turbo_modal',
         { 
           form_partial: 'skills/form', 
-          modal_title: 'Add New Work Experience' 
+          modal_title: 'Add New Skills' 
         }
         )
     end
@@ -53,7 +53,7 @@ class SkillsController < ApplicationController
         'shared/turbo_modal',
         { 
           form_partial: 'skills/form', 
-          modal_title: 'Edit Work Experience' 
+          modal_title: 'Edit Skills' 
         }
         )
     end
