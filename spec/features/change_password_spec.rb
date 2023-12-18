@@ -28,7 +28,7 @@ RSpec.feature 'Change Password', type: :feature do
     sleep 2
   end
 
-  scenario 'changes the password successfully' do
+  scenario 'changes the password successfully and logs in with the new password' do
     visit member_path(user)
 
     click_link 'Change your password', wait: 10
@@ -38,7 +38,17 @@ RSpec.feature 'Change Password', type: :feature do
 
     click_button 'Update'
 
-    expect(page).to have_current_path(member_path(user))
-    expect(page).to have_text('You need to sign in or sign up before continuing.')
+    # Expect to be redirected to the login page after password change
+    expect(page).to have_current_path(new_user_session_path)
+
+    # Log in again with the new password
+    fill_in 'user_email', with: user.email
+    fill_in 'user_password', with: 'new_password'
+    click_button 'Log In'
+
+    # Expect to be redirected to the user profile page after successful login
+    expect(page).to have_text('Signed in successfully.')
+    sleep 2
   end
+
 end
