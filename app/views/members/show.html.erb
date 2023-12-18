@@ -11,7 +11,7 @@
         <% if @user == current_user %>
         <div class="col-lg-6">
           <div class="d-flex justify-content-end">
-            <%= link_to edit_member_description_path, data: { controller: "bs-modal-form" } do %>
+            <%= link_to edit_member_description_path, class: "edit-about", data: { controller: "bs-modal-form" } do %>
             <i class="fa-solid fa-pencil"></i>
             <% end %>
           </div>
@@ -33,7 +33,7 @@
           </div>
           <div class="col-lg-4">
             <div class="d-flex justify-content-end">
-              <%= link_to new_work_experience_path, data: { controller: 'bs-modal-form' } do %>
+              <%= link_to new_work_experience_path, id: 'add-work-experience-link', data: { controller: 'bs-modal-form' } do %>
                 <i class="fa-solid fa-plus"></i>
                 Add Experience
               <% end %>

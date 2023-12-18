@@ -72,6 +72,7 @@ group :test do
   gem "capybara"
   gem 'selenium-webdriver', '~> 4.4.0'
   gem "webdrivers"
+  gem 'rails-controller-testing'
 end
 
 
