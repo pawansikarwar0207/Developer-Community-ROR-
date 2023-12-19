@@ -62,13 +62,13 @@
               <% end %>
               <div class="row mt-3">
                 <div class="col-lg-2">
-                  <%= link_to new_event_path, data: { controller: 'bs-modal-form' }, style: "text-decoration:none;" do %>
+                  <%= link_to new_event_path, id: 'add-event-link', data: { controller: 'bs-modal-form' }, style: "text-decoration:none;" do %>
                     <i class="fa-regular fa-calendar-days me-1 text-dark"></i>
                     Add Event
                   <% end %>
                 </div>
                 <div class="col-lg-3">
-                  <%= link_to new_article_path, data: { controller: 'bs-modal-form' }, style: "text-decoration:none;" do %>
+                  <%= link_to new_article_path, id: "add-article-link", data: { controller: 'bs-modal-form' }, style: "text-decoration:none;" do %>
                     <i class="fa-solid fa-newspaper me-1 text-dark"></i>
                     Write Article
                   <% end %>
