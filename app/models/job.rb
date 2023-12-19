@@ -3,6 +3,11 @@ class Job < ApplicationRecord
   belongs_to :user
   belongs_to :page
 
+  validates :title, :description, :employee_type, 
+            :location, :salary, :job_category, 
+            :qualification, :status, :page, 
+             presence: true
+
   EMPLOYEE_TYPE = ['Full-time', 'Part-time', 'Self-Employeed', 'Freelance', 'Trainee', 'Internship']
 
   STATUS = [ 'Public', 'Private', 'Archieved' ]
