@@ -7,6 +7,9 @@ class Page < ApplicationRecord
   has_many :follows, as: :followed, dependent: :destroy
   has_many :followers, through: :follows, source: :user
 
+  validates :title, :content, :industry, :website, :organization_size,
+            :organization_type, :about, presence: true
+
   def followers_count
     self.followers.count
   end

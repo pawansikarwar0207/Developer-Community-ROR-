@@ -1,5 +1,5 @@
 <div class="col-lg-10 mx-auto mt-3">
-  <%= link_to 'Create Job', new_job_path, class: 'btn btn-primary mb-3', data: { controller: "bs-modal-form" } %>
+  <%= link_to 'Create Job', new_job_path, class: 'btn btn-primary mb-3', id: 'add-job-link', data: { controller: "bs-modal-form" } %>
   <% if @jobs.present? %>
     <% @jobs.each do |job| %>
       <div class="job-box bg-white overflow-hidden border rounded mt-3 position-relative overflow-hidden">
