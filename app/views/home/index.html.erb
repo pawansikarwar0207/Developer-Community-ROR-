@@ -8,24 +8,22 @@
           <% else %> 
             <%= image_tag 'human.avif', class: "border border-1 rounded-circle mb-3 mt-3", style: "width: 130px; max-width:100%;" %>
           <% end %>
-          <%= link_to member_path(current_user), style: "text-decoration:none;" do %>
+          <%= link_to member_path(current_user), id: "add-user-profile-link", style: "text-decoration:none;" do %>
             <h5 class="text-dark"><%= current_user.name %></h5>
           <% end %>
           <small class=" text-muted"><%= current_user.profile_title %></small>
           <hr>
           <p>
-            <%# if @total_connections.present? %>
-              <div id="connection-count">
-                <%= link_to pluralize((@total_connections ? @total_connections.count : 0), 'connection'), member_connections_path(current_user), style: "text-decoration:none;" %>
-              </div>
-            <%# end %>
+            <div id="connection-count">
+              <%= link_to pluralize((@total_connections ? @total_connections.count : 0), 'connection'), member_connections_path(current_user), id: "add-connection-link", style: "text-decoration:none;" %>
+            </div>
           </p>
           <hr>
           <%= link_to 'My Job', user_my_jobs_path(current_user), id: 'my-job', style: 'text-decoration:none;'%> 
           <hr>
-          <%= link_to 'My Post', user_posts_path(current_user), style: 'text-decoration:none;'%> 
+          <%= link_to 'My Post', user_posts_path(current_user), id: "add-user-post-link", style: 'text-decoration:none;'%> 
           <hr>
-          <%= link_to "My Followers", followers_and_following_member_path(current_user), style: 'text-decoration:none;' %> 
+          <%= link_to "My Followers", followers_and_following_member_path(current_user), id: "add-my-followers-link", style: 'text-decoration:none;' %> 
           <hr>
           <%= link_to "My Article", user_my_article_index_path(current_user), style: 'text-decoration:none;' %> 
           <hr>
