@@ -93,7 +93,7 @@ Rails.application.routes.draw do
     resources :jobs
     resources :my_jobs, only: [:index]
     resources :my_events, only: [:index]
-    resources :my_article, only: [:index]
+    resources :my_articles, only: [:index]
   end
 
   resources :members, controllers: 'members' do

@@ -1,4 +1,4 @@
-<div class="col-lg-10 mx-auto mt-3">
+<div class="col-lg-10 mx-auto mt-3" id="user_event">
   <%#= link_to 'Create event', new_event_path, class: 'btn btn-primary mb-3', data: { controller: "bs-modal-form" } %>
   <% if @events.present? %>
     <% @events.each do |event| %>
@@ -13,10 +13,10 @@
                 <p><b>Start Time :</b> <%= event.start_time %></p>
                 <p><b>End Date :</b> <%= event.end_date %></p> 
                 <p><b>End Time :</b> <%= event.end_time %></p>
-                <p><b>Description :</b> <%= truncate(event.description, length: 30) %></p>
-                <%= link_to 'View Event', event, class:"btn btn-primary mt-2" %> 
-                <%= link_to 'Edit Event', edit_event_path(event), data: { controller: 'bs-modal-form' },  class:"btn btn-warning mt-2" %> 
-                <%= link_to 'Delete Event', event_path(event), class:"btn btn-danger mt-2", data: { turbo_confirm: 'Are You Sure?', turbo_method: :delete } %>
+                <p><b>Description :</b> <%= event.description %></p>
+                <%= link_to 'View Event', event, class:"btn btn-primary mt-2", id: "view_event" %>
+                <%= link_to 'Edit Event', edit_event_path(event), id: "edit_event", data: { controller: 'bs-modal-form' },  class:"btn btn-warning mt-2" %> 
+                <%= link_to 'Delete Event', event_path(event), class:"btn btn-danger mt-2", id: "delete_event", data: { turbo_confirm: 'Are You Sure?', turbo_method: :delete } %>
             </div> 
             <div class="col-lg-7 d-flex justify-content-end">
               <% if event.images.attached? %>
