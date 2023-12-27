@@ -60,13 +60,13 @@
                   <%= link_to hide_post_path(post), method: :post, class: 'hide-post', title: 'hide-post', data: { action: "click->hide-post#hidePost" } do  %>
                     <i class="fa-solid fa-xmark"></i>
                   <% end %>  
-                  <div class="hide-dialog" data-hide-post-target="dialog">
+                  <%# <div class="hide-dialog" data-hide-post-target="dialog">
                     <p>Post removed from your feed</p>
                     <p>Your feedback helps improve the feed.</p>
-                    <%= link_to undo_hide_post_path(post), method: :post, class:"undo-hide-post", title: 'undo-post', data: { action: "click->hide-post#undoHidePost", hide_post_target: "undoButton" } do %>
-                      <i class="fa-solid fa-rotate-left"></i>
-                    <% end %>
-                  </div>                
+                    <%#= link_to undo_hide_post_path(post), method: :post, class:"undo-hide-post", title: 'undo-post', data: { action: "click->hide-post#undoHidePost", hide_post_target: "undoButton" } do %>
+                      <%# <i class="fa-solid fa-rotate-left"></i> %>
+                    <%# end %>
+                  </div> %>                
                 </div>
               </div>
             </div>

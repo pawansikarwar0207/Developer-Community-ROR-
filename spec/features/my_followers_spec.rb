@@ -44,6 +44,5 @@ RSpec.feature 'My Followers', type: :feature do
       
       expect(page).to_not have_text('This user is not following anyone.', wait: 10)
     end
-
   end
 end

@@ -37,6 +37,64 @@ RSpec.feature 'Articles', type: :feature do
       visit articles_path
       expect(page).to have_text('Sample Article')
       expect(page).to have_text('This is a sample article content.')
+
+      find('#view_article', wait: 10).click
+    end
+
+    it 'should edit the article' do
+      find('#add-article-link', wait: 10).click
+      
+      expect(page).to have_text('Write Article', wait: 10)
+
+      fill_in 'article_title', with: 'Sample Article'
+      fill_in 'article_content', with: 'This is a sample article content.'
+
+      click_button 'Submit'
+
+      visit articles_path
+      expect(page).to have_text('Sample Article')
+      expect(page).to have_text('This is a sample article content.')
+
+      find('#view_article', wait: 10).click
+
+
+      find('#edit_article', wait: 10).click
+
+      expect(page).to have_text('Edit Article', wait: 10)
+
+      fill_in 'article_title', with: 'Dummy Article'
+      fill_in 'article_content', with: 'This is a Dummy Article Content.'
+
+      click_button 'Submit'
+    end
+
+    it 'should delete the article' do
+
+      find('#add-article-link', wait: 10).click
+      
+      expect(page).to have_text('Write Article', wait: 10)
+
+      fill_in 'article_title', with: 'Sample Article'
+      fill_in 'article_content', with: 'This is a sample article content.'
+
+      click_button 'Submit'
+
+      visit articles_path
+      expect(page).to have_text('Sample Article')
+      expect(page).to have_text('This is a sample article content.')
+
+      find('#view_article', wait: 10).click
+
+      find('#delete_article', wait: 10).click
+
+      # Accept the confirmation alert
+      page.driver.browser.switch_to.alert.accept
+
+      # Wait for the alert to be accepted
+      sleep 1
+
+      visit articles_path
+      expect(page).to have_text('No articles are present.')
     end
   end
 end

@@ -15,19 +15,19 @@
                   <% end %>
                 <% end %>
                 </div>
-                <div class="col-md-8 col-12 mt-2 mb-3 px-5 d-grid post-user-details">
+                <div class="col-md-8 col-12 mt-2 mb-3 px-5 d-grid post-user-details" id="user_profile">
                   <%= link_to member_path(post.user), style: "text-decoration:none;" do %>
                     <h5 class="text-dark post-user-name"><%= post.user.name %></h5>
                     <small class="text-muted post-user-title"><%= post.user.profile_title %></small><br>
                     <small class="text-muted post-time-ago">Posted <%= time_ago_in_words(post.created_at) %> ago</small>
                   <% end %>
                 </div>
-                <div class="col-md-1 col-12 mt-2 mb-3 px-3 justify-content-end post-follow-button">
+                <div class="col-md-1 col-12 mt-2 mb-3 px-3 justify-content-end post-follow-button" >
                 <% if current_user != post.user %>
                   <% if current_user.following?(post.user) %>
-                    <%= link_to 'Unfollow', unfollow_member_path(post.user), method: :delete, class: 'btn btn-outline-danger btn-sm fw-bold', style: "text-decoration:none;" %>
+                    <%= link_to 'Unfollow', unfollow_member_path(post.user), method: :delete, class: 'btn btn-outline-danger btn-sm fw-bold', id: "unfollow_button_#{post.user.id}", style: "text-decoration:none;" %>
                   <% else %>
-                    <%= link_to 'Follow', follow_member_path(post.user), method: :post, class: "btn btn-outline-primary btn-sm fw-bold", style: 'text-decoration:none;' %>
+                    <%= link_to 'Follow', follow_member_path(post.user), method: :post, class: "btn btn-outline-primary btn-sm fw-bold", id: "follow_button_#{post.user.id}", style: 'text-decoration:none;' %>
                   <% end %>
                 <% end %>
                 </div>
@@ -38,17 +38,18 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <% if current_user == post.user %> 
-                        <li><%= link_to 'Delete', post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?" }, class: "dropdown-item" %></li>
-                        <li><%= link_to 'Edit', edit_post_path(post), data: { controller: 'bs-modal-form' }, class: "dropdown-item" %></li>
+                        <li><%= link_to 'Delete', post_path(post), data: { turbo_method: :delete, turbo_confirm: "Are You Sure to delete ?" }, class: "dropdown-item", id: "delete_post_button_#{post.user.id}" %></li>
+                        <li><%= link_to 'Edit', edit_post_path(post), data: { controller: 'bs-modal-form' }, class: "dropdown-item", id: "edit_post_button_#{post.user.id}" %></li>
                       <% end %>
-                      <li><%= link_to 'View', post_path(post), class: 'dropdown-item' %></li>
+                      <li><%= link_to 'View', post_path(post), class: 'dropdown-item', id: "view_post_button_#{post.user.id}" %></li>
                       <li>
                         <button
                           data-controller="copy-url"
                           data-copy-url-target="copyButton"
                           data-copy-url-post-id="<%= post.id %>"
                           data-action="click->copy-url#copyUrl"
-                          class="dropdown-item"
+                          class="dropdown-item" 
+                          id= "url_button_<%= post.user.id %>"                         
                         >
                           Copy URL
                         </button>
@@ -57,7 +58,7 @@
                   </div>
                 </div>
                 <div class="col-md-1 col-12 mt-2 mb-3 px-3 d-grid justify-content-end" data-controller="hide-post" data-hide-post-post-id="<%= post.id %>">
-                  <%= link_to hide_post_path(post), method: :post, class: 'hide-post', title: 'hide-post', data: { action: "click->hide-post#hidePost" } do  %>
+                  <%= link_to hide_post_path(post), method: :post, class: 'hide-post', title: 'hide-post', id:"hidden_post", data: { action: "click->hide-post#hidePost" } do  %>
                     <i class="fa-solid fa-xmark"></i>
                   <% end %>  
                   <!-- <div class="hide-dialog" data-hide-post-target="dialog">
@@ -70,7 +71,7 @@
                 </div>
               </div>
             </div>
-            <div class="user-info mt-2" data-controller="user-name">
+            <div class="user-info mt-2" data-controller="user-name" id="direct_link_for_user_post">
               <%= link_to post_path(post), style: 'text-decoration:none; color: black;' do %>
                 <h5 data-user-name-target='name'><%= post.title %> </h5>
                 <div data-controller="show-more">

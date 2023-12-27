@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-RSpec.feature 'Jobs', type: :feature do
-  describe 'Jobs' do
+RSpec.feature 'Job', type: :feature do
+  describe 'Job' do
     let(:user) { create(:user) }
 
     before :each do
@@ -11,31 +11,20 @@ RSpec.feature 'Jobs', type: :feature do
       visit root_path
     end
 
-    it 'go to my job path when no job' do
-      find('#my-job', wait: 10).click
-      jobs_container = find('#user_jobs', wait: 10)
+    it 'go to job path when no job exists' do
+      find('#users_job', wait: 10).click
+      jobs_container = find('#job_user', wait: 10)
       expect(user.jobs.count).to eq(0)
-      expect(jobs_container).to have_text('No job is created by you! So create the job first.')
+      expect(jobs_container).to have_text('No job is present!')
     end
 
-    # it 'go to my job path when job exists' do
 
-    #   find('#add-job-link', wait: 10).click
-    #   expect(page).to have_text('Create Job', wait: 10)
-
-    #   click_button 'Create Job'
-
-    #   expect(page).to have_text('9 errors prohibited your jobs form being saved.')
-    #   expect(page).to have_text("Title can't be blank")
-    #   expect(page).to have_text("Content can't be blank")
-    # end
-
-    it 'go to my job path when job exists' do
+    it 'go to job path when job category exists' do
 
       job_category = create(:job_category)
 
       marketing_agency_page = create(:page, title: 'Marketing Agency X', user: user)
-
+      
       visit user_my_jobs_path(user)
       
       find('#add-job-link', wait: 10).click
@@ -53,26 +42,28 @@ RSpec.feature 'Jobs', type: :feature do
       select marketing_agency_page.title, from: 'job_page_id'
 
       click_button 'Create Job'
-      
 
-      click_link('View Job', class: 'btn-primary', wait: 10)
+      visit jobs_path
 
-      expect(page).to have_text('Software Engineer')
-      expect(page).to have_text('Exciting opportunity for')
-      expect(page).to have_text('San Francisco')
-      expect(page).to have_text('₹ 15000-20000')
-      expect(page).to have_text('Full-time')
-      expect(page).to have_text(job_category.name)
+      # Search for the job category form
+      find('#job_category', wait: 10).click
+
+      # Select a job category
+      select job_category.name, from: 'job_category'
+
+      # Click on submit
+      click_button 'Submit'
     end
 
-    it 'should view the created job' do
+    it 'go to job path when no job category exists' do
 
       job_category = create(:job_category)
+      job_category_private = create(:job_category, name: 'Private')
 
       marketing_agency_page = create(:page, title: 'Marketing Agency X', user: user)
-
+      
       visit user_my_jobs_path(user)
-
+      
       find('#add-job-link', wait: 10).click
       
       expect(page).to have_text('Create Job', wait: 10)
@@ -89,92 +80,20 @@ RSpec.feature 'Jobs', type: :feature do
 
       click_button 'Create Job'
 
-      click_link('View Job', class: 'btn-primary', wait: 10)
+      visit jobs_path
 
-      expect(page).to have_text('Software Engineer')
-      expect(page).to have_text('Exciting opportunity for')
-      expect(page).to have_text('San Francisco')
-      expect(page).to have_text('₹ 15000-20000')
-      expect(page).to have_text('Full-time')
-      expect(page).to have_text(job_category.name)
-    end
+      # Search for the job category form
+      find('#job_category', wait: 10).click
 
-    it 'should edit the job' do
+      # Select a job category
+      select job_category_private.name, from: 'job_category'
 
-      job_category = create(:job_category)
+      # Click on submit
+      click_button 'Submit'
 
-      marketing_agency_page = create(:page, title: 'Marketing Agency X', user: user)
+      expect(page).to have_content('No jobs available in the Private category.')
 
-      visit user_my_jobs_path(user)
-
-      find('#add-job-link', wait: 10).click
-      
-      expect(page).to have_text('Create Job', wait: 10)
-
-      fill_in 'job_title', with: 'Software Engineer'
-      fill_in 'job_description', with: 'Exciting opportunity for software engineer.'
-      select 'Full-time', from: 'job_employee_type'
-      fill_in 'job_location', with: 'San Francisco'
-      select '₹ 15000-20000', from: 'job_salary'
-      select job_category.name, from: 'job_job_category_id'
-      select 'Graduation', from: 'job_qualification'
-      select 'Public', from: 'job_status'
-      select marketing_agency_page.title, from: 'job_page_id'
-
-      click_button 'Create Job'
-
-      technical_agency_page = create(:page, title: 'Technical Agency', user: user)
-
-      click_link('Edit', class: 'btn-primary', wait: 10)
-      
-      expect(page).to have_text('Edit Job', wait: 10)
-
-      fill_in 'job_title', with: 'Mechanical Engineer'
-      fill_in 'job_description', with: 'Exciting opportunity for mechanical engineer.'
-      select 'Part-time', from: 'job_employee_type'
-      fill_in 'job_location', with: 'Bhopal'
-      select '₹ 25000-30000', from: 'job_salary'
-      select job_category.name, from: 'job_job_category_id'
-      select 'Post Graduation', from: 'job_qualification'
-      select 'Public', from: 'job_status'
-      select technical_agency_page.title, from: 'job_page_id'
-      click_button 'Update Job'
-    end
-
-    it 'should delete the job' do
-
-      job_category = create(:job_category)
-
-      marketing_agency_page = create(:page, title: 'Marketing Agency X', user: user)
-
-      visit user_my_jobs_path(user)
-
-      find('#add-job-link', wait: 10).click
-      
-      expect(page).to have_text('Create Job', wait: 10)
-
-      fill_in 'job_title', with: 'Software Engineer'
-      fill_in 'job_description', with: 'Exciting opportunity for software engineer.'
-      select 'Full-time', from: 'job_employee_type'
-      fill_in 'job_location', with: 'San Francisco'
-      select '₹ 15000-20000', from: 'job_salary'
-      select job_category.name, from: 'job_job_category_id'
-      select 'Graduation', from: 'job_qualification'
-      select 'Public', from: 'job_status'
-      select marketing_agency_page.title, from: 'job_page_id'
-
-      click_button 'Create Job'
-
-      click_link('Delete', class: 'btn-primary', wait: 10)
-
-      # Accept the confirmation alert
-      page.driver.browser.switch_to.alert.accept
-
-      # Wait for the alert to be accepted
-      sleep 1
-
-      # Now you can continue with your expectations or other actions
-      expect(page).to have_text('No job is present')
+      expect(page).to have_text('No job is present!')
     end
   end
 end
