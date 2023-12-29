@@ -32,6 +32,4 @@ class Event < ApplicationRecord
   def end_datetime
     end_date.strftime('%Y-%m-%dT%H:%M:%S')
   end
-
-
 end

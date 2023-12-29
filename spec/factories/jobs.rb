@@ -6,7 +6,7 @@ FactoryBot.define do
     location { Faker::Address.city }
     salary { Faker::Number.number(digits: 6).to_s }
     qualification { Faker::Lorem.sentence }
-    status { ['Open', 'Closed'].sample }
+    status { 'Public' }
     association :job_category
     association :user
     association :page

@@ -11,13 +11,5 @@ Rails.start()
 import 'bootstrap';
 import { Application } from "@hotwired/stimulus";
 
-// import moment from 'moment';
-// import { Calendar } from '@fullcalendar/core';
-
-//const application = Application.start();
-//const context = require.context("../controllers", true, /\.js$/);
-//application.load(context);import "trix"
-
-
 import ("trix")
 import ("@rails/actiontext")

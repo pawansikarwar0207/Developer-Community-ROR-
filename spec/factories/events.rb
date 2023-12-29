@@ -8,7 +8,5 @@ FactoryBot.define do
     end_time { Faker::Time.forward(days: 5, period: :afternoon).strftime("%H:%M") }
     description { Faker::Lorem.paragraph }
     association :user
-    created_at { Time.current }
-    updated_at { Time.current }
   end
 end

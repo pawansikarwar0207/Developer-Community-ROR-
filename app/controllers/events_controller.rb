@@ -21,15 +21,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # def create
-  #   @event = current_user.events.build(event_params)
-  #   if @event.save
-  #     render json: { event: @event }, status: :created
-  #   else
-  #     render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
-  #   end
-  # end
-
   def show
     respond_to do |format|
       format.html # Render HTML format
